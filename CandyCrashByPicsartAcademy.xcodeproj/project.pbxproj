@@ -13,6 +13,8 @@
 		3FBC4D742AB0E54800B0E711 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC4D722AB0E54800B0E711 /* Main.storyboard */; };
 		3FBC4D762AB0E54A00B0E711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC4D752AB0E54A00B0E711 /* Assets.xcassets */; };
 		3FBC4D792AB0E54A00B0E711 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC4D772AB0E54A00B0E711 /* LaunchScreen.storyboard */; };
+		CC3F40392AC073CE0065075E /* CherryBombOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC3F40382AC073CE0065075E /* CherryBombOne-Regular.ttf */; };
+		CC3F403C2AC075A20065075E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3F403B2AC075A20065075E /* UIColor + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		3FBC4D752AB0E54A00B0E711 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FBC4D782AB0E54A00B0E711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FBC4D7A2AB0E54A00B0E711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC3F40382AC073CE0065075E /* CherryBombOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CherryBombOne-Regular.ttf"; sourceTree = "<group>"; };
+		CC3F403B2AC075A20065075E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,8 +44,8 @@
 		3F923C772AC0422200719921 /* JoinGameViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3F923C7A2AC0427200719921 /* ViewModal */,
-				3F923C792AC0426B00719921 /* Modal */,
+				3F923C7A2AC0427200719921 /* ViewModel */,
+				3F923C792AC0426B00719921 /* Model */,
 				3F923C782AC0426300719921 /* View */,
 			);
 			name = JoinGameViewController;
@@ -55,18 +59,18 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		3F923C792AC0426B00719921 /* Modal */ = {
+		3F923C792AC0426B00719921 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Modal;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		3F923C7A2AC0427200719921 /* ViewModal */ = {
+		3F923C7A2AC0427200719921 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = ViewModal;
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		3FBC4D602AB0E54800B0E711 = {
@@ -89,14 +93,40 @@
 			isa = PBXGroup;
 			children = (
 				3F923C772AC0422200719921 /* JoinGameViewController */,
+				CC3F40362AC073960065075E /* Supported */,
+				3FBC4D7A2AB0E54A00B0E711 /* Info.plist */,
+			);
+			path = CandyCrashByPicsartAcademy;
+			sourceTree = "<group>";
+		};
+		CC3F40362AC073960065075E /* Supported */ = {
+			isa = PBXGroup;
+			children = (
 				3FBC4D6C2AB0E54800B0E711 /* AppDelegate.swift */,
 				3FBC4D6E2AB0E54800B0E711 /* SceneDelegate.swift */,
 				3FBC4D722AB0E54800B0E711 /* Main.storyboard */,
 				3FBC4D752AB0E54A00B0E711 /* Assets.xcassets */,
 				3FBC4D772AB0E54A00B0E711 /* LaunchScreen.storyboard */,
-				3FBC4D7A2AB0E54A00B0E711 /* Info.plist */,
+				CC3F403A2AC075800065075E /* Extensions */,
+				CC3F40372AC073A50065075E /* Fonts */,
 			);
-			path = CandyCrashByPicsartAcademy;
+			name = Supported;
+			sourceTree = "<group>";
+		};
+		CC3F40372AC073A50065075E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CC3F40382AC073CE0065075E /* CherryBombOne-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		CC3F403A2AC075800065075E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CC3F403B2AC075A20065075E /* UIColor + Extension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +190,7 @@
 				3FBC4D792AB0E54A00B0E711 /* LaunchScreen.storyboard in Resources */,
 				3FBC4D762AB0E54A00B0E711 /* Assets.xcassets in Resources */,
 				3FBC4D742AB0E54800B0E711 /* Main.storyboard in Resources */,
+				CC3F40392AC073CE0065075E /* CherryBombOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FBC4D712AB0E54800B0E711 /* JoinGameViewController.swift in Sources */,
+				CC3F403C2AC075A20065075E /* UIColor + Extension.swift in Sources */,
 				3FBC4D6D2AB0E54800B0E711 /* AppDelegate.swift in Sources */,
 				3FBC4D6F2AB0E54800B0E711 /* SceneDelegate.swift in Sources */,
 			);
