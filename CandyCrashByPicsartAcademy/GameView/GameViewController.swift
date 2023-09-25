@@ -8,6 +8,7 @@
 import UIKit
 
 final class GameViewController: UIViewController {
+    
     private let gameView = GameView()
     private var collectionView: UICollectionView!
     
