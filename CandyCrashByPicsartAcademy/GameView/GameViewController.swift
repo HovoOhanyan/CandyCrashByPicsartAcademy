@@ -5,4 +5,11 @@
 //  Created by Hovo Ohanyan on 25.09.23.
 //
 
-import Foundation
+import UIKit
+
+final class GameViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+}
