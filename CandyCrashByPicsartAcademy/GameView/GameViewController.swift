@@ -23,6 +23,7 @@ final class GameViewController: UIViewController {
         gameView.translatesAutoresizingMaskIntoConstraints = false
         gameView.setupUI()
         gameView.setupGradient()
+        gameView.setupShapeLayer()
 
         view.addSubview(gameView)
         view.addSubview(collectionView)
