@@ -8,9 +8,10 @@
 import UIKit
 
 final class GameViewController: UIViewController {
+    public let viewModal = GameViewModal(numberOfItemsInRow: 5, boardSize: 40)
     
     private let gameView = GameView()
-    private var collectionView: UICollectionView!
+    public var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
