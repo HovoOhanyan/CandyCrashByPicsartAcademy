@@ -17,5 +17,5 @@ struct StarInstance: GameInstance {
     
     var indexPath: IndexPath = IndexPath()
     
-    var imageView: UIImageView = UIImageView(image: UIImage(named: ""))
+    var imageView: UIImageView = UIImageView(image: UIImage(named: "Star"))
 }

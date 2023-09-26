@@ -16,27 +16,30 @@ final class GameInstanceCell: UICollectionViewCell {
     private var swipeGestureRight = UISwipeGestureRecognizer()
     private var swipeGestureDown = UISwipeGestureRecognizer()
     private var swipeGestureUp = UISwipeGestureRecognizer()
-    
+        
     weak var swipeGestureDelegate: SwipeGestureDelegate?
         
     func setupUI() {
         guard let imageView = gameInstance?.imageView else { return }
         self.backgroundColor = .lightGray
+        self.layer.cornerRadius = 10
+        self.addSubview(imageView)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 3),
-            imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 3),
-            imageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -3),
-            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -3)
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
+            imageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
+            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
         ])
     }
     
     func configuration(gameInstance: GameInstance) {
         self.gameInstance = gameInstance
         setupUI()
+        createAndSettingsSwipeGesture()
     }
     
     private func createAndSettingsSwipeGesture() {
@@ -63,6 +66,7 @@ final class GameInstanceCell: UICollectionViewCell {
         self.addGestureRecognizer(swipeGestureRight)
         self.addGestureRecognizer(swipeGestureUp)
         self.addGestureRecognizer(swipeGestureDown)
+
     }
     
     @objc private func handleSwipe(_ sender: UISwipeGestureRecognizer) {

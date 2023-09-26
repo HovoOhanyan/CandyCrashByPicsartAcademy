@@ -10,7 +10,9 @@ import UIKit
 final class GameViewController: UIViewController {
     
     private let gameView = GameView()
-    private var collectionView: UICollectionView!
+    public var collectionView: UICollectionView!
+    
+    private(set) var viewModal = GameViewModal(numberOfItemsInRow: 5, boardSize: 40)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +22,11 @@ final class GameViewController: UIViewController {
     private func setupUI() {
         collectionViewSetup()
         
+        collectionView.backgroundColor = .gradientFirst1()
         gameView.translatesAutoresizingMaskIntoConstraints = false
         gameView.setupUI()
         gameView.setupGradient()
-
+        
         view.addSubview(gameView)
         view.addSubview(collectionView)
         
@@ -36,17 +39,15 @@ final class GameViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 195),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -200),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -170),
         ])
     }
     
     private func collectionViewSetup() {
         let layout = UICollectionViewFlowLayout()
-        
-        layout.scrollDirection = .vertical
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         

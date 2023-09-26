@@ -10,7 +10,7 @@ import Foundation
 final class GameEngine {
 //MARK: - GameEngine property definitions
 
-    private(set) var gameBoard: [GameInstance]
+    var gameBoard: [GameInstance]
     private(set) var numberOfItemsInRow: Int
     
     private var boardCount = 0
@@ -56,4 +56,6 @@ final class GameEngine {
             boardCount += 1
         }
     }
+    
+    
 }
