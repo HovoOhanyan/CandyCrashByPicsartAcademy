@@ -32,4 +32,8 @@ extension UIColor {
     static func gradientSecond3() -> UIColor {
         return UIColor(red: 0, green: 0.439, blue: 0.992, alpha: 1)
     }
+    
+    static func charryRed() -> UIColor {
+        return UIColor(red: 128/255, green: 0/255, blue: 32/255, alpha: 1.0)
+    }
 }

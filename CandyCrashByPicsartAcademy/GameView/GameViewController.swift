@@ -10,9 +10,7 @@ import UIKit
 final class GameViewController: UIViewController {
     
     private let gameView = GameView()
-    public var collectionView: UICollectionView!
-    
-    private(set) var viewModal = GameViewModal(numberOfItemsInRow: 5, boardSize: 40)
+    private var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +20,11 @@ final class GameViewController: UIViewController {
     private func setupUI() {
         collectionViewSetup()
         
-        collectionView.backgroundColor = .gradientFirst1()
         gameView.translatesAutoresizingMaskIntoConstraints = false
         gameView.setupUI()
         gameView.setupGradient()
-        
+        gameView.setupShapeLayer()
+
         view.addSubview(gameView)
         view.addSubview(collectionView)
         
