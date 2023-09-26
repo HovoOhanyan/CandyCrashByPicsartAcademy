@@ -18,13 +18,29 @@ final class GameViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
         collectionViewSetup()
         
-        view.addSubview(collectionView)
+        gameView.translatesAutoresizingMaskIntoConstraints = false
         gameView.setupUI()
+        gameView.setupGradient()
+
+        view.addSubview(gameView)
+        view.addSubview(collectionView)
         
-        collectionView.frame = view.frame
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            gameView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            gameView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            gameView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            gameView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
+        ])
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -200),
+        ])
     }
     
     private func collectionViewSetup() {

@@ -11,6 +11,6 @@ final class GameInstanceCell: UICollectionViewCell {
     static let identifier = "GameInstanceCell"
     
     func setupUI() {
-        self.backgroundColor = .lightGray
+        self.backgroundColor = .black
     }
 }
