@@ -56,6 +56,4 @@ final class GameEngine {
             boardCount += 1
         }
     }
-    
-    
 }

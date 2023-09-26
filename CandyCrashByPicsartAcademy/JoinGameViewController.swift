@@ -83,7 +83,7 @@ class JoinGameViewController: UIViewController {
         }
     }
 
-    //    CherryBombOne-Regular
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

@@ -31,14 +31,14 @@ final class GameView: UIView {
     
     private let candyImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Candy1")
+        image.image = UIImage(named: "Triangle")
         return image
     }()
     
     private let candyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "CherryBombOne-Regular", size: 15)
-        label.textColor = .white
+        label.textColor = .charryRed()
         label.text = "12"
         return label
     }()
@@ -103,15 +103,27 @@ final class GameView: UIView {
         }
     }
     
-    private var levelUp: CAShapeLayer! {
+    private var levelUpLayer: CAShapeLayer! {
         didSet {
-            levelUp.lineWidth = 4
-            levelUp.lineCap = .round
-            levelUp.fillColor = nil
-            levelUp.strokeEnd = 1
-            levelUp.strokeColor = UIColor.green.cgColor
+            levelUpLayer.lineWidth = 4
+            levelUpLayer.lineCap = .round
+            levelUpLayer.fillColor = nil
+            levelUpLayer.strokeEnd = 1
+            levelUpLayer.strokeColor = UIColor.green.cgColor
         }
     }
+    
+    private var starLayer: CAShapeLayer! {
+        didSet {
+            starLayer.contents = UIImage(named: "Star")?.cgImage
+        }
+    }
+    
+    private let iconImage: UIImageView = {
+       let image = UIImageView()
+        image.image = UIImage(named: "Candy")
+        return image
+    }()
 }
 
 //MARK: Setup UI
@@ -126,6 +138,7 @@ extension GameView {
         candyImage.translatesAutoresizingMaskIntoConstraints = false
         candyLabel.translatesAutoresizingMaskIntoConstraints = false
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
+        iconImage.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(backgroundImage)
         backgroundImage.addSubview(topView)
@@ -134,6 +147,7 @@ extension GameView {
         candysView.addSubview(candyImage)
         candysView.addSubview(candyLabel)
         topView.addSubview(timerLabel)
+        topView.addSubview(iconImage)
         
         NSLayoutConstraint.activate([
             backgroundImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
@@ -180,7 +194,14 @@ extension GameView {
         NSLayoutConstraint.activate([
             timerLabel.heightAnchor.constraint(equalToConstant: 40),
             timerLabel.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 40),
-            timerLabel.centerYAnchor.constraint(equalTo: candysView.centerYAnchor)
+            timerLabel.centerYAnchor.constraint(equalTo: topView.centerYAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            iconImage.topAnchor.constraint(equalTo: topView.topAnchor, constant: 5),
+            iconImage.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -10),
+            iconImage.heightAnchor.constraint(equalToConstant: 70),
+            iconImage.widthAnchor.constraint(equalToConstant: 80)
         ])
     }
 }
@@ -200,8 +221,11 @@ extension GameView {
     }
     
     func setupShapeLayer() {
-        self.levelUp = CAShapeLayer()
-        topView.layer.addSublayer(levelUp)
+        self.levelUpLayer = CAShapeLayer()
+        topView.layer.addSublayer(levelUpLayer)
+        
+        self.starLayer = CAShapeLayer()
+        topView.layer.addSublayer(starLayer)
     }
     
     override func layoutSubviews() {
@@ -216,7 +240,8 @@ extension GameView {
                                      width: self.candysView.bounds.size.width,
                                      height: self.candysView.bounds.size.width)
         
-        configShapeLayer(shapeLayer: levelUp)
+        configShapeLayer(shapeLayer: levelUpLayer)
+        configureStarLayer(shapeLayer: starLayer)
     }
     
     private func configShapeLayer(shapeLayer: CAShapeLayer) {
@@ -227,5 +252,13 @@ extension GameView {
         path.addLine(to: CGPoint(x: self.topView.frame.width / 2 + 80,
                                  y: self.topView.frame.height / 2 - 25))
         shapeLayer.path = path.cgPath
+    }
+    
+    private func configureStarLayer(shapeLayer: CAShapeLayer) {
+        let imageSize = CGSize(width: 30, height: 30)
+        shapeLayer.frame = CGRect(x: self.topView.frame.width / 2 - 85,
+                                  y: self.topView.frame.height / 2 - 35,
+                                  width: 20,
+                                  height: 20)
     }
 }
