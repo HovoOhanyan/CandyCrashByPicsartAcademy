@@ -8,7 +8,7 @@
 import UIKit
 
 final class GameViewController: UIViewController {
-    public let viewModal = GameViewModal(numberOfItemsInRow: 5, boardSize: 40)
+    public var viewModal: GameViewModal!
     
     private let gameView = GameView()
     public var collectionView: UICollectionView!
@@ -19,6 +19,7 @@ final class GameViewController: UIViewController {
     }
     
     private func setupUI() {
+        gameViewModalSetup()
         collectionViewSetup()
         
         gameView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,10 +50,26 @@ final class GameViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
+        collectionView.backgroundColor = .gradientFirst1()
+        collectionView.layer.cornerRadius = 10
         collectionView.dataSource = self
         collectionView.delegate = self
         
         collectionView.register(GameInstanceCell.self, forCellWithReuseIdentifier: GameInstanceCell.identifier)
+    }
+    
+    private func gameViewModalSetup() {
+        viewModal = GameViewModal(numberOfItemsInRow: 5, boardSize: 40)
+        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+        
+        viewModal?.reloadItem = { indexPath in
+            UIView.animate(withDuration: 1) {
+                self.collectionView.reloadItems(at: indexPath)
+            }
+        }
+        
     }
 }

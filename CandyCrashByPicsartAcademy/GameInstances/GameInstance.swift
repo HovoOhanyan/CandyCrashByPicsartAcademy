@@ -9,9 +9,7 @@ import Foundation
 import UIKit.UIImageView
 
 protocol GameInstance {
-    var index: Int { get }
-    var row: Int { get set }
-    var colum: Int { get set }
+    var id: Int { get }
     var indexPath: IndexPath { get set }
     var imageView: UIImageView { get set }
 }

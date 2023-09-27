@@ -30,6 +30,7 @@
 		3FBC4D742AB0E54800B0E711 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC4D722AB0E54800B0E711 /* Main.storyboard */; };
 		3FBC4D762AB0E54A00B0E711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC4D752AB0E54A00B0E711 /* Assets.xcassets */; };
 		3FBC4D792AB0E54A00B0E711 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC4D772AB0E54A00B0E711 /* LaunchScreen.storyboard */; };
+		3FE1B65C2AC424830018E603 /* GameEngineCheckMatchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1B65B2AC424830018E603 /* GameEngineCheckMatchExtension.swift */; };
 		CC3F40392AC073CE0065075E /* CherryBombOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC3F40382AC073CE0065075E /* CherryBombOne-Regular.ttf */; };
 		CC3F403C2AC075A20065075E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3F403B2AC075A20065075E /* UIColor + Extension.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		3FBC4D752AB0E54A00B0E711 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FBC4D782AB0E54A00B0E711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FBC4D7A2AB0E54A00B0E711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FE1B65B2AC424830018E603 /* GameEngineCheckMatchExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineCheckMatchExtension.swift; sourceTree = "<group>"; };
 		CC3F40382AC073CE0065075E /* CherryBombOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CherryBombOne-Regular.ttf"; sourceTree = "<group>"; };
 		CC3F403B2AC075A20065075E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 			children = (
 				3F825F622AC1DC8200392156 /* GameEngine.swift */,
 				3F825F7B2AC2EFD000392156 /* GameEngineSwipeFunctionExtension.swift */,
+				3FE1B65B2AC424830018E603 /* GameEngineCheckMatchExtension.swift */,
 			);
 			path = GameEngine;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				3F825F652AC1E49B00392156 /* GameInstance.swift in Sources */,
 				3F825F5E2AC1D8C200392156 /* GameViewCollectionViewDelegateFlowLayoutExtension.swift in Sources */,
 				3F825F702AC1E6E600392156 /* EmptyInstance.swift in Sources */,
+				3FE1B65C2AC424830018E603 /* GameEngineCheckMatchExtension.swift in Sources */,
 				3F825F722AC2D55F00392156 /* SwipeGestureDelegate.swift in Sources */,
 				CC3F403C2AC075A20065075E /* UIColor + Extension.swift in Sources */,
 				3F825F632AC1DC8200392156 /* GameEngine.swift in Sources */,

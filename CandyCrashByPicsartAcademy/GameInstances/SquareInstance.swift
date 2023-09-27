@@ -9,11 +9,7 @@ import Foundation
 import UIKit.UIImageView
 
 struct SquareInstance: GameInstance {
-    var index: Int = 4
-    
-    var row: Int = 0
-    
-    var colum: Int = 0
+    var id: Int = 4
     
     var indexPath: IndexPath = IndexPath()
     

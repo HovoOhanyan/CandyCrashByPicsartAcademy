@@ -18,9 +18,24 @@ final class GameInstanceCell: UICollectionViewCell {
     private var swipeGestureUp = UISwipeGestureRecognizer()
         
     weak var swipeGestureDelegate: SwipeGestureDelegate?
-        
+    private var imageView = UIImageView()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+        createAndSettingsSwipeGesture()
+
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupUI()
+        createAndSettingsSwipeGesture()
+
+    }
+    
+    
     func setupUI() {
-        guard let imageView = gameInstance?.imageView else { return }
         self.backgroundColor = .lightGray
         self.layer.cornerRadius = 10
         self.addSubview(imageView)
@@ -38,8 +53,7 @@ final class GameInstanceCell: UICollectionViewCell {
     
     func configuration(gameInstance: GameInstance) {
         self.gameInstance = gameInstance
-        setupUI()
-        createAndSettingsSwipeGesture()
+        imageView.image = gameInstance.imageView.image
     }
     
     private func createAndSettingsSwipeGesture() {
@@ -72,13 +86,17 @@ final class GameInstanceCell: UICollectionViewCell {
     @objc private func handleSwipe(_ sender: UISwipeGestureRecognizer) {
         switch sender.direction {
         case .right:
-            swipeGestureDelegate?.swipeRightGesture(index: gameInstance!.indexPath.row)
+            let secondIndexPath = IndexPath(item: gameInstance!.indexPath.row + 1, section: 0)
+            swipeGestureDelegate?.swipeRightGesture(indexPaths: [gameInstance!.indexPath, secondIndexPath])
         case .left:
-            swipeGestureDelegate?.swipeLeftGesture(index: gameInstance!.indexPath.row)
+            let secondIndexPath = IndexPath(item: gameInstance!.indexPath.row - 1, section: 0)
+            swipeGestureDelegate?.swipeLeftGesture(indexPaths: [gameInstance!.indexPath, secondIndexPath])
         case .up:
-            swipeGestureDelegate?.swipeUpGesture(index: gameInstance!.indexPath.row)
+            let secondIndexPath = IndexPath(item: gameInstance!.indexPath.row - 5, section: 0)
+            swipeGestureDelegate?.swipeUpGesture(indexPaths: [gameInstance!.indexPath, secondIndexPath])
         case .down:
-            swipeGestureDelegate?.swipeDownGesture(index: gameInstance!.indexPath.row)
+            let secondIndexPath = IndexPath(item: gameInstance!.indexPath.row + 5, section: 0)
+            swipeGestureDelegate?.swipeDownGesture(indexPaths: [gameInstance!.indexPath, secondIndexPath])
         default:
             break
         }

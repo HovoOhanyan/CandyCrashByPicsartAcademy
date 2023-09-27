@@ -9,15 +9,9 @@ import Foundation
 import UIKit.UIImageView
 
 struct HeartInstance: GameInstance {
-    var index: Int = 1
-    
-    var row: Int = 0
-    
-    var colum: Int = 0
+    var id: Int = 1
     
     var indexPath: IndexPath = IndexPath()
     
     var imageView: UIImageView = UIImageView(image: UIImage(named: "Heart"))
-    
-    
 }

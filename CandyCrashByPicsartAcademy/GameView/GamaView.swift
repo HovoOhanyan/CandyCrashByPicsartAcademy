@@ -31,7 +31,7 @@ final class GameView: UIView {
     
     private let candyImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Triangle")
+        image.image = GameInstanceCell.random().imageView.image
         return image
     }()
     
@@ -39,7 +39,7 @@ final class GameView: UIView {
         let label = UILabel()
         label.font = UIFont(name: "CherryBombOne-Regular", size: 15)
         label.textColor = .charryRed()
-        label.text = "12"
+        label.text = "20"
         return label
     }()
     
@@ -255,7 +255,7 @@ extension GameView {
     }
     
     private func configureStarLayer(shapeLayer: CAShapeLayer) {
-        let imageSize = CGSize(width: 30, height: 30)
+        _ = CGSize(width: 30, height: 30)
         shapeLayer.frame = CGRect(x: self.topView.frame.width / 2 - 85,
                                   y: self.topView.frame.height / 2 - 35,
                                   width: 20,

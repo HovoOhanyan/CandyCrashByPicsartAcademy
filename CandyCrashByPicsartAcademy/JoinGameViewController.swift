@@ -95,13 +95,14 @@ class JoinGameViewController: UIViewController {
 extension JoinGameViewController {
     
     private func setupUI() {
+        playButton.addTarget(self, action: #selector(PlayButtonTapped), for: .touchUpInside)
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playBeforeButton.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(backgroundImage)
-        backgroundImage.addSubview(playButton)
-        backgroundImage.addSubview(playBeforeButton)
+        view.addSubview(playButton)
+        view.addSubview(playBeforeButton)
         
         NSLayoutConstraint.activate([
             backgroundImage.widthAnchor.constraint(equalToConstant: 428),
@@ -143,5 +144,11 @@ extension JoinGameViewController {
         secondGradientLayer.frame = CGRect(x: 0, y: 0,
                                            width: self.playBeforeButton.bounds.size.width,
                                            height: self.playBeforeButton.bounds.size.height)
+    }
+    
+    @objc func PlayButtonTapped() {
+        let gameView = GameViewController()
+        gameView.modalPresentationStyle = .fullScreen
+        present(gameView, animated: true)
     }
 }

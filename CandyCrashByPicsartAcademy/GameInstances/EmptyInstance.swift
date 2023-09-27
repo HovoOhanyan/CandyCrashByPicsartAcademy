@@ -9,11 +9,7 @@ import Foundation
 import UIKit.UIImageView
 
 struct EmptyInstance: GameInstance {
-    var index: Int = 1
-    
-    var row: Int = 0
-    
-    var colum: Int = 0
+    var id: Int = 0
     
     var indexPath: IndexPath = IndexPath()
     

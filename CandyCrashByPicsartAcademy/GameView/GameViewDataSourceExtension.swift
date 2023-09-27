@@ -15,8 +15,8 @@ extension GameViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GameInstanceCell.identifier, for: indexPath) as! GameInstanceCell
         
-        var instance = viewModal.gameEngine.gameBoard[indexPath.row]
-        instance.indexPath = indexPath
+        viewModal.gameEngine.gameBoard[indexPath.row].indexPath = indexPath
+        let instance = viewModal.gameEngine.gameBoard[indexPath.row]
         cell.configuration(gameInstance: instance)
         cell.swipeGestureDelegate = self
         

@@ -8,9 +8,9 @@
 import Foundation
 
 protocol SwipeGestureDelegate: AnyObject {
-    func swipeRightGesture(index: Int)
-    func swipeLeftGesture(index: Int)
-    func swipeUpGesture(index: Int)
-    func swipeDownGesture(index: Int)
+    func swipeRightGesture(indexPaths: [IndexPath])
+    func swipeLeftGesture(indexPaths: [IndexPath])
+    func swipeUpGesture(indexPaths: [IndexPath])
+    func swipeDownGesture(indexPaths: [IndexPath])
 //    func fallDownGesture(index: Int)
 }

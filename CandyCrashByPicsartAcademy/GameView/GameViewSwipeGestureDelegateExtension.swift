@@ -8,49 +8,42 @@
 import UIKit
 
 extension GameViewController: SwipeGestureDelegate {
-    func swipeRightGesture(index: Int) {
-        viewModal.gameEngine.swipeRightGesture(index: index)
+    func swipeRightGesture(indexPaths: [IndexPath]) {
+        viewModal.gameEngine.swipeRightGesture(indexPaths: indexPaths)
         
-        let firstIndexPath = IndexPath(item: index, section: 0)
-        let secondIndexPath = IndexPath(item: index + 1, section: 0)
-        
-        UIView.animate(withDuration: 0.8) {
-            self.collectionView.reloadItems(at: [firstIndexPath, secondIndexPath])
-        }
+            
+            UIView.animate(withDuration: 0.1) {
+                self.collectionView.reloadItems(at: indexPaths)
+            }
+
     }
     
-    func swipeLeftGesture(index: Int) {
-        viewModal.gameEngine.swipeLeftGesture(index: index)
+    func swipeLeftGesture(indexPaths: [IndexPath]) {
+        viewModal.gameEngine.swipeLeftGesture(indexPaths: indexPaths)
         
-        let firstIndexPath = IndexPath(item: index, section: 0)
-        let secondIndexPath = IndexPath(item: index - 1, section: 0)
+
+            UIView.animate(withDuration: 0.1) {
+                self.collectionView.reloadItems(at: indexPaths)
+            }
         
-        UIView.animate(withDuration: 0.8) {
-            self.collectionView.reloadItems(at: [firstIndexPath, secondIndexPath])
-        }
     }
     
-    func swipeUpGesture(index: Int) {
-        viewModal.gameEngine.swipeUpGesture(index: index)
+    func swipeUpGesture(indexPaths: [IndexPath]) {
+        viewModal.gameEngine.swipeUpGesture(indexPaths: indexPaths)
         
-        let firstIndexPath = IndexPath(item: index, section: 0)
-        let secondIndexPath = IndexPath(item: index - viewModal.gameEngine.numberOfItemsInRow, section: 0)
+            
+            UIView.animate(withDuration: 0.8) {
+                self.collectionView.reloadItems(at: indexPaths)
+            }
         
-        UIView.animate(withDuration: 0.8) {
-            self.collectionView.reloadItems(at: [firstIndexPath, secondIndexPath])
-        }
     }
     
-    func swipeDownGesture(index: Int) {
-        viewModal.gameEngine.swipeDownGesture(index: index)
+    func swipeDownGesture(indexPaths: [IndexPath]) {
+        viewModal.gameEngine.swipeDownGesture(indexPaths: indexPaths)
         
-        let firstIndexPath = IndexPath(item: index, section: 0)
-        let secondIndexPath = IndexPath(item: index + viewModal.gameEngine.numberOfItemsInRow, section: 0)
+            UIView.animate(withDuration: 0.8) {
+                self.collectionView.reloadItems(at: indexPaths)
+            }
         
-        UIView.animate(withDuration: 0.8) {
-            self.collectionView.reloadItems(at: [firstIndexPath, secondIndexPath])
-        }
     }
-    
-    
 }

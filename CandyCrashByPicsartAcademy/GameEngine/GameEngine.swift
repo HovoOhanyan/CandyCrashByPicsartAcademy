@@ -13,14 +13,19 @@ final class GameEngine {
     var gameBoard: [GameInstance]
     private(set) var numberOfItemsInRow: Int
     
-    private var boardCount = 0
+    public var boardCount = 0
     private var currentInstance: GameInstance?
+    
+    var fallDown: (([IndexPath]) -> Void)?
+    
+    public var isMatch = true
     
 //MARK: -
     
     init(numberOfItemsInRow: Int, boardSize: Int) {
         self.numberOfItemsInRow = numberOfItemsInRow
         gameBoard = (1...boardSize).map({_ in EmptyInstance()})
+        gameBoard.reserveCapacity(boardSize)
     }
     
     func createGameBoard() {
@@ -30,19 +35,19 @@ final class GameEngine {
             switch boardCount {
             case 0...numberOfItemsInRow:
                 
-                while currentInstance?.index == newInstace.index {
+                while currentInstance?.id == newInstace.id {
                     newInstace = GameInstanceCell.random()
                 }
                 
             case numberOfItemsInRow...gameBoard.count - numberOfItemsInRow - 1:
                 
-                while currentInstance?.index == newInstace.index || gameBoard[self.boardCount - numberOfItemsInRow].index == newInstace.index || gameBoard[self.boardCount + numberOfItemsInRow].index == newInstace.index {
+                while currentInstance?.id == newInstace.id || gameBoard[self.boardCount - numberOfItemsInRow].id == newInstace.id || gameBoard[self.boardCount + numberOfItemsInRow].id == newInstace.id {
                     newInstace = GameInstanceCell.random()
                 }
                 
             case gameBoard.count - numberOfItemsInRow...boardCount:
                 
-                while currentInstance?.index == newInstace.index || gameBoard[self.boardCount - numberOfItemsInRow].index == newInstace.index {
+                while currentInstance?.id == newInstace.id || gameBoard[self.boardCount - numberOfItemsInRow].id == newInstace.id {
                     newInstace = GameInstanceCell.random()
                 }
                 

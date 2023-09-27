@@ -9,11 +9,7 @@ import Foundation
 import UIKit.UIImageView
 
 struct TriangleInstance: GameInstance {
-    var index: Int = 3
-    
-    var row: Int = 0
-    
-    var colum: Int = 0
+    var id: Int = 3
     
     var indexPath: IndexPath = IndexPath()
     

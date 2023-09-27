@@ -8,29 +8,52 @@
 import Foundation
 
 extension GameEngine {
-    func swipeUpGesture(index: Int) {
-        if index - self.numberOfItemsInRow >= 0 {
-            self.gameBoard.swapAt(index, index - self.numberOfItemsInRow)
+    func swipeUpGesture(indexPaths: [IndexPath]) {
+        if indexPaths[0].row - self.numberOfItemsInRow >= 0 {
+            self.gameBoard.swapAt(indexPaths[0].row, indexPaths[1].row)
+            
+            let tempIndexPath = gameBoard[indexPaths[1].row].indexPath
+            gameBoard[indexPaths[1].row].indexPath = gameBoard[indexPaths[0].row].indexPath
+            gameBoard[indexPaths[0].row].indexPath = tempIndexPath
+
+            isMatch = true
+            checkMatch()
         }
     }
     
-    func swipeDownGesture(index: Int) {
-        if index + self.numberOfItemsInRow <= self.gameBoard.count {
-            self.gameBoard.swapAt(index, index + self.numberOfItemsInRow)
+    func swipeDownGesture(indexPaths: [IndexPath]) {
+        if indexPaths[0].row + self.numberOfItemsInRow <= self.gameBoard.count {
+            self.gameBoard.swapAt(indexPaths[0].row, indexPaths[1].row)
+            
+            let tempIndexPath = gameBoard[indexPaths[1].row].indexPath
+            gameBoard[indexPaths[1].row].indexPath = gameBoard[indexPaths[0].row].indexPath
+            gameBoard[indexPaths[0].row].indexPath = tempIndexPath
+            
+            isMatch = true
+            checkMatch()
         }
     }
     
-    func swipeLeftGesture(index: Int) {
-        gameBoard.swapAt(index, index - 1)
-    }
-    
-    func swipeRightGesture(index: Int) {
-        gameBoard.swapAt(index, index + 1)
-    }
-    
-    func fallDownAnimation(indexPath: IndexPath) {
-        let index = indexPath.row
+    func swipeLeftGesture(indexPaths: [IndexPath]) {
+        self.gameBoard.swapAt(indexPaths[0].row, indexPaths[1].row)
         
-        gameBoard.swapAt(index, index + numberOfItemsInRow)
+        let tempIndexPath = gameBoard[indexPaths[1].row].indexPath
+        gameBoard[indexPaths[1].row].indexPath = gameBoard[indexPaths[0].row].indexPath
+        gameBoard[indexPaths[0].row].indexPath = tempIndexPath
+        
+        isMatch = true
+        checkMatch()
+    }
+    
+    func swipeRightGesture(indexPaths: [IndexPath]) {
+        self.gameBoard.swapAt(indexPaths[0].row, indexPaths[1].row)
+        
+        
+        let tempIndexPath = gameBoard[indexPaths[1].row].indexPath
+        gameBoard[indexPaths[1].row].indexPath = gameBoard[indexPaths[0].row].indexPath
+        gameBoard[indexPaths[0].row].indexPath = tempIndexPath
+        
+        isMatch = true
+        checkMatch()
     }
 }
