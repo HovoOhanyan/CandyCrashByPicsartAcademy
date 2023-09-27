@@ -19,6 +19,7 @@ final class GameEngine {
     var fallDown: (([IndexPath]) -> Void)?
     
     public var isMatch = true
+    public var combo = 0 
     
 //MARK: -
     

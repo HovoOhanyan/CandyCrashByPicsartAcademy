@@ -17,6 +17,9 @@ extension GameEngine {
             gameBoard[indexPaths[0].row].indexPath = tempIndexPath
 
             isMatch = true
+            print(combo)
+            combo = 0
+
             checkMatch()
         }
     }
@@ -30,6 +33,9 @@ extension GameEngine {
             gameBoard[indexPaths[0].row].indexPath = tempIndexPath
             
             isMatch = true
+            print(combo)
+            combo = 0
+
             checkMatch()
         }
     }
@@ -42,6 +48,9 @@ extension GameEngine {
         gameBoard[indexPaths[0].row].indexPath = tempIndexPath
         
         isMatch = true
+        print(combo)
+        combo = 0
+
         checkMatch()
     }
     
@@ -54,6 +63,8 @@ extension GameEngine {
         gameBoard[indexPaths[0].row].indexPath = tempIndexPath
         
         isMatch = true
+        print(combo)
+        combo = 0
         checkMatch()
     }
 }

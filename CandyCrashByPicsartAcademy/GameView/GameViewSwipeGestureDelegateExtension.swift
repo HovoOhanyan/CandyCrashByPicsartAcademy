@@ -12,7 +12,7 @@ extension GameViewController: SwipeGestureDelegate {
         viewModal.gameEngine.swipeRightGesture(indexPaths: indexPaths)
         
             
-            UIView.animate(withDuration: 0.1) {
+            UIView.animate(withDuration: 0.8) {
                 self.collectionView.reloadItems(at: indexPaths)
             }
 
@@ -22,7 +22,7 @@ extension GameViewController: SwipeGestureDelegate {
         viewModal.gameEngine.swipeLeftGesture(indexPaths: indexPaths)
         
 
-            UIView.animate(withDuration: 0.1) {
+            UIView.animate(withDuration: 0.8) {
                 self.collectionView.reloadItems(at: indexPaths)
             }
         

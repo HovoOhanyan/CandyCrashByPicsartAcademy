@@ -66,7 +66,7 @@ final class GameViewController: UIViewController {
         }
         
         viewModal?.reloadItem = { indexPath in
-            UIView.animate(withDuration: 1) {
+            UIView.animate(withDuration: 0.7) {
                 self.collectionView.reloadItems(at: indexPath)
             }
         }
