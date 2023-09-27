@@ -8,7 +8,7 @@
 import Foundation
 
 extension GameEngine {
-    public func checkFifthMatchAtRow() -> Bool {
+    public func checkFiveMatchAtRow() -> Bool {
         for row in 0...gameBoard.count / numberOfItemsInRow - 1 {
             for column in 0...numberOfItemsInRow - 5 {
                 
@@ -100,7 +100,7 @@ extension GameEngine {
         
         return false
     }
-    public func checkFifthMatchAtColumn() -> Bool {
+    public func checkFiveMatchAtColumn() -> Bool {
         for row in 0...gameBoard.count / numberOfItemsInRow - 5 {
             for column in 0...numberOfItemsInRow - 1 {
                 
@@ -410,13 +410,10 @@ extension GameEngine {
         while isMatch {
             isMatch = false
             
-            if checkFifthMatchAtRow() {
+            if checkFiveMatchAtRow() {
                 isMatch = true
                 combo += 1
-            } else if checkFifthMatchAtColumn() {
-                isMatch = true
-                combo += 1
-            } else if checkFifthMatchAtColumn() {
+            } else if checkFiveMatchAtColumn() {
                 isMatch = true
                 combo += 1
             } else if checkFourMatchAtRow() {
