@@ -10,7 +10,7 @@ import UIKit
 final class GameInstanceCell: UICollectionViewCell {
     static let identifier = "GameInstanceCell"
     
-    var gameInstance: GameInstance?
+    var gameInstance: GameInstance!
     
     private var swipeGestureLeft = UISwipeGestureRecognizer()
     private var swipeGestureRight = UISwipeGestureRecognizer()

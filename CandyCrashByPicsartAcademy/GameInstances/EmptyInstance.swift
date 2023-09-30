@@ -12,5 +12,5 @@ struct EmptyInstance: GameInstance {
     
     var indexPath: IndexPath = IndexPath()
     
-    var image: GameInstanceImage = .star
+    var image: GameInstanceImage = .empty
 }

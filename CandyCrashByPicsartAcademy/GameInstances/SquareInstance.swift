@@ -12,5 +12,5 @@ struct SquareInstance: GameInstance {
     
     var indexPath: IndexPath = IndexPath()
     
-    var image: GameInstanceImage = .star
+    var image: GameInstanceImage = .square
 }
