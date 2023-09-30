@@ -59,7 +59,7 @@ final class GameViewController: UIViewController {
     }
     
     private func gameViewModalSetup() {
-        viewModal = GameViewModal(numberOfItemsInRow: 5, boardSize: 40)
+        viewModal = GameViewModal()
         
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -70,6 +70,5 @@ final class GameViewController: UIViewController {
                 self.collectionView.reloadItems(at: indexPath)
             }
         }
-        
     }
 }

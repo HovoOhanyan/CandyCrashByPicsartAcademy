@@ -9,41 +9,42 @@ import UIKit
 
 extension GameViewController: SwipeGestureDelegate {
     func swipeRightGesture(indexPaths: [IndexPath]) {
-        viewModal.gameEngine.swipeRightGesture(indexPaths: indexPaths)
+        viewModal.gameEngine.gameSwipeMeneger.swipeRightGesture(indexPaths: indexPaths)
         
             
             UIView.animate(withDuration: 0.8) {
                 self.collectionView.reloadItems(at: indexPaths)
             }
 
+        viewModal.gameEngine.gameCheckMatchsMeneger.checkMathes()
     }
     
     func swipeLeftGesture(indexPaths: [IndexPath]) {
-        viewModal.gameEngine.swipeLeftGesture(indexPaths: indexPaths)
+        viewModal.gameEngine.gameSwipeMeneger.swipeLeftGesture(indexPaths: indexPaths)
         
 
             UIView.animate(withDuration: 0.8) {
                 self.collectionView.reloadItems(at: indexPaths)
             }
-        
+        viewModal.gameEngine.gameCheckMatchsMeneger.checkMathes()
     }
     
     func swipeUpGesture(indexPaths: [IndexPath]) {
-        viewModal.gameEngine.swipeUpGesture(indexPaths: indexPaths)
+        viewModal.gameEngine.gameSwipeMeneger.swipeUpGesture(indexPaths: indexPaths)
         
             
             UIView.animate(withDuration: 0.8) {
                 self.collectionView.reloadItems(at: indexPaths)
             }
-        
+        viewModal.gameEngine.gameCheckMatchsMeneger.checkMathes()
     }
     
     func swipeDownGesture(indexPaths: [IndexPath]) {
-        viewModal.gameEngine.swipeDownGesture(indexPaths: indexPaths)
+        viewModal.gameEngine.gameSwipeMeneger.swipeDownGesture(indexPaths: indexPaths)
         
             UIView.animate(withDuration: 0.8) {
                 self.collectionView.reloadItems(at: indexPaths)
             }
-        
+        viewModal.gameEngine.gameCheckMatchsMeneger.checkMathes()
     }
 }

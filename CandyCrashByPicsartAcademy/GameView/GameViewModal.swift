@@ -9,15 +9,19 @@ import Foundation
 
 final class GameViewModal {
     private(set) var gameEngine: GameEngine
+    private let gameEngineBoardMeneger = GameEngineBoardMeneger(numberOfItemsInRow: 5,
+                                                                boardSize: 40)
     
     var reloadItem: (([IndexPath]) -> Void)?
     
-    init(numberOfItemsInRow: Int, boardSize: Int) {
-        gameEngine = GameEngine(numberOfItemsInRow: numberOfItemsInRow, boardSize: boardSize)
-        gameEngine.createGameBoard()
-        
-        gameEngine.fallDown = { indexPaths in
-            
+    init() {
+        gameEngine = GameEngine(gameBoardMeneger: gameEngineBoardMeneger)
+        gameEngine.gameBoardMeneger.createBoard()
+        hendlerDefinitons()
+    }
+    
+    private func hendlerDefinitons() {
+        gameEngine.gameEngineBoardHendler.fallDownHendler = { indexPaths in
             self.reloadItem?(indexPaths)
         }
     }
