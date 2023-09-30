@@ -37,6 +37,7 @@
 		3FBC4D742AB0E54800B0E711 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC4D722AB0E54800B0E711 /* Main.storyboard */; };
 		3FBC4D762AB0E54A00B0E711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC4D752AB0E54A00B0E711 /* Assets.xcassets */; };
 		3FBC4D792AB0E54A00B0E711 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC4D772AB0E54A00B0E711 /* LaunchScreen.storyboard */; };
+		3FC2DDE72AC8BED8007E2807 /* GameInstanceImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2DDE62AC8BED8007E2807 /* GameInstanceImageEnum.swift */; };
 		CC3F40392AC073CE0065075E /* CherryBombOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC3F40382AC073CE0065075E /* CherryBombOne-Regular.ttf */; };
 		CC3F403C2AC075A20065075E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3F403B2AC075A20065075E /* UIColor + Extension.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		3FBC4D752AB0E54A00B0E711 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FBC4D782AB0E54A00B0E711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FBC4D7A2AB0E54A00B0E711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FC2DDE62AC8BED8007E2807 /* GameInstanceImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInstanceImageEnum.swift; sourceTree = "<group>"; };
 		CC3F40382AC073CE0065075E /* CherryBombOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CherryBombOne-Regular.ttf"; sourceTree = "<group>"; };
 		CC3F403B2AC075A20065075E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 				3F825F6B2AC1E67600392156 /* TriangleInstance.swift */,
 				3F825F6D2AC1E6AB00392156 /* SquareInstance.swift */,
 				3F825F6F2AC1E6E600392156 /* EmptyInstance.swift */,
+				3FC2DDE62AC8BED8007E2807 /* GameInstanceImageEnum.swift */,
 			);
 			path = GameInstances;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				3F565A8A2AC1BB110003A7CC /* GameViewController.swift in Sources */,
 				3FA8C7DA2AC83D36007C2F4B /* GameEngineCheckMeneger.swift in Sources */,
 				3FA8C7CF2AC83440007C2F4B /* GameEngineBoardMeneger.swift in Sources */,
+				3FC2DDE72AC8BED8007E2807 /* GameInstanceImageEnum.swift in Sources */,
 				3F825F682AC1E57900392156 /* HeartInstance.swift in Sources */,
 				3FBC4D712AB0E54800B0E711 /* JoinGameViewController.swift in Sources */,
 				3FA8C7CD2AC833D5007C2F4B /* GameEngineBoardProtocol.swift in Sources */,

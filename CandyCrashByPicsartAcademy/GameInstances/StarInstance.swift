@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import UIKit.UIImageView
 
 struct StarInstance: GameInstance {
     var id: Int = 2
     
     var indexPath: IndexPath = IndexPath()
     
-    var imageView: UIImageView = UIImageView(image: UIImage(named: "Star"))
+    var image: GameInstanceImage = .star
 }

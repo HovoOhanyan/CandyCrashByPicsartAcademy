@@ -53,7 +53,19 @@ final class GameInstanceCell: UICollectionViewCell {
     
     func configuration(gameInstance: GameInstance) {
         self.gameInstance = gameInstance
-        imageView.image = gameInstance.imageView.image
+        
+        switch gameInstance.image {
+        case .heart:
+            imageView.image = UIImage(named: "Heart")
+        case .star:
+            imageView.image = UIImage(named: "Star")
+        case .triangle:
+            imageView.image = UIImage(named: "Triangle")
+        case .square:
+            imageView.image = UIImage(named: "Square")
+        case .empty:
+            imageView.image = UIImage()
+        }
     }
     
     private func createAndSettingsSwipeGesture() {

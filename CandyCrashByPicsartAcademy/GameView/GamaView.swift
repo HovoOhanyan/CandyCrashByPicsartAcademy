@@ -30,9 +30,22 @@ final class GameView: UIView {
     }()
     
     private let candyImage: UIImageView = {
-        let image = UIImageView()
-        image.image = GameInstanceCell.random().imageView.image
-        return image
+        let imageView = UIImageView()
+        
+        switch GameInstanceCell.random().image {
+        case .heart:
+            imageView.image = UIImage(named: "Heart")
+        case .star:
+            imageView.image = UIImage(named: "Star")
+        case .triangle:
+            imageView.image = UIImage(named: "Triangle")
+        case .square:
+            imageView.image = UIImage(named: "Square")
+        case .empty:
+            imageView.image = UIImage()
+        }
+
+        return imageView
     }()
     
     private let candyLabel: UILabel = {
