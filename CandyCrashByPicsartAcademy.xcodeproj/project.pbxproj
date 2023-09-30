@@ -91,6 +91,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+
 		3F565A872AC1BB040003A7CC /* GameView */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +153,18 @@
 				3F825F792AC2D88000392156 /* GameViewModal.swift */,
 			);
 			name = ViewModal;
+
+		3F565A742AC064AA0003A7CC /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				3FBC4D6C2AB0E54800B0E711 /* AppDelegate.swift */,
+				3FBC4D6E2AB0E54800B0E711 /* SceneDelegate.swift */,
+				3FBC4D722AB0E54800B0E711 /* Main.storyboard */,
+				3FBC4D752AB0E54A00B0E711 /* Assets.xcassets */,
+				3FBC4D772AB0E54A00B0E711 /* LaunchScreen.storyboard */,
+			);
+			name = Support;
+
 			sourceTree = "<group>";
 		};
 		3F923C772AC0422200719921 /* JoinGameViewController */ = {
@@ -232,6 +245,9 @@
 				3F825F612AC1DC7800392156 /* GameEngine */,
 				3F565A872AC1BB040003A7CC /* GameView */,
 				3F923C772AC0422200719921 /* JoinGameViewController */,
+
+				3F565A742AC064AA0003A7CC /* Support */,
+				3FBC4D7A2AB0E54A00B0E711 /* Info.plist */,
 				CC3F40362AC073960065075E /* Supported */,
 				3FBC4D7A2AB0E54A00B0E711 /* Info.plist */,
 			);
