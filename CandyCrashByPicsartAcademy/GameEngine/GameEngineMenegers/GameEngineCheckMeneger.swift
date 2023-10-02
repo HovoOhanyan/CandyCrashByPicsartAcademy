@@ -10,13 +10,16 @@ import Foundation
 final class GameEngineCheckManager: GameEngineCheckMatches {
     private let gameBoardManager: GameEngineBoard!
     private let gameBoardHandler: GameEngineBoardChangeHandler!
+    private var gamePlayInfo: GameEnginePlayInformation!
     
     private var isMatch = true
     
     init(gameEngineBoardManager: GameEngineBoard,
-         gameEngineBoardHandler: GameEngineBoardChangeHandler) {
+         gameEngineBoardHandler: GameEngineBoardChangeHandler,
+         gamePlayInfo: GameEnginePlayInformation) {
         self.gameBoardManager = gameEngineBoardManager
         self.gameBoardHandler = gameEngineBoardHandler
+        self.gamePlayInfo = gamePlayInfo
     }
     
     func checkFiveMatchAtRow() -> Bool {
@@ -32,6 +35,10 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 3].id &&
                     gameBoardManager.gameBoard[index].id ==  gameBoardManager.gameBoard[index + 4].id
                 {
+                    
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
+                        gamePlayInfo.score -= 5
+                    }
                     
                     var currentIndex = index
                     
@@ -129,6 +136,10 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 4].id
                 {
                     
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
+                        gamePlayInfo.score -= 5
+                    }
+                    
                     var currentIndex = index + numberOfItemsInRow * 4
                     
                     var firstInstance = GameInstanceCell.random()
@@ -188,6 +199,10 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 3].id {
+                    
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
+                        gamePlayInfo.score -= 4
+                    }
                     
                     var currentIndex = index
                     
@@ -271,6 +286,10 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].id
                 {
                     
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
+                        gamePlayInfo.score -= 4
+                    }
+                    
                     var currentIndex = index + numberOfItemsInRow * 3
                     
                     var firstInstance = GameInstanceCell.random()
@@ -325,6 +344,10 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id
                 {
+                    
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
+                        gamePlayInfo.score -= 3
+                    }
                     
                     var currentIndex = index
                     
@@ -395,6 +418,10 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].id
                 {
+                    
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
+                        gamePlayInfo.score -= 3
+                    }
                     
                     var currentIndex = index + numberOfItemsInRow * 2
                     

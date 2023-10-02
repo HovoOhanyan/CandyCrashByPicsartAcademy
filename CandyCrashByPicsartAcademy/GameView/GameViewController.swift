@@ -8,7 +8,7 @@
 import UIKit
 
 final class GameViewController: UIViewController {
-    public var viewModal: GameViewModal!
+    public var viewModal: GameViewModel!
     
     private let gameView = GameView()
     public var collectionView: UICollectionView!
@@ -23,7 +23,7 @@ final class GameViewController: UIViewController {
         collectionViewSetup()
         
         gameView.translatesAutoresizingMaskIntoConstraints = false
-        gameView.setupUI()
+        gameView.setupUI(gamePlayInformation: viewModal.gameEngine.gamePlayManager)
         gameView.setupGradient()
         gameView.setupShapeLayer()
 
@@ -59,7 +59,7 @@ final class GameViewController: UIViewController {
     }
     
     private func gameViewModalSetup() {
-        viewModal = GameViewModal()
+        viewModal = GameViewModel()
         
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -69,6 +69,14 @@ final class GameViewController: UIViewController {
             UIView.animate(withDuration: 0.7) {
                 self.collectionView.reloadItems(at: indexPath)
             }
+        }
+        
+        viewModal?.updateCountOfStepsLabel = { countsOfSteps in
+            self.gameView.updateCountOfStepsLabel(countOfSteps: countsOfSteps)
+        }
+        
+        viewModal?.updateScoreLabel = { score in
+            self.gameView.updateScoreLabel(score: score)
         }
     }
 }
