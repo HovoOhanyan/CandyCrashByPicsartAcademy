@@ -8,5 +8,5 @@
 import Foundation
 
 protocol GameEngineBoardChangeHandler: AnyObject {
-    var fallDownHendler: (([IndexPath]) -> Void)? { get set }
+    var fallDownHandler: (([IndexPath]) -> Void)? { get set }
 }
