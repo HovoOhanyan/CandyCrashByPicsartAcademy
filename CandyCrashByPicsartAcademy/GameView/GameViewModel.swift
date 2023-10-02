@@ -7,15 +7,18 @@
 
 import Foundation
 
-final class GameViewModal {
+final class GameViewModel {
     private(set) var gameEngine: GameEngine
     private let gameEngineBoardManager = GameEngineBoardManager(numberOfItemsInRow: 5,
                                                                 boardSize: 40)
     
+    private let gameEnginePlayInfoManager = GameEnginePlayInformationManager(score: 20, countOfSteps: 15)
     var reloadItem: (([IndexPath]) -> Void)?
+    var updateScoreLabel: ((Int) -> Void)?
+    var updateCountOfStepsLabel: ((Int) -> Void)?
     
     init() {
-        gameEngine = GameEngine(gameBoardManager: gameEngineBoardManager)
+        gameEngine = GameEngine(gameBoardManager: gameEngineBoardManager, gamePlayManager: gameEnginePlayInfoManager)
         gameEngine.gameBoardManager.createBoard()
         hendlerDefinitons()
     }
@@ -23,6 +26,14 @@ final class GameViewModal {
     private func hendlerDefinitons() {
         gameEngine.gameEngineBoardHandler.fallDownHandler = { indexPaths in
             self.reloadItem?(indexPaths)
+        }
+        
+        gameEngine.gameEngineBoardHandler.updateScoreLabelHandler = { score in
+            self.updateScoreLabel?(score)
+        }
+        
+        gameEngine.gameEngineBoardHandler.updateCountOfStepsLabelHandler = { countOfSteps in
+            self.updateCountOfStepsLabel?(countOfSteps)
         }
     }
 }

@@ -13,22 +13,27 @@ final class GameEngine {
     private(set) var gameSwipeManager: GameEngineSwipeGestureHandler!
     private(set) var gameCheckMatchsManager: GameEngineCheckMatches!
     private(set) var gameEngineBoardHandler: GameEngineBoardChangeHandler!
+    private(set) var gamePlayManager: GameEnginePlayInformation
     
     //MARK: -
     
-    init(gameBoardManager: GameEngineBoard) {
+    init(gameBoardManager: GameEngineBoard, gamePlayManager: GameEnginePlayInformation) {
         self.gameBoardManager = gameBoardManager
-        self.gameSwipeManager = GameEngineSwipeManager(gameBoardManager: self.gameBoardManager)
+        self.gamePlayManager = gamePlayManager
+        self.gameSwipeManager = GameEngineSwipeManager(gameBoardManager: self.gameBoardManager, gamePlayInfo: gamePlayManager)
         self.gameEngineBoardHandler = GameEngineBoardHandler()
         self.gameCheckMatchsManager = GameEngineCheckManager(gameEngineBoardManager: self.gameBoardManager,
-                                                             gameEngineBoardHandler: gameEngineBoardHandler)
+                                                             gameEngineBoardHandler: gameEngineBoardHandler, gamePlayInfo: self.gamePlayManager)
+        
+        gamePlayManager.addGameEnigneChangeHandler(gameEngineChangeHandler: self.gameEngineBoardHandler)
     }
     
     init(gameBoardManager: GameEngineBoard, gameSwipeManager: GameEngineSwipeManager,
-         gameCheckMatchsManager: GameEngineCheckMatches, gameEngineBoardHandler: GameEngineBoardChangeHandler) {
+         gameCheckMatchsManager: GameEngineCheckMatches, gameEngineBoardHandler: GameEngineBoardChangeHandler, gamePlayManager: GameEnginePlayInformation) {
         self.gameBoardManager = gameBoardManager
         self.gameSwipeManager = gameSwipeManager
         self.gameCheckMatchsManager = gameCheckMatchsManager
         self.gameEngineBoardHandler = gameEngineBoardHandler
+        self.gamePlayManager = gamePlayManager
     }
 }

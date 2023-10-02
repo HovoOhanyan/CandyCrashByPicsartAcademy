@@ -29,24 +29,7 @@ final class GameView: UIView {
         return view
     }()
     
-    private let candyImage: UIImageView = {
-        let imageView = UIImageView()
-        
-        switch GameInstanceCell.random().image {
-        case .heart:
-            imageView.image = UIImage(named: "Heart")
-        case .star:
-            imageView.image = UIImage(named: "Star")
-        case .triangle:
-            imageView.image = UIImage(named: "Triangle")
-        case .square:
-            imageView.image = UIImage(named: "Square")
-        case .empty:
-            imageView.image = UIImage()
-        }
-
-        return imageView
-    }()
+    private let candyImage = UIImageView()
     
     private let candyLabel: UILabel = {
         let label = UILabel()
@@ -142,7 +125,8 @@ final class GameView: UIView {
 //MARK: Setup UI
 extension GameView {
     
-    func setupUI() {
+    func setupUI(gamePlayInformation: GameEnginePlayInformation) {
+        updateLabelsWithGamePlayInfo(gamePlayInformation: gamePlayInformation)
         self.backgroundColor = .white
         topView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
@@ -217,6 +201,24 @@ extension GameView {
             iconImage.widthAnchor.constraint(equalToConstant: 80)
         ])
     }
+    
+    func updateLabelsWithGamePlayInfo(gamePlayInformation: GameEnginePlayInformation) {
+        self.candyLabel.text = "\(gamePlayInformation.score)"
+        self.timerLabel.text = "\(gamePlayInformation.countOfSteps)"
+        
+        switch gamePlayInformation.gameInstance.image {
+        case .heart:
+            candyImage.image = UIImage(named: "Heart")
+        case .star:
+            candyImage.image = UIImage(named: "Star")
+        case .triangle:
+            candyImage.image = UIImage(named: "Triangle")
+        case .square:
+            candyImage.image = UIImage(named: "Square")
+        case .empty:
+            candyImage.image = UIImage()
+        }
+    }
 }
 
 //MARK: Setup Gradient & Shape Layer
@@ -273,5 +275,18 @@ extension GameView {
                                   y: self.topView.frame.height / 2 - 35,
                                   width: 20,
                                   height: 20)
+    }
+}
+
+//MARK: Real time updates in GameView
+
+extension GameView {
+    
+    func updateScoreLabel(score: Int) {
+        self.candyLabel.text = "\(score)"
+    }
+    
+    func updateCountOfStepsLabel(countOfSteps: Int) {
+        self.timerLabel.text = "\(countOfSteps)"
     }
 }

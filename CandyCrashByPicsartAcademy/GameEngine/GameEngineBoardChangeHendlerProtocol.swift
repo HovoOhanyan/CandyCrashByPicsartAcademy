@@ -9,4 +9,6 @@ import Foundation
 
 protocol GameEngineBoardChangeHandler: AnyObject {
     var fallDownHandler: (([IndexPath]) -> Void)? { get set }
+    var updateScoreLabelHandler: ((Int) -> Void)? { get set }
+    var updateCountOfStepsLabelHandler: ((Int) -> Void)? { get set }
 }

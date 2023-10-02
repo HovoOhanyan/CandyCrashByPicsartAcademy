@@ -9,9 +9,11 @@ import Foundation
 
 final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
     private var gameBoardManager: GameEngineBoard!
+    private var gamePlayInfo: GameEnginePlayInformation
     
-    init(gameBoardManager: GameEngineBoard) {
+    init(gameBoardManager: GameEngineBoard, gamePlayInfo: GameEnginePlayInformation) {
         self.gameBoardManager = gameBoardManager
+        self.gamePlayInfo = gamePlayInfo
     }
     
     func swipeUpGesture(indexPaths: [IndexPath]) {
@@ -21,6 +23,8 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
             let tempIndexPath = gameBoardManager.gameBoard[indexPaths[1].row].indexPath
             gameBoardManager.gameBoard[indexPaths[1].row].indexPath = gameBoardManager.gameBoard[indexPaths[0].row].indexPath
             gameBoardManager.gameBoard[indexPaths[0].row].indexPath = tempIndexPath
+            
+            gamePlayInfo.countOfSteps -= 1
         }
     }
     
@@ -31,6 +35,8 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
             let tempIndexPath = gameBoardManager.gameBoard[indexPaths[1].row].indexPath
             gameBoardManager.gameBoard[indexPaths[1].row].indexPath = gameBoardManager.gameBoard[indexPaths[0].row].indexPath
             gameBoardManager.gameBoard[indexPaths[0].row].indexPath = tempIndexPath
+            
+            gamePlayInfo.countOfSteps -= 1
         }
     }
     
@@ -40,6 +46,8 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
         let tempIndexPath = gameBoardManager.gameBoard[indexPaths[1].row].indexPath
         gameBoardManager.gameBoard[indexPaths[1].row].indexPath = gameBoardManager.gameBoard[indexPaths[0].row].indexPath
         gameBoardManager.gameBoard[indexPaths[0].row].indexPath = tempIndexPath
+        
+        gamePlayInfo.countOfSteps -= 1
     }
     
     func swipeRightGesture(indexPaths: [IndexPath]) {
@@ -48,6 +56,8 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
         let tempIndexPath = gameBoardManager.gameBoard[indexPaths[1].row].indexPath
         gameBoardManager.gameBoard[indexPaths[1].row].indexPath = gameBoardManager.gameBoard[indexPaths[0].row].indexPath
         gameBoardManager.gameBoard[indexPaths[0].row].indexPath = tempIndexPath
+        
+        gamePlayInfo.countOfSteps -= 1
     }
     
     
