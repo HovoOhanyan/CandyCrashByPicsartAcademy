@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class GameEngineCheckMeneger: GameEngineCheckMatches {
+final class GameEngineCheckManager: GameEngineCheckMatches {
     private let gameBoardMeneger: GameEngineBoard!
     private let gameBoardHendler: GameEngineBoardChangeHendler!
     

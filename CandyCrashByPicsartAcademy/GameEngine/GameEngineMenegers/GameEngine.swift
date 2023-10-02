@@ -9,21 +9,26 @@ import Foundation
 
 final class GameEngine {
 //MARK: - GameEngine property definitions
-    private(set) var gameBoardMeneger: GameEngineBoard!
-    private(set) var gameSwipeMeneger: GameEngineSwipeGestureHendler!
-    private(set) var gameCheckMatchsMeneger: GameEngineCheckMatches!
-    var gameEngineBoardHendler: GameEngineBoardChangeHendler!
-    public var isMatch = true
-    public var combo = 0 
+    private(set) var gameBoardManager: GameEngineBoard!
+    private(set) var gameSwipeManager: GameEngineSwipeGestureHandler!
+    private(set) var gameCheckMatchsManager: GameEngineCheckMatches!
+    private(set) var gameEngineBoardHandler: GameEngineBoardChangeHandler!
     
-    var fallDownHendler: (([IndexPath]) -> Void)?
-//MARK: -
+    //MARK: -
     
-    init(gameBoardMeneger: GameEngineBoard) {
-        self.gameBoardMeneger = gameBoardMeneger
-        self.gameSwipeMeneger = GameEngineSwipeMeneger(gameBoardMeneger: self.gameBoardMeneger)
-        self.gameEngineBoardHendler = GameEngineBoardHendler()
-        self.gameCheckMatchsMeneger = GameEngineCheckMeneger(gameEngineBoardMeneger: self.gameBoardMeneger,
-                                                             gameEngineBoardHendler: gameEngineBoardHendler)
+    init(gameBoardManager: GameEngineBoard) {
+        self.gameBoardManager = gameBoardManager
+        self.gameSwipeManager = GameEngineSwipeManager(gameBoardMeneger: self.gameBoardManager)
+        self.gameEngineBoardHandler = GameEngineBoardHandler()
+        self.gameCheckMatchsManager = GameEngineCheckManager(gameEngineBoardMeneger: self.gameBoardManager,
+                                                             gameEngineBoardHendler: gameEngineBoardHandler)
+    }
+    
+    init(gameBoardManager: GameEngineBoard, gameSwipeManager: GameEngineSwipeManager,
+         gameCheckMatchsManager: GameEngineCheckMatches, gameEngineBoardHandler: GameEngineBoardChangeHandler) {
+        self.gameBoardManager = gameBoardManager
+        self.gameSwipeManager = gameSwipeManager
+        self.gameCheckMatchsManager = gameCheckMatchsManager
+        self.gameEngineBoardHandler = gameEngineBoardHandler
     }
 }

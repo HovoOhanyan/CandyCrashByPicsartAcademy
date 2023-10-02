@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol GameEngineBoardChangeHendler {
+protocol GameEngineBoardChangeHandler: AnyObject {
     var fallDownHendler: (([IndexPath]) -> Void)? { get set }
 }

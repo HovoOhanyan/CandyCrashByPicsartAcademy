@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class GameEngineBoardMeneger: GameEngineBoard {
+final class GameEngineBoardManager: GameEngineBoard {
     var gameBoard: [GameInstance]
     
     var numberOfItemsInRow: Int

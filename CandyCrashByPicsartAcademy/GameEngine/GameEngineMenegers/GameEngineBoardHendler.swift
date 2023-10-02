@@ -7,6 +7,6 @@
 
 import Foundation
 
-final class GameEngineBoardHendler: GameEngineBoardChangeHendler {
+final class GameEngineBoardHandler: GameEngineBoardChangeHandler {
     var fallDownHendler: (([IndexPath]) -> Void)?
 }

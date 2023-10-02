@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class GameEngineSwipeMeneger: GameEngineSwipeGestureHendler {
+final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
     private var gameBoardMeneger: GameEngineBoard!
     
     init(gameBoardMeneger: GameEngineBoard) {
