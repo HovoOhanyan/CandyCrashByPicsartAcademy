@@ -9,14 +9,14 @@ import UIKit
 
 extension GameViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModal.gameEngine.gameBoardMeneger.gameBoard.count
+        return viewModal.gameEngine.gameBoardManager.gameBoard.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GameInstanceCell.identifier, for: indexPath) as! GameInstanceCell
         
-        viewModal.gameEngine.gameBoardMeneger.gameBoard[indexPath.row].indexPath = indexPath
-        let instance = viewModal.gameEngine.gameBoardMeneger.gameBoard[indexPath.row]
+        viewModal.gameEngine.gameBoardManager.gameBoard[indexPath.row].indexPath = indexPath
+        let instance = viewModal.gameEngine.gameBoardManager.gameBoard[indexPath.row]
         cell.configuration(gameInstance: instance)
         cell.swipeGestureDelegate = self
         

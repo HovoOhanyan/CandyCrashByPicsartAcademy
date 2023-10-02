@@ -8,167 +8,167 @@
 import Foundation
 
 final class GameEngineCheckManager: GameEngineCheckMatches {
-    private let gameBoardMeneger: GameEngineBoard!
-    private let gameBoardHendler: GameEngineBoardChangeHendler!
+    private let gameBoardManager: GameEngineBoard!
+    private let gameBoardHandler: GameEngineBoardChangeHandler!
     
     private var isMatch = true
     
-    init(gameEngineBoardMeneger: GameEngineBoard,
-         gameEngineBoardHendler: GameEngineBoardChangeHendler) {
-        self.gameBoardMeneger = gameEngineBoardMeneger
-        self.gameBoardHendler = gameEngineBoardHendler
+    init(gameEngineBoardManager: GameEngineBoard,
+         gameEngineBoardHandler: GameEngineBoardChangeHandler) {
+        self.gameBoardManager = gameEngineBoardManager
+        self.gameBoardHandler = gameEngineBoardHandler
     }
     
     func checkFiveMatchAtRow() -> Bool {
-        let numberOfItemsInRow = gameBoardMeneger.numberOfItemsInRow
+        let numberOfItemsInRow = gameBoardManager.numberOfItemsInRow
         
-        for row in 0...gameBoardMeneger.gameBoard.count / numberOfItemsInRow - 1 {
-            for column in 0...gameBoardMeneger.numberOfItemsInRow - 5 {
+        for row in 0...gameBoardManager.gameBoard.count / numberOfItemsInRow - 1 {
+            for column in 0...gameBoardManager.numberOfItemsInRow - 5 {
                 
                 let index = column + (row * numberOfItemsInRow)
                 
-                if gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + 1].id &&
-                    gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + 2].id &&
-                    gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + 3].id &&
-                    gameBoardMeneger.gameBoard[index].id ==  gameBoardMeneger.gameBoard[index + 4].id
+                if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id &&
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 3].id &&
+                    gameBoardManager.gameBoard[index].id ==  gameBoardManager.gameBoard[index + 4].id
                 {
                     
                     var currentIndex = index
                     
                     var firstInstance = EmptyInstance()
-                    firstInstance.indexPath = gameBoardMeneger.gameBoard[index].indexPath
+                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
                     
                     var secondInstance = EmptyInstance()
-                    secondInstance.indexPath = gameBoardMeneger.gameBoard[index + 1].indexPath
+                    secondInstance.indexPath = gameBoardManager.gameBoard[index + 1].indexPath
                     
                     var thiredInstance = EmptyInstance()
-                    thiredInstance.indexPath = gameBoardMeneger.gameBoard[index + 2].indexPath
+                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + 2].indexPath
                     
                     var fourthInstance = EmptyInstance()
-                    fourthInstance.indexPath = gameBoardMeneger.gameBoard[index + 3].indexPath
+                    fourthInstance.indexPath = gameBoardManager.gameBoard[index + 3].indexPath
                     
                     var fifthIstance = EmptyInstance()
-                    fifthIstance.indexPath = gameBoardMeneger.gameBoard[index + 4].indexPath
+                    fifthIstance.indexPath = gameBoardManager.gameBoard[index + 4].indexPath
                     
-                    gameBoardMeneger.gameBoard[index] = firstInstance
-                    gameBoardMeneger.gameBoard[index + 1] = secondInstance
-                    gameBoardMeneger.gameBoard[index + 2] = thiredInstance
-                    gameBoardMeneger.gameBoard[index + 3] = fourthInstance
-                    gameBoardMeneger.gameBoard[index + 4] = fifthIstance
+                    gameBoardManager.gameBoard[index] = firstInstance
+                    gameBoardManager.gameBoard[index + 1] = secondInstance
+                    gameBoardManager.gameBoard[index + 2] = thiredInstance
+                    gameBoardManager.gameBoard[index + 3] = fourthInstance
+                    gameBoardManager.gameBoard[index + 4] = fifthIstance
                     
                     while currentIndex >= numberOfItemsInRow {
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex + 3, (currentIndex + 3) - numberOfItemsInRow)
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex + 4, (currentIndex + 4) - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex + 3, (currentIndex + 3) - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex + 4, (currentIndex + 4) - numberOfItemsInRow)
                         
-                        let firstTempIndexPath = gameBoardMeneger.gameBoard[currentIndex].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex].indexPath = gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow].indexPath = firstTempIndexPath
+                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
+                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath = firstTempIndexPath
                         
-                        let secondTempIndexPath = gameBoardMeneger.gameBoard[currentIndex + 1].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex + 1].indexPath = gameBoardMeneger.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath = secondTempIndexPath
+                        let secondTempIndexPath = gameBoardManager.gameBoard[currentIndex + 1].indexPath
+                        gameBoardManager.gameBoard[currentIndex + 1].indexPath = gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath = secondTempIndexPath
                         
-                        let thirdTempIndexPath = gameBoardMeneger.gameBoard[currentIndex + 2].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex + 2].indexPath = gameBoardMeneger.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath = thirdTempIndexPath
+                        let thirdTempIndexPath = gameBoardManager.gameBoard[currentIndex + 2].indexPath
+                        gameBoardManager.gameBoard[currentIndex + 2].indexPath = gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath = thirdTempIndexPath
                         
-                        let fourthTempIndexPath = gameBoardMeneger.gameBoard[currentIndex + 3].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex + 3].indexPath = gameBoardMeneger.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath = fourthTempIndexPath
+                        let fourthTempIndexPath = gameBoardManager.gameBoard[currentIndex + 3].indexPath
+                        gameBoardManager.gameBoard[currentIndex + 3].indexPath = gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath = fourthTempIndexPath
                         
-                        let fifthTempIndexPath = gameBoardMeneger.gameBoard[currentIndex + 4].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex + 4].indexPath = gameBoardMeneger.gameBoard[(currentIndex + 4) - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[(currentIndex + 4) - numberOfItemsInRow].indexPath = fifthTempIndexPath
+                        let fifthTempIndexPath = gameBoardManager.gameBoard[currentIndex + 4].indexPath
+                        gameBoardManager.gameBoard[currentIndex + 4].indexPath = gameBoardManager.gameBoard[(currentIndex + 4) - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[(currentIndex + 4) - numberOfItemsInRow].indexPath = fifthTempIndexPath
                         
-                        let indexPaths = [gameBoardMeneger.gameBoard[currentIndex].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex + 1].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex + 2].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex + 3].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex + 4].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow].indexPath,
-                                          gameBoardMeneger.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath,
-                                          gameBoardMeneger.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath,
-                                          gameBoardMeneger.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath,
-                                          gameBoardMeneger.gameBoard[(currentIndex + 4) - numberOfItemsInRow].indexPath
+                        let indexPaths = [gameBoardManager.gameBoard[currentIndex].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex + 1].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex + 2].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex + 3].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex + 4].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath,
+                                          gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath,
+                                          gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath,
+                                          gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath,
+                                          gameBoardManager.gameBoard[(currentIndex + 4) - numberOfItemsInRow].indexPath
                         ]
                         
-                        gameBoardHendler.fallDownHendler?(indexPaths)
+                        gameBoardHandler.fallDownHandler?(indexPaths)
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHendler.fallDownHendler?(
-                        [gameBoardMeneger.gameBoard[currentIndex].indexPath,
-                         gameBoardMeneger.gameBoard[currentIndex + 1].indexPath,
-                         gameBoardMeneger.gameBoard[currentIndex + 2].indexPath,
-                         gameBoardMeneger.gameBoard[currentIndex + 3].indexPath,
-                         gameBoardMeneger.gameBoard[currentIndex + 4].indexPath
+                    gameBoardHandler.fallDownHandler?(
+                        [gameBoardManager.gameBoard[currentIndex].indexPath,
+                         gameBoardManager.gameBoard[currentIndex + 1].indexPath,
+                         gameBoardManager.gameBoard[currentIndex + 2].indexPath,
+                         gameBoardManager.gameBoard[currentIndex + 3].indexPath,
+                         gameBoardManager.gameBoard[currentIndex + 4].indexPath
                         ])
                     
-                           return true
-                       }
-                   }
-               }
-       
-               return false
+                    return true
+                }
+            }
+        }
+        
+        return false
     }
     
     func checkFiveMatchAtColumn() -> Bool {
-        let numberOfItemsInRow = gameBoardMeneger.numberOfItemsInRow
+        let numberOfItemsInRow = gameBoardManager.numberOfItemsInRow
         
-        for row in 0...gameBoardMeneger.gameBoard.count / numberOfItemsInRow - 5 {
+        for row in 0...gameBoardManager.gameBoard.count / numberOfItemsInRow - 5 {
             for column in 0...numberOfItemsInRow - 1 {
                 
                 let index = column + (row * numberOfItemsInRow)
                 
-                if gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + numberOfItemsInRow].id &&
-                    gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2].id &&
-                    gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 3].id &&
-                    gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 4].id
+                if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow].id &&
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].id &&
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].id &&
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 4].id
                 {
                     
                     var currentIndex = index + numberOfItemsInRow * 4
                     
                     var firstInstance = GameInstanceCell.random()
-                    firstInstance.indexPath = gameBoardMeneger.gameBoard[index].indexPath
+                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
                     
                     var secondInstance = GameInstanceCell.random()
-                    secondInstance.indexPath = gameBoardMeneger.gameBoard[index + numberOfItemsInRow].indexPath
+                    secondInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath
                     
                     var thiredInstance = GameInstanceCell.random()
-                    thiredInstance.indexPath = gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2].indexPath
+                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath
                     
                     var fourthInstance = GameInstanceCell.random()
-                    fourthInstance.indexPath = gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 3].indexPath
+                    fourthInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].indexPath
                     
                     var fifthInstance = GameInstanceCell.random()
-                    fifthInstance.indexPath = gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 4].indexPath
+                    fifthInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 4].indexPath
                     
-                    gameBoardMeneger.gameBoard[index] = firstInstance
-                    gameBoardMeneger.gameBoard[index + numberOfItemsInRow] = secondInstance
-                    gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2] = thiredInstance
-                    gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 3] = fourthInstance
-                    gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 4] = fifthInstance
+                    gameBoardManager.gameBoard[index] = firstInstance
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = secondInstance
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = thiredInstance
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 3] = fourthInstance
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 4] = fifthInstance
                     
                     while currentIndex >= numberOfItemsInRow * 5 {
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow * 4)
+                        gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow * 4)
                         
-                        let firstTempIndexPath = gameBoardMeneger.gameBoard[currentIndex].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex].indexPath = gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath = firstTempIndexPath
+                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
+                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath
+                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath = firstTempIndexPath
                         
-                        gameBoardHendler.fallDownHendler?([gameBoardMeneger.gameBoard[currentIndex].indexPath, gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath])
+                        gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[currentIndex].indexPath, gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath])
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHendler.fallDownHendler?([gameBoardMeneger.gameBoard[index].indexPath,
-                                      gameBoardMeneger.gameBoard[index + numberOfItemsInRow].indexPath,
-                                      gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2].indexPath,
-                                      gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 3].indexPath,
-                                      gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 4].indexPath
-                                     ])
+                    gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[index].indexPath,
+                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath,
+                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath,
+                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].indexPath,
+                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 4].indexPath
+                                                      ])
                     return true
                 }
             }
@@ -178,76 +178,76 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
     }
     
     func checkFourMatchAtRow() -> Bool {
-        let numberOfItemsInRow = gameBoardMeneger.numberOfItemsInRow
+        let numberOfItemsInRow = gameBoardManager.numberOfItemsInRow
         
-        for row in 0...gameBoardMeneger.gameBoard.count / numberOfItemsInRow - 1 {
+        for row in 0...gameBoardManager.gameBoard.count / numberOfItemsInRow - 1 {
             for column in 0...numberOfItemsInRow - 4 {
                 
                 let index = column + (row * numberOfItemsInRow)
                 
-                if gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + 1].id &&
-                    gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + 2].id &&
-                    gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + 3].id {
+                if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id &&
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 3].id {
                     
                     var currentIndex = index
                     
                     var firstInstance = GameInstanceCell.random()
-                    firstInstance.indexPath = gameBoardMeneger.gameBoard[index].indexPath
+                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
                     
                     var secondInstance = GameInstanceCell.random()
-                    secondInstance.indexPath = gameBoardMeneger.gameBoard[index + 1].indexPath
+                    secondInstance.indexPath = gameBoardManager.gameBoard[index + 1].indexPath
                     
                     var thiredInstance = GameInstanceCell.random()
-                    thiredInstance.indexPath = gameBoardMeneger.gameBoard[index + 2].indexPath
+                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + 2].indexPath
                     
                     var fourthInstance = GameInstanceCell.random()
-                    fourthInstance.indexPath = gameBoardMeneger.gameBoard[index + 3].indexPath
+                    fourthInstance.indexPath = gameBoardManager.gameBoard[index + 3].indexPath
                     
-                    gameBoardMeneger.gameBoard[index] = firstInstance
-                    gameBoardMeneger.gameBoard[index + 1] = secondInstance
-                    gameBoardMeneger.gameBoard[index + 2] = thiredInstance
-                    gameBoardMeneger.gameBoard[index + 3] = fourthInstance
+                    gameBoardManager.gameBoard[index] = firstInstance
+                    gameBoardManager.gameBoard[index + 1] = secondInstance
+                    gameBoardManager.gameBoard[index + 2] = thiredInstance
+                    gameBoardManager.gameBoard[index + 3] = fourthInstance
                     
                     while currentIndex >= numberOfItemsInRow {
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex + 3, (currentIndex + 3) - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex + 3, (currentIndex + 3) - numberOfItemsInRow)
                         
-                        let firstTempIndexPath = gameBoardMeneger.gameBoard[currentIndex].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex].indexPath = gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow].indexPath = firstTempIndexPath
+                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
+                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath = firstTempIndexPath
                         
-                        let secondTempIndexPath = gameBoardMeneger.gameBoard[currentIndex + 1].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex + 1].indexPath = gameBoardMeneger.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath = secondTempIndexPath
+                        let secondTempIndexPath = gameBoardManager.gameBoard[currentIndex + 1].indexPath
+                        gameBoardManager.gameBoard[currentIndex + 1].indexPath = gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath = secondTempIndexPath
                         
-                        let thirdTempIndexPath = gameBoardMeneger.gameBoard[currentIndex + 2].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex + 2].indexPath = gameBoardMeneger.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath = thirdTempIndexPath
+                        let thirdTempIndexPath = gameBoardManager.gameBoard[currentIndex + 2].indexPath
+                        gameBoardManager.gameBoard[currentIndex + 2].indexPath = gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath = thirdTempIndexPath
                         
-                        let fourthTempIndexPath = gameBoardMeneger.gameBoard[currentIndex + 3].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex + 3].indexPath = gameBoardMeneger.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath = fourthTempIndexPath
+                        let fourthTempIndexPath = gameBoardManager.gameBoard[currentIndex + 3].indexPath
+                        gameBoardManager.gameBoard[currentIndex + 3].indexPath = gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath = fourthTempIndexPath
                         
-                        let indexPaths = [gameBoardMeneger.gameBoard[currentIndex].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex + 1].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex + 2].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex + 3].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow].indexPath,
-                                          gameBoardMeneger.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath,
-                                          gameBoardMeneger.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath,
-                                          gameBoardMeneger.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath
+                        let indexPaths = [gameBoardManager.gameBoard[currentIndex].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex + 1].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex + 2].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex + 3].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath,
+                                          gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath,
+                                          gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath,
+                                          gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath
                         ]
                         
-                        gameBoardHendler.fallDownHendler?(indexPaths)
+                        gameBoardHandler.fallDownHandler?(indexPaths)
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHendler.fallDownHendler?([gameBoardMeneger.gameBoard[currentIndex].indexPath,
-                                                       gameBoardMeneger.gameBoard[currentIndex + 1].indexPath,
-                                                       gameBoardMeneger.gameBoard[currentIndex + 2].indexPath,
-                                                       gameBoardMeneger.gameBoard[currentIndex + 3].indexPath
+                    gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[currentIndex].indexPath,
+                                                       gameBoardManager.gameBoard[currentIndex + 1].indexPath,
+                                                       gameBoardManager.gameBoard[currentIndex + 2].indexPath,
+                                                       gameBoardManager.gameBoard[currentIndex + 3].indexPath
                                                       ])
                     
                     return true
@@ -259,52 +259,52 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
     }
     
     func checkFourMatchAtColumn() -> Bool {
-        let numberOfItemsInRow = gameBoardMeneger.numberOfItemsInRow
+        let numberOfItemsInRow = gameBoardManager.numberOfItemsInRow
         
-        for row in 0...gameBoardMeneger.gameBoard.count / numberOfItemsInRow - 4 {
+        for row in 0...gameBoardManager.gameBoard.count / numberOfItemsInRow - 4 {
             for column in 0...numberOfItemsInRow - 1 {
                 
                 let index = column + (row * numberOfItemsInRow)
                 
-                if gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + numberOfItemsInRow].id &&
-                    gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2].id &&
-                    gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 3].id
+                if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow].id &&
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].id &&
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].id
                 {
                     
                     var currentIndex = index + numberOfItemsInRow * 3
                     
                     var firstInstance = GameInstanceCell.random()
-                    firstInstance.indexPath = gameBoardMeneger.gameBoard[index].indexPath
+                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
                     
                     var secondInstance = GameInstanceCell.random()
-                    secondInstance.indexPath = gameBoardMeneger.gameBoard[index + numberOfItemsInRow].indexPath
+                    secondInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath
                     
                     var thiredInstance = GameInstanceCell.random()
-                    thiredInstance.indexPath = gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2].indexPath
+                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath
                     
                     var fourthInstance = GameInstanceCell.random()
-                    fourthInstance.indexPath = gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 3].indexPath
+                    fourthInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].indexPath
                     
-                    gameBoardMeneger.gameBoard[index] = firstInstance
-                    gameBoardMeneger.gameBoard[index + numberOfItemsInRow] = secondInstance
-                    gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2] = thiredInstance
-                    gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 3] = fourthInstance
+                    gameBoardManager.gameBoard[index] = firstInstance
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = secondInstance
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = thiredInstance
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 3] = fourthInstance
                     
                     while currentIndex >= numberOfItemsInRow * 4 {
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow * 4)
+                        gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow * 4)
                         
-                        let firstTempIndexPath = gameBoardMeneger.gameBoard[currentIndex].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex].indexPath = gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath = firstTempIndexPath
+                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
+                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath
+                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath = firstTempIndexPath
                         
-                        gameBoardHendler.fallDownHendler?([gameBoardMeneger.gameBoard[currentIndex].indexPath, gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath])
+                        gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[currentIndex].indexPath, gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath])
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHendler.fallDownHendler?([gameBoardMeneger.gameBoard[index].indexPath,
-                                                       gameBoardMeneger.gameBoard[index + numberOfItemsInRow].indexPath,
-                                                       gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2].indexPath,
-                                                       gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 3].indexPath
+                    gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[index].indexPath,
+                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath,
+                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath,
+                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].indexPath
                                                       ])
                     return true
                 }
@@ -315,65 +315,65 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
     }
     
     func checkThreeMatchAtRow() -> Bool {
-        let numberOfItemsInRow = gameBoardMeneger.numberOfItemsInRow
+        let numberOfItemsInRow = gameBoardManager.numberOfItemsInRow
         
-        for row in 0...gameBoardMeneger.gameBoard.count / numberOfItemsInRow - 1 {
+        for row in 0...gameBoardManager.gameBoard.count / numberOfItemsInRow - 1 {
             for column in 0...numberOfItemsInRow - 3 {
                 
                 let index = column + (row * numberOfItemsInRow)
                 
-                if gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + 1].id &&
-                    gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + 2].id
+                if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id
                 {
                     
                     var currentIndex = index
                     
                     var firstInstance = GameInstanceCell.random()
-                    firstInstance.indexPath = gameBoardMeneger.gameBoard[index].indexPath
+                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
                     
                     var secondInstance = GameInstanceCell.random()
-                    secondInstance.indexPath = gameBoardMeneger.gameBoard[index + 1].indexPath
+                    secondInstance.indexPath = gameBoardManager.gameBoard[index + 1].indexPath
                     
                     var thiredInstance = GameInstanceCell.random()
-                    thiredInstance.indexPath = gameBoardMeneger.gameBoard[index + 2].indexPath
+                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + 2].indexPath
                     
-                    gameBoardMeneger.gameBoard[index] = firstInstance
-                    gameBoardMeneger.gameBoard[index + 1] = secondInstance
-                    gameBoardMeneger.gameBoard[index + 2] = thiredInstance
+                    gameBoardManager.gameBoard[index] = firstInstance
+                    gameBoardManager.gameBoard[index + 1] = secondInstance
+                    gameBoardManager.gameBoard[index + 2] = thiredInstance
                     
                     
                     while currentIndex >= numberOfItemsInRow {
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
+                        gameBoardManager.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
                         
-                        let firstTempIndexPath = gameBoardMeneger.gameBoard[currentIndex].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex].indexPath = gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow].indexPath = firstTempIndexPath
+                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
+                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath = firstTempIndexPath
                         
-                        let secondTempIndexPath = gameBoardMeneger.gameBoard[currentIndex + 1].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex + 1].indexPath = gameBoardMeneger.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath = secondTempIndexPath
+                        let secondTempIndexPath = gameBoardManager.gameBoard[currentIndex + 1].indexPath
+                        gameBoardManager.gameBoard[currentIndex + 1].indexPath = gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath = secondTempIndexPath
                         
-                        let thirdTempIndexPath = gameBoardMeneger.gameBoard[currentIndex + 2].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex + 2].indexPath = gameBoardMeneger.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath
-                        gameBoardMeneger.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath = thirdTempIndexPath
+                        let thirdTempIndexPath = gameBoardManager.gameBoard[currentIndex + 2].indexPath
+                        gameBoardManager.gameBoard[currentIndex + 2].indexPath = gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath
+                        gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath = thirdTempIndexPath
                         
-                        let indexPaths = [gameBoardMeneger.gameBoard[currentIndex].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex + 1].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex + 2].indexPath,
-                                          gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow].indexPath,
-                                          gameBoardMeneger.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath,
-                                          gameBoardMeneger.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath,
+                        let indexPaths = [gameBoardManager.gameBoard[currentIndex].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex + 1].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex + 2].indexPath,
+                                          gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath,
+                                          gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath,
+                                          gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath,
                         ]
                         
-                        gameBoardHendler.fallDownHendler?(indexPaths)
+                        gameBoardHandler.fallDownHandler?(indexPaths)
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHendler.fallDownHendler?([gameBoardMeneger.gameBoard[currentIndex].indexPath,
-                                      gameBoardMeneger.gameBoard[currentIndex + 1].indexPath,
-                                      gameBoardMeneger.gameBoard[currentIndex + 2].indexPath
+                    gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[currentIndex].indexPath,
+                                                       gameBoardManager.gameBoard[currentIndex + 1].indexPath,
+                                                       gameBoardManager.gameBoard[currentIndex + 2].indexPath
                                      ])
                     
                     return true
@@ -385,47 +385,48 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
     }
     
     func checkThreeMatchAtColumn() -> Bool {
-        let numberOfItemsInRow = gameBoardMeneger.numberOfItemsInRow
+        let numberOfItemsInRow = gameBoardManager.numberOfItemsInRow
         
-        for row in 0...gameBoardMeneger.gameBoard.count / numberOfItemsInRow - 3 {
+        for row in 0...gameBoardManager.gameBoard.count / numberOfItemsInRow - 3 {
             for column in 0...numberOfItemsInRow - 1 {
                 
                 let index = column + (row * numberOfItemsInRow)
                 
-                if gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + numberOfItemsInRow].id &&
-                    gameBoardMeneger.gameBoard[index].id == gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2].id
+                if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow].id &&
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].id
                 {
                     
                     var currentIndex = index + numberOfItemsInRow * 2
                     
                     var firstInstance = GameInstanceCell.random()
-                    firstInstance.indexPath = gameBoardMeneger.gameBoard[index].indexPath
+                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
                     
                     var secondInstance = GameInstanceCell.random()
-                    secondInstance.indexPath = gameBoardMeneger.gameBoard[index + numberOfItemsInRow].indexPath
+                    secondInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath
                     
                     var thiredInstance = GameInstanceCell.random()
-                    thiredInstance.indexPath = gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2].indexPath
+                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath
                     
-                    gameBoardMeneger.gameBoard[index] = firstInstance
-                    gameBoardMeneger.gameBoard[index + numberOfItemsInRow] = secondInstance
-                    gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2] = thiredInstance
+                    gameBoardManager.gameBoard[index] = firstInstance
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = secondInstance
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = thiredInstance
                     
                     
                     while currentIndex >= numberOfItemsInRow * 3 {
-                        gameBoardMeneger.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow * 3)
+                        gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow * 3)
                         
-                        let firstTempIndexPath = gameBoardMeneger.gameBoard[currentIndex].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex].indexPath = gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow * 3].indexPath
-                        gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow * 3].indexPath = firstTempIndexPath
+                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
+                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 3].indexPath
+                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 3].indexPath = firstTempIndexPath
                         
-                        gameBoardHendler.fallDownHendler?([gameBoardMeneger.gameBoard[currentIndex].indexPath, gameBoardMeneger.gameBoard[currentIndex - numberOfItemsInRow * 3].indexPath])
+                        gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[currentIndex].indexPath,
+                                                           gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 3].indexPath])
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHendler.fallDownHendler?([gameBoardMeneger.gameBoard[index].indexPath,
-                                      gameBoardMeneger.gameBoard[index + numberOfItemsInRow].indexPath,
-                                      gameBoardMeneger.gameBoard[index + numberOfItemsInRow * 2].indexPath
+                    gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[index].indexPath,
+                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath,
+                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath
                                      ])
                     return true
                 }

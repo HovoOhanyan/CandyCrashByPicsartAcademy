@@ -8,5 +8,5 @@
 import Foundation
 
 final class GameEngineBoardHandler: GameEngineBoardChangeHandler {
-    var fallDownHendler: (([IndexPath]) -> Void)?
+    var fallDownHandler: (([IndexPath]) -> Void)?
 }
