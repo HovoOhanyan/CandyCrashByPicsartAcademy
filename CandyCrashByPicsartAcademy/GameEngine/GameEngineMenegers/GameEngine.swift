@@ -12,6 +12,7 @@ final class GameEngine {
     private(set) var gameBoardMeneger: GameEngineBoard!
     private(set) var gameSwipeMeneger: GameEngineSwipeGestureHendler!
     private(set) var gameCheckMatchsMeneger: GameEngineCheckMatches!
+    weak var gameUpdates: GameEngineUpdates!
     var gameEngineBoardHendler: GameEngineBoardChangeHendler!
     public var isMatch = true
     public var combo = 0 
@@ -25,5 +26,6 @@ final class GameEngine {
         self.gameEngineBoardHendler = GameEngineBoardHendler()
         self.gameCheckMatchsMeneger = GameEngineCheckMeneger(gameEngineBoardMeneger: self.gameBoardMeneger,
                                                              gameEngineBoardHendler: gameEngineBoardHendler)
+        self.gameUpdates = GameEngineUpdatesManager()
     }
 }

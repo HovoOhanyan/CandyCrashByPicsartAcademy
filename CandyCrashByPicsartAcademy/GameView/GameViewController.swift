@@ -8,7 +8,7 @@
 import UIKit
 
 final class GameViewController: UIViewController {
-    public var viewModal: GameViewModal!
+    public var viewModel: GameViewModel!
     
     private let gameView = GameView()
     public var collectionView: UICollectionView!
@@ -59,13 +59,13 @@ final class GameViewController: UIViewController {
     }
     
     private func gameViewModalSetup() {
-        viewModal = GameViewModal()
+        viewModel = GameViewModel()
         
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
         
-        viewModal?.reloadItem = { indexPath in
+        viewModel?.reloadItem = { indexPath in
             UIView.animate(withDuration: 0.7) {
                 self.collectionView.reloadItems(at: indexPath)
             }

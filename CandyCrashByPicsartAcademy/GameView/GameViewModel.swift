@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class GameViewModal {
+final class GameViewModel {
     private(set) var gameEngine: GameEngine
     private let gameEngineBoardMeneger = GameEngineBoardMeneger(numberOfItemsInRow: 5,
                                                                 boardSize: 40)

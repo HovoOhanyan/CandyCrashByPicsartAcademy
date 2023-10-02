@@ -275,3 +275,15 @@ extension GameView {
                                   height: 20)
     }
 }
+
+//MARK: Real time updates in GameView
+extension GameView: GameEngineUpdates {
+    
+    func setupGameEngine(gameEngine: GameEngine) {
+        gameEngine.gameUpdates = self
+    }
+    
+    func gameStateChanged(gameData: YourGameDataStruct) {
+        <#code#>
+    }
+}
