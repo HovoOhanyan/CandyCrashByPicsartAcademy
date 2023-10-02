@@ -40,9 +40,8 @@
 		3FC2DDE72AC8BED8007E2807 /* GameInstanceImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2DDE62AC8BED8007E2807 /* GameInstanceImageEnum.swift */; };
 		CC3F40392AC073CE0065075E /* CherryBombOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC3F40382AC073CE0065075E /* CherryBombOne-Regular.ttf */; };
 		CC3F403C2AC075A20065075E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3F403B2AC075A20065075E /* UIColor + Extension.swift */; };
-		CC49D3002AC99748007FDE7F /* GameEngineUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC49D2FF2AC99748007FDE7F /* GameEngineUpdates.swift */; };
-		CC49D3022AC99762007FDE7F /* GameEngineUpdatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC49D3012AC99762007FDE7F /* GameEngineUpdatesManager.swift */; };
-		CC49D3042AC99AB4007FDE7F /* GameDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC49D3032AC99AB4007FDE7F /* GameDataStruct.swift */; };
+		CC49D3082ACB16FF007FDE7F /* GameEnginePlayInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC49D3072ACB16FF007FDE7F /* GameEnginePlayInformation.swift */; };
+		CC49D30A2ACB1743007FDE7F /* GameEnginePlayInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC49D3092ACB1743007FDE7F /* GameEnginePlayInformationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,9 +80,8 @@
 		3FC2DDE62AC8BED8007E2807 /* GameInstanceImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInstanceImageEnum.swift; sourceTree = "<group>"; };
 		CC3F40382AC073CE0065075E /* CherryBombOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CherryBombOne-Regular.ttf"; sourceTree = "<group>"; };
 		CC3F403B2AC075A20065075E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
-		CC49D2FF2AC99748007FDE7F /* GameEngineUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineUpdates.swift; sourceTree = "<group>"; };
-		CC49D3012AC99762007FDE7F /* GameEngineUpdatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineUpdatesManager.swift; sourceTree = "<group>"; };
-		CC49D3032AC99AB4007FDE7F /* GameDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDataStruct.swift; sourceTree = "<group>"; };
+		CC49D3072ACB16FF007FDE7F /* GameEnginePlayInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEnginePlayInformation.swift; sourceTree = "<group>"; };
+		CC49D3092ACB1743007FDE7F /* GameEnginePlayInformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEnginePlayInformationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +138,6 @@
 				3F825F6D2AC1E6AB00392156 /* SquareInstance.swift */,
 				3F825F6F2AC1E6E600392156 /* EmptyInstance.swift */,
 				3FC2DDE62AC8BED8007E2807 /* GameInstanceImageEnum.swift */,
-				CC49D3032AC99AB4007FDE7F /* GameDataStruct.swift */,
 			);
 			path = GameInstances;
 			sourceTree = "<group>";
@@ -197,9 +194,9 @@
 			isa = PBXGroup;
 			children = (
 				3FA8C7CC2AC833D5007C2F4B /* GameEngineBoardProtocol.swift */,
-				CC49D2FF2AC99748007FDE7F /* GameEngineUpdates.swift */,
 				3FA8C7D02AC83723007C2F4B /* GameEngineSwipeHendlerProtocol.swift */,
 				3FA8C7D22AC837EB007C2F4B /* GameEngineBoardChangeHendlerProtocol.swift */,
+				CC49D3072ACB16FF007FDE7F /* GameEnginePlayInformation.swift */,
 				3FA8C7D72AC83CC5007C2F4B /* GameEnigneCheckMatchsProtocol.swift */,
 			);
 			name = GameEngineModal;
@@ -211,9 +208,9 @@
 				3F825F622AC1DC8200392156 /* GameEngine.swift */,
 				3FA8C7CE2AC83440007C2F4B /* GameEngineBoardMeneger.swift */,
 				3FA8C7D52AC838A0007C2F4B /* GameEngineSwipeMeneger.swift */,
-				CC49D3012AC99762007FDE7F /* GameEngineUpdatesManager.swift */,
 				3FA8C7D92AC83D36007C2F4B /* GameEngineCheckMeneger.swift */,
 				3FA8C7DB2AC83F62007C2F4B /* GameEngineBoardHendler.swift */,
+				CC49D3092ACB1743007FDE7F /* GameEnginePlayInformationManager.swift */,
 			);
 			path = GameEngineMenegers;
 			sourceTree = "<group>";
@@ -351,13 +348,12 @@
 			files = (
 				3F825F782AC2D5D200392156 /* GameViewSwipeGestureDelegateExtension.swift in Sources */,
 				3F565A8A2AC1BB110003A7CC /* GameViewController.swift in Sources */,
-				CC49D3022AC99762007FDE7F /* GameEngineUpdatesManager.swift in Sources */,
 				3FA8C7DA2AC83D36007C2F4B /* GameEngineCheckMeneger.swift in Sources */,
 				3FA8C7CF2AC83440007C2F4B /* GameEngineBoardMeneger.swift in Sources */,
 				3FC2DDE72AC8BED8007E2807 /* GameInstanceImageEnum.swift in Sources */,
+				CC49D3082ACB16FF007FDE7F /* GameEnginePlayInformation.swift in Sources */,
 				3F825F682AC1E57900392156 /* HeartInstance.swift in Sources */,
 				3FBC4D712AB0E54800B0E711 /* JoinGameViewController.swift in Sources */,
-				CC49D3042AC99AB4007FDE7F /* GameDataStruct.swift in Sources */,
 				3FA8C7CD2AC833D5007C2F4B /* GameEngineBoardProtocol.swift in Sources */,
 				3F825F602AC1DA1800392156 /* GameInstanceCell.swift in Sources */,
 				3F825F5A2AC1D82300392156 /* GameViewDataSourceExtension.swift in Sources */,
@@ -374,8 +370,8 @@
 				3FA8C7D12AC83723007C2F4B /* GameEngineSwipeHendlerProtocol.swift in Sources */,
 				3FBC4D6D2AB0E54800B0E711 /* AppDelegate.swift in Sources */,
 				3FA8C7D62AC838A0007C2F4B /* GameEngineSwipeMeneger.swift in Sources */,
+				CC49D30A2ACB1743007FDE7F /* GameEnginePlayInformationManager.swift in Sources */,
 				3F825F6A2AC1E5F400392156 /* StarInstance.swift in Sources */,
-				CC49D3002AC99748007FDE7F /* GameEngineUpdates.swift in Sources */,
 				3FA8C7D82AC83CC5007C2F4B /* GameEnigneCheckMatchsProtocol.swift in Sources */,
 				3F825F582AC1CEA400392156 /* GameView.swift in Sources */,
 				3FBC4D6F2AB0E54800B0E711 /* SceneDelegate.swift in Sources */,

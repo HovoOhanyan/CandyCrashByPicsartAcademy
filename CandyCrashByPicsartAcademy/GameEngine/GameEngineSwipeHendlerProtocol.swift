@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol GameEngineSwipeGestureHendler {
+protocol GameEngineSwipeGestureHandler {
     func swipeUpGesture(indexPaths: [IndexPath])
     func swipeDownGesture(indexPaths: [IndexPath])
     func swipeLeftGesture(indexPaths: [IndexPath])

@@ -9,23 +9,31 @@ import Foundation
 
 final class GameEngine {
 //MARK: - GameEngine property definitions
-    private(set) var gameBoardMeneger: GameEngineBoard!
-    private(set) var gameSwipeMeneger: GameEngineSwipeGestureHendler!
-    private(set) var gameCheckMatchsMeneger: GameEngineCheckMatches!
-    weak var gameUpdates: GameEngineUpdates!
-    var gameEngineBoardHendler: GameEngineBoardChangeHendler!
-    public var isMatch = true
-    public var combo = 0 
+    private(set) var gameBoardManager: GameEngineBoard!
+    private(set) var gameSwipeManager: GameEngineSwipeGestureHandler!
+    private(set) var gameCheckMatchsManager: GameEngineCheckMatches!
+    private(set) var gameEngineBoardHandler: GameEngineBoardChangeHandler!
+    private(set) var gamePlayManager: GameEnginePlayInformation
     
-    var fallDownHendler: (([IndexPath]) -> Void)?
-//MARK: -
+    //MARK: -
     
-    init(gameBoardMeneger: GameEngineBoard) {
-        self.gameBoardMeneger = gameBoardMeneger
-        self.gameSwipeMeneger = GameEngineSwipeMeneger(gameBoardMeneger: self.gameBoardMeneger)
-        self.gameEngineBoardHendler = GameEngineBoardHendler()
-        self.gameCheckMatchsMeneger = GameEngineCheckMeneger(gameEngineBoardMeneger: self.gameBoardMeneger,
-                                                             gameEngineBoardHendler: gameEngineBoardHendler)
-        self.gameUpdates = GameEngineUpdatesManager()
+    init(gameBoardManager: GameEngineBoard, gamePlayManager: GameEnginePlayInformation) {
+        self.gameBoardManager = gameBoardManager
+        self.gamePlayManager = gamePlayManager
+        self.gameSwipeManager = GameEngineSwipeManager(gameBoardManager: self.gameBoardManager, gamePlayInfo: gamePlayManager)
+        self.gameEngineBoardHandler = GameEngineBoardHandler()
+        self.gameCheckMatchsManager = GameEngineCheckManager(gameEngineBoardManager: self.gameBoardManager,
+                                                             gameEngineBoardHandler: gameEngineBoardHandler, gamePlayInfo: self.gamePlayManager)
+        
+        gamePlayManager.addGameEnigneChangeHandler(gameEngineChangeHandler: self.gameEngineBoardHandler)
+    }
+    
+    init(gameBoardManager: GameEngineBoard, gameSwipeManager: GameEngineSwipeManager,
+         gameCheckMatchsManager: GameEngineCheckMatches, gameEngineBoardHandler: GameEngineBoardChangeHandler, gamePlayManager: GameEnginePlayInformation) {
+        self.gameBoardManager = gameBoardManager
+        self.gameSwipeManager = gameSwipeManager
+        self.gameCheckMatchsManager = gameCheckMatchsManager
+        self.gameEngineBoardHandler = gameEngineBoardHandler
+        self.gamePlayManager = gamePlayManager
     }
 }
