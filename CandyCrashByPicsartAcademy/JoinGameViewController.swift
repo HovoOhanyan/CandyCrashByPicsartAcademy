@@ -25,6 +25,8 @@ extension JoinGameViewController {
         
         joinView.setupUI()
         joinView.setupGradient()
+        
+        joinView.playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -37,7 +39,7 @@ extension JoinGameViewController {
                                            height: joinView.playBeforeButton.bounds.size.height)
     }
     
-    @objc func PlayButtonTapped() {
+    @objc func playButtonTapped() {
         let gameView = GameViewController()
         gameView.modalPresentationStyle = .fullScreen
         present(gameView, animated: true)
