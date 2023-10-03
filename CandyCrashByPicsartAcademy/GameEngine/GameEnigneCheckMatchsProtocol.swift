@@ -14,5 +14,6 @@ protocol GameEngineCheckMatches {
     func checkFourMatchAtColumn() -> Bool
     func checkThreeMatchAtRow() -> Bool
     func checkThreeMatchAtColumn() -> Bool
-    func checkMathes()
+    func checkMatches()
+    func checkMatchForSwipeGesture() -> Bool
 }

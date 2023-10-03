@@ -10,6 +10,7 @@ import Foundation
 protocol GameEnginePlayInformation {
     var score: Int { get set }
     var countOfSteps: Int { get set }
+    var updatedStarEstimation: Int { get set }
     var gameInstance: GameInstance { get set }
     
     func addGameEnigneChangeHandler(gameEngineChangeHandler: GameEngineBoardChangeHandler)

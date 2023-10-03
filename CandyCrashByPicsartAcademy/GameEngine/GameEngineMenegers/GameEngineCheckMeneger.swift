@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class GameEngineCheckManager: GameEngineCheckMatches {
+final class GameEngineCheckManager: GameEngineCheckMatches {    
     private let gameBoardManager: GameEngineBoard!
     private let gameBoardHandler: GameEngineBoardChangeHandler!
     private var gamePlayInfo: GameEnginePlayInformation!
@@ -38,6 +38,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 5
+                        gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index
@@ -138,6 +139,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 5
+                        gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index + numberOfItemsInRow * 4
@@ -202,6 +204,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 4
+                        gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index
@@ -288,6 +291,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 4
+                        gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index + numberOfItemsInRow * 3
@@ -347,6 +351,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 3
+                        gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index
@@ -421,6 +426,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 3
+                        gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index + numberOfItemsInRow * 2
@@ -463,10 +469,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
         return false
     }
     
-    func checkMathes() {
+    func checkMatches() {
         isMatch = true
-        
-        
         
         while isMatch {
             isMatch = false
@@ -485,5 +489,23 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 isMatch = true
             }
         }
+    }
+    
+    func checkMatchForSwipeGesture() -> Bool {
+        if checkFiveMatchAtRow() {
+            return true
+        } else if checkFiveMatchAtColumn() {
+            return true
+        } else if checkFourMatchAtRow() {
+            return true
+        } else if checkFourMatchAtColumn() {
+            return true
+        } else if checkThreeMatchAtRow() {
+            return true
+        } else if checkThreeMatchAtColumn() {
+            return true
+        }
+        
+        return false
     }
 }

@@ -15,7 +15,7 @@ extension GameViewController: SwipeGestureDelegate {
             self.collectionView.reloadItems(at: indexPaths)
         }
         
-        viewModal.gameEngine.gameCheckMatchsManager.checkMathes()
+        viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
     }
     
     func swipeLeftGesture(indexPaths: [IndexPath]) {
@@ -26,7 +26,7 @@ extension GameViewController: SwipeGestureDelegate {
             self.collectionView.reloadItems(at: indexPaths)
         }
         
-        viewModal.gameEngine.gameCheckMatchsManager.checkMathes()
+        viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
     }
     
     func swipeUpGesture(indexPaths: [IndexPath]) {
@@ -36,7 +36,7 @@ extension GameViewController: SwipeGestureDelegate {
             self.collectionView.reloadItems(at: indexPaths)
         }
         
-        viewModal.gameEngine.gameCheckMatchsManager.checkMathes()
+        viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
     }
     
     func swipeDownGesture(indexPaths: [IndexPath]) {
@@ -46,6 +46,6 @@ extension GameViewController: SwipeGestureDelegate {
             self.collectionView.reloadItems(at: indexPaths)
         }
         
-        viewModal.gameEngine.gameCheckMatchsManager.checkMathes()
+        viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
     }
 }
