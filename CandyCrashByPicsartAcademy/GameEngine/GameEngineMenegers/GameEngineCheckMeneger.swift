@@ -38,6 +38,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 5
+                        gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index
@@ -138,6 +139,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 5
+                        gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index + numberOfItemsInRow * 4
@@ -202,6 +204,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 4
+                        gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index
@@ -288,6 +291,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 4
+                        gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index + numberOfItemsInRow * 3
@@ -347,6 +351,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 3
+                        gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index
@@ -421,6 +426,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.score -= 3
+                        gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
                     }
                     
                     var currentIndex = index + numberOfItemsInRow * 2
