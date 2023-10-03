@@ -12,10 +12,11 @@ final class GameViewModel {
     private let gameEngineBoardManager = GameEngineBoardManager(numberOfItemsInRow: 5,
                                                                 boardSize: 40)
     
-    private let gameEnginePlayInfoManager = GameEnginePlayInformationManager(score: 20, countOfSteps: 15)
+    private let gameEnginePlayInfoManager = GameEnginePlayInformationManager(score: 20, countOfSteps: 15, updatedStarEstimation: 85)
     var reloadItem: (([IndexPath]) -> Void)?
     var updateScoreLabel: ((Int) -> Void)?
     var updateCountOfStepsLabel: ((Int) -> Void)?
+    var updateStarLayer: ((Int) -> Void)?
     
     init() {
         gameEngine = GameEngine(gameBoardManager: gameEngineBoardManager, gamePlayManager: gameEnginePlayInfoManager)
@@ -34,6 +35,10 @@ final class GameViewModel {
         
         gameEngine.gameEngineBoardHandler.updateCountOfStepsLabelHandler = { countOfSteps in
             self.updateCountOfStepsLabel?(countOfSteps)
+        }
+        
+        gameEngine.gameEngineBoardHandler.updateStarChangesHandler = { starChanges in
+            self.updateStarLayer?(starChanges)
         }
     }
 }

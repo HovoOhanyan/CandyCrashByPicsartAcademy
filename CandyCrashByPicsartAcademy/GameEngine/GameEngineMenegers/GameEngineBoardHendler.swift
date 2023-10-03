@@ -11,4 +11,5 @@ final class GameEngineBoardHandler: GameEngineBoardChangeHandler {
     var fallDownHandler: (([IndexPath]) -> Void)?
     var updateScoreLabelHandler: ((Int) -> Void)?
     var updateCountOfStepsLabelHandler: ((Int) -> Void)?
+    var updateStarChangesHandler: ((Int) -> Void)?
 }

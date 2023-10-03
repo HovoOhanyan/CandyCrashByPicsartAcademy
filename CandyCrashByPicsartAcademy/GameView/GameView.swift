@@ -256,7 +256,7 @@ extension GameView {
                                      height: self.candysView.bounds.size.width)
         
         configShapeLayer(shapeLayer: levelUpLayer)
-        configureStarLayer(shapeLayer: starLayer)
+        configureStarLayer(shapeLayer: starLayer, changeStar: 85)
     }
     
     private func configShapeLayer(shapeLayer: CAShapeLayer) {
@@ -269,9 +269,9 @@ extension GameView {
         shapeLayer.path = path.cgPath
     }
     
-    private func configureStarLayer(shapeLayer: CAShapeLayer) {
+    private func configureStarLayer(shapeLayer: CAShapeLayer, changeStar: Int) {
         _ = CGSize(width: 30, height: 30)
-        shapeLayer.frame = CGRect(x: self.topView.frame.width / 2 - 85,
+        shapeLayer.frame = CGRect(x: self.topView.frame.width / 2 - CGFloat(changeStar),
                                   y: self.topView.frame.height / 2 - 35,
                                   width: 20,
                                   height: 20)
@@ -288,5 +288,10 @@ extension GameView {
     
     func updateCountOfStepsLabel(countOfSteps: Int) {
         self.timerLabel.text = "\(countOfSteps)"
+    }
+    
+    func updateStarLayerFrame(updatedStarEstimation: Int) {
+        let changeStar = 85 - (updatedStarEstimation)
+        configureStarLayer(shapeLayer: starLayer, changeStar: changeStar)
     }
 }

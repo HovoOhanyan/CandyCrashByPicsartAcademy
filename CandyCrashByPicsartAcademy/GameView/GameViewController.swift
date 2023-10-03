@@ -78,5 +78,9 @@ final class GameViewController: UIViewController {
         viewModal?.updateScoreLabel = { score in
             self.gameView.updateScoreLabel(score: score)
         }
+        
+        viewModal.updateStarLayer = { starChanges in
+            self.gameView.updateStarLayerFrame(updatedStarEstimation: starChanges)
+        }
     }
 }
