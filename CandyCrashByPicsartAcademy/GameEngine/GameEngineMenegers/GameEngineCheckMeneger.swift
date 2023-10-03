@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class GameEngineCheckManager: GameEngineCheckMatches {
+final class GameEngineCheckManager: GameEngineCheckMatches {    
     private let gameBoardManager: GameEngineBoard!
     private let gameBoardHandler: GameEngineBoardChangeHandler!
     private var gamePlayInfo: GameEnginePlayInformation!
@@ -485,8 +485,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
         }
     }
     
-    func cheeckMatchForSwipeGesture() -> Bool {
-        
+    func checkMatchForSwipeGesture() -> Bool {
         if checkFiveMatchAtRow() {
             return true
         } else if checkFiveMatchAtColumn() {

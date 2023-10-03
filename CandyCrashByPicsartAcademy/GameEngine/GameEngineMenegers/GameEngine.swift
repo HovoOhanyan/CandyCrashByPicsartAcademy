@@ -20,16 +20,20 @@ final class GameEngine {
     init(gameBoardManager: GameEngineBoard, gamePlayManager: GameEnginePlayInformation) {
         self.gameBoardManager = gameBoardManager
         self.gamePlayManager = gamePlayManager
-        self.gameSwipeManager = GameEngineSwipeManager(gameBoardManager: self.gameBoardManager, gamePlayInfo: gamePlayManager)
         self.gameEngineBoardHandler = GameEngineBoardHandler()
+        
         self.gameCheckMatchsManager = GameEngineCheckManager(gameEngineBoardManager: self.gameBoardManager,
                                                              gameEngineBoardHandler: gameEngineBoardHandler, gamePlayInfo: self.gamePlayManager)
+        
+        self.gameSwipeManager = GameEngineSwipeManager(gameBoardManager: self.gameBoardManager,
+                                                       gamePlayInfo: gamePlayManager, gameCheckManager: gameCheckMatchsManager)
         
         gamePlayManager.addGameEnigneChangeHandler(gameEngineChangeHandler: self.gameEngineBoardHandler)
     }
     
     init(gameBoardManager: GameEngineBoard, gameSwipeManager: GameEngineSwipeManager,
-         gameCheckMatchsManager: GameEngineCheckMatches, gameEngineBoardHandler: GameEngineBoardChangeHandler, gamePlayManager: GameEnginePlayInformation) {
+         gameCheckMatchsManager: GameEngineCheckMatches, gameEngineBoardHandler: GameEngineBoardChangeHandler, 
+         gamePlayManager: GameEnginePlayInformation) {
         self.gameBoardManager = gameBoardManager
         self.gameSwipeManager = gameSwipeManager
         self.gameCheckMatchsManager = gameCheckMatchsManager
