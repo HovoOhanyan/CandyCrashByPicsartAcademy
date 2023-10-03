@@ -463,10 +463,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
         return false
     }
     
-    func checkMathes() {
+    func checkMatches() {
         isMatch = true
-        
-        
         
         while isMatch {
             isMatch = false
@@ -485,5 +483,24 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 isMatch = true
             }
         }
+    }
+    
+    func cheeckMatchForSwipeGesture() -> Bool {
+        
+        if checkFiveMatchAtRow() {
+            return true
+        } else if checkFiveMatchAtColumn() {
+            return true
+        } else if checkFourMatchAtRow() {
+            return true
+        } else if checkFourMatchAtColumn() {
+            return true
+        } else if checkThreeMatchAtRow() {
+            return true
+        } else if checkThreeMatchAtColumn() {
+            return true
+        }
+        
+        return false
     }
 }
