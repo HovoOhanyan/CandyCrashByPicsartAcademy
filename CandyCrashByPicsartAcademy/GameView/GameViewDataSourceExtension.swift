@@ -17,8 +17,10 @@ extension GameViewController: UICollectionViewDataSource {
         
         viewModal.gameEngine.gameBoardManager.gameBoard[indexPath.row].indexPath = indexPath
         let instance = viewModal.gameEngine.gameBoardManager.gameBoard[indexPath.row]
+        let swipeGestureRecognizer = CustomSwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
+        cell.addGestureRecognizer(swipeGestureRecognizer)
+    
         cell.configuration(gameInstance: instance)
-        cell.swipeGestureDelegate = self
         
         return cell
     }

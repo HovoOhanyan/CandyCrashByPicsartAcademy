@@ -8,8 +8,8 @@
 import Foundation
 
 protocol GameEngineSwipeGestureHandler {
-    func swipeUpGesture(indexPaths: [IndexPath])
-    func swipeDownGesture(indexPaths: [IndexPath])
-    func swipeLeftGesture(indexPaths: [IndexPath])
-    func swipeRightGesture(indexPaths: [IndexPath])
+    func swipeUpGesture(indexPaths: [IndexPath]) -> Bool
+    func swipeDownGesture(indexPaths: [IndexPath]) -> Bool
+    func swipeLeftGesture(indexPaths: [IndexPath]) -> Bool
+    func swipeRightGesture(indexPaths: [IndexPath]) -> Bool
 }
