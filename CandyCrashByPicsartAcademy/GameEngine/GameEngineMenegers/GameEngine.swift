@@ -9,10 +9,10 @@ import Foundation
 
 final class GameEngine {
 //MARK: - GameEngine property definitions
-    private(set) var gameBoardManager: GameEngineBoard!
-    private(set) var gameSwipeManager: GameEngineSwipeGestureHandler!
-    private(set) var gameCheckMatchsManager: GameEngineCheckMatches!
-    private(set) var gameEngineBoardHandler: GameEngineBoardChangeHandler!
+    private(set) var gameBoardManager: GameEngineBoard
+    private(set) var gameSwipeManager: GameEngineSwipeGestureHandler
+    private(set) var gameCheckMatchsManager: GameEngineCheckMatches
+    private(set) var gameEngineBoardHandler: GameEngineBoardChangeHandler
     private(set) var gamePlayManager: GameEnginePlayInformation
     
     //MARK: -

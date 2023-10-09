@@ -8,9 +8,9 @@
 import Foundation
 
 final class GameEngineCheckManager: GameEngineCheckMatches {    
-    private let gameBoardManager: GameEngineBoard!
-    private let gameBoardHandler: GameEngineBoardChangeHandler!
-    private var gamePlayInfo: GameEnginePlayInformation!
+    private let gameBoardManager: GameEngineBoard
+    private let gameBoardHandler: GameEngineBoardChangeHandler
+    private var gamePlayInfo: GameEnginePlayInformation
     
     private var isMatch = true
     
