@@ -21,10 +21,6 @@ extension GameView {
         let minX = gameAreaView.frame.minX
         let minY = gameAreaView.frame.minY
         
-        gameInstanceArray = (1...gameBoard.gameBoard.count).map { _ in
-            GameInstanceView()
-        }
-        
         for row in 0..<boardRows {
             for column in 0..<boardColumn {
                 let index = column + (row * gameBoard.numberOfItemsInRow)

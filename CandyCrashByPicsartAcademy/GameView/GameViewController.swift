@@ -10,29 +10,30 @@ import UIKit
 final class GameViewController: UIViewController {
     public var viewModal: GameViewModel!
     
-    private let gameView = GameView()
+    let gameView = GameView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupSwipeGesture()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        gameView.createGameBoard(gameBoard: viewModal.gameEngine.gameBoardManager)
+        setupSwipeGesture()
     }
     
     private func setupUI() {
         gameViewModalSetup()
+        gameView.frame = view.frame
+        gameView.bounds = view.bounds
         
-        gameView.translatesAutoresizingMaskIntoConstraints = false
         gameView.setupUI(gamePlayInformation: viewModal.gameEngine.gamePlayManager)
         gameView.setupGradient()
         gameView.setupShapeLayer()
 
         view.addSubview(gameView)
-        
-        NSLayoutConstraint.activate([
-            gameView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            gameView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            gameView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            gameView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
-        ])
     }
     
     private func gameViewModalSetup() {
@@ -65,6 +66,14 @@ final class GameViewController: UIViewController {
         
         viewModal.updateStarLayer = { starChanges in
             self.gameView.updateStarLayerFrame(updatedStarEstimation: starChanges)
+        }
+    }
+    
+    private func setupSwipeGesture() {
+        gameView.gameInstanceArray.forEach { view in
+            view.isUserInteractionEnabled = true
+            let customSwipeGestureRecognizer = CustomSwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
+            view.addGestureRecognizer(customSwipeGestureRecognizer)
         }
     }
 }

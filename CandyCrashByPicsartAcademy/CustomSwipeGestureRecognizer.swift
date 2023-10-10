@@ -9,13 +9,12 @@ import UIKit
 
 final class CustomSwipeGestureRecognizer: UIGestureRecognizer {
     private var initialTouchLocation: CGPoint = .zero
-    
     var swipeDirection: SwipeDirection = .none
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesBegan(touches, with: event)
         
         if let touch = touches.first {
-            print(initialTouchLocation.x)
             initialTouchLocation = touch.location(in: view)
         }
     }

@@ -31,6 +31,7 @@ final class GameView: UIView {
     public let gameAreaView: UIView = {
         let view = UIView()
         view.backgroundColor = .gradientFirst2()
+        view.layer.cornerRadius = 10
         return view
     }()
     
@@ -126,7 +127,9 @@ final class GameView: UIView {
         return image
     }()
     
-    public var gameInstanceArray: [GameInstanceView] = []
+    public var gameInstanceArray = (1...40).map { _ in
+        GameInstanceView()
+    }
 }
 
 //MARK: Setup UI
@@ -134,6 +137,7 @@ extension GameView {
     
     func setupUI(gamePlayInformation: GameEnginePlayInformation) {
         updateLabelsWithGamePlayInfo(gamePlayInformation: gamePlayInformation)
+        
         self.backgroundColor = .white
         topView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
