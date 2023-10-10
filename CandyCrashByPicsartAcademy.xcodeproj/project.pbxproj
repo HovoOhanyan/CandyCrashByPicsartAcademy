@@ -12,9 +12,6 @@
 		3F68988D2ACC5D3700DADAC6 /* CustomSwipeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68988C2ACC5D3700DADAC6 /* CustomSwipeGestureRecognizer.swift */; };
 		3F7CC9472ACAA6E9004889C6 /* JoinGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7CC9462ACAA6E9004889C6 /* JoinGameView.swift */; };
 		3F7CC94D2ACB2B79004889C6 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7CC94C2ACB2B79004889C6 /* GameView.swift */; };
-		3F825F5A2AC1D82300392156 /* GameViewDataSourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F825F592AC1D82300392156 /* GameViewDataSourceExtension.swift */; };
-		3F825F5C2AC1D89E00392156 /* GameViewDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F825F5B2AC1D89E00392156 /* GameViewDelegateExtension.swift */; };
-		3F825F5E2AC1D8C200392156 /* GameViewCollectionViewDelegateFlowLayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F825F5D2AC1D8C200392156 /* GameViewCollectionViewDelegateFlowLayoutExtension.swift */; };
 		3F825F602AC1DA1800392156 /* GameInstanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F825F5F2AC1DA1800392156 /* GameInstanceCell.swift */; };
 		3F825F632AC1DC8200392156 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F825F622AC1DC8200392156 /* GameEngine.swift */; };
 		3F825F652AC1E49B00392156 /* GameInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F825F642AC1E49B00392156 /* GameInstance.swift */; };
@@ -56,9 +53,6 @@
 		3F68988C2ACC5D3700DADAC6 /* CustomSwipeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwipeGestureRecognizer.swift; sourceTree = "<group>"; };
 		3F7CC9462ACAA6E9004889C6 /* JoinGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameView.swift; sourceTree = "<group>"; };
 		3F7CC94C2ACB2B79004889C6 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		3F825F592AC1D82300392156 /* GameViewDataSourceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewDataSourceExtension.swift; sourceTree = "<group>"; };
-		3F825F5B2AC1D89E00392156 /* GameViewDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewDelegateExtension.swift; sourceTree = "<group>"; };
-		3F825F5D2AC1D8C200392156 /* GameViewCollectionViewDelegateFlowLayoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewCollectionViewDelegateFlowLayoutExtension.swift; sourceTree = "<group>"; };
 		3F825F5F2AC1DA1800392156 /* GameInstanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInstanceCell.swift; sourceTree = "<group>"; };
 		3F825F622AC1DC8200392156 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		3F825F642AC1E49B00392156 /* GameInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInstance.swift; sourceTree = "<group>"; };
@@ -122,9 +116,6 @@
 			children = (
 				3F565A892AC1BB110003A7CC /* GameViewController.swift */,
 				3F825F772AC2D5D200392156 /* GameViewSwipeGestureHandlerExtension.swift */,
-				3F825F5B2AC1D89E00392156 /* GameViewDelegateExtension.swift */,
-				3F825F5D2AC1D8C200392156 /* GameViewCollectionViewDelegateFlowLayoutExtension.swift */,
-				3F825F592AC1D82300392156 /* GameViewDataSourceExtension.swift */,
 				3F7CC94C2ACB2B79004889C6 /* GameView.swift */,
 				3F825F5F2AC1DA1800392156 /* GameInstanceCell.swift */,
 			);
@@ -424,12 +415,10 @@
 				3FBC4D712AB0E54800B0E711 /* JoinGameViewController.swift in Sources */,
 				3FA8C7CD2AC833D5007C2F4B /* GameEngineBoardProtocol.swift in Sources */,
 				3F825F602AC1DA1800392156 /* GameInstanceCell.swift in Sources */,
-				3F825F5A2AC1D82300392156 /* GameViewDataSourceExtension.swift in Sources */,
 				3F7CC9472ACAA6E9004889C6 /* JoinGameView.swift in Sources */,
 				3F825F6E2AC1E6AB00392156 /* SquareInstance.swift in Sources */,
 				3F825F652AC1E49B00392156 /* GameInstance.swift in Sources */,
 				3F68988D2ACC5D3700DADAC6 /* CustomSwipeGestureRecognizer.swift in Sources */,
-				3F825F5E2AC1D8C200392156 /* GameViewCollectionViewDelegateFlowLayoutExtension.swift in Sources */,
 				3F825F702AC1E6E600392156 /* EmptyInstance.swift in Sources */,
 				CC3F403C2AC075A20065075E /* UIColor + Extension.swift in Sources */,
 				3F825F632AC1DC8200392156 /* GameEngine.swift in Sources */,
@@ -446,7 +435,6 @@
 				3F825F6A2AC1E5F400392156 /* StarInstance.swift in Sources */,
 				3FA8C7D82AC83CC5007C2F4B /* GameEnigneCheckMatchsProtocol.swift in Sources */,
 				3FBC4D6F2AB0E54800B0E711 /* SceneDelegate.swift in Sources */,
-				3F825F5C2AC1D89E00392156 /* GameViewDelegateExtension.swift in Sources */,
 				3F7CC94D2ACB2B79004889C6 /* GameView.swift in Sources */,
 				3F825F7A2AC2D88000392156 /* GameViewModel.swift in Sources */,
 			);

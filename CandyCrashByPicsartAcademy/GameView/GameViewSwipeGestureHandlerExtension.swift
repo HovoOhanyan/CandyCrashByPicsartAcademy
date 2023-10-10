@@ -11,76 +11,17 @@ extension GameViewController {
     @objc func handleSwipeGesture(_ gestureRecognizer: CustomSwipeGestureRecognizer) {
         
         if gestureRecognizer.state == .recognized {
-            if let cell = gestureRecognizer.view as? GameInstanceCell, let indexPath = collectionView.indexPath(for: cell) {
-               
+            if let cell = gestureRecognizer.view as? GameInstanceCell {
+                
                 switch gestureRecognizer.swipeDirection {
                 case .left:
-                    let nextIndexPath = IndexPath(item: indexPath.item - 1, section: indexPath.section)
-                    if viewModal.gameEngine.gameSwipeManager.swipeLeftGesture(indexPaths:  [indexPath, nextIndexPath]) {
-                        
-                        UIView.animate(withDuration: 0.5) {
-                            self.collectionView.reloadItems(at: [indexPath, nextIndexPath])
-                        }
-                        
-                        viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
-                    } else {
-                        UIView.animate(withDuration: 0.5) {
-                            self.collectionView.reloadItems(at: [indexPath, nextIndexPath])
-                        }
-                    }
-                    
+                    print("")
                 case .right:
-                    let nextIndexPath = IndexPath(item: indexPath.item + 1, section: indexPath.section)
-                    
-                    if viewModal.gameEngine.gameSwipeManager.swipeRightGesture(indexPaths:  [indexPath, nextIndexPath]) {
-                        
-                        UIView.animate(withDuration: 0.5) {
-                            self.collectionView.reloadItems(at: [indexPath, nextIndexPath])
-                        }
-                        
-                        viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
-                    } else {
-                        UIView.animate(withDuration: 0.5) {
-                            self.collectionView.reloadItems(at: [indexPath, nextIndexPath])
-                        }
-                    }
-                    
+                    print("")
                 case .up:
-                    let numberOfItemsInRow = viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
-                    
-                    let nextIndexPath = IndexPath(item: indexPath.item - numberOfItemsInRow, section: indexPath.section)
-                    
-                    if viewModal.gameEngine.gameSwipeManager.swipeUpGesture(indexPaths:  [indexPath, nextIndexPath]) {
-                        
-                        UIView.animate(withDuration: 0.5) {
-                            self.collectionView.reloadItems(at: [indexPath, nextIndexPath])
-                        }
-                        
-                        viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
-                    } else {
-                        UIView.animate(withDuration: 0.5) {
-                            self.collectionView.reloadItems(at: [indexPath, nextIndexPath])
-                        }
-                    }
-                    
+                    print("")
                 case .down:
-                    let numberOfItemsInRow = viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
-                    
-                    let nextIndexPath = IndexPath(item: indexPath.item + numberOfItemsInRow, section: indexPath.section)
-                    
-                    if viewModal.gameEngine.gameSwipeManager.swipeDownGesture(indexPaths:  [indexPath, nextIndexPath]) {
-                        
-                        UIView.animate(withDuration: 0.5) {
-                            self.collectionView.reloadItems(at: [indexPath, nextIndexPath])
-                        }
-                        
-                        viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
-                    } else {
-                        UIView.animate(withDuration: 0.5) {
-                            self.collectionView.reloadItems(at: [indexPath, nextIndexPath])
-                        }
-                    }
-                    
+                    print("")
                 case .none:
                     break
                 }
@@ -88,3 +29,4 @@ extension GameViewController {
         }
     }
 }
+

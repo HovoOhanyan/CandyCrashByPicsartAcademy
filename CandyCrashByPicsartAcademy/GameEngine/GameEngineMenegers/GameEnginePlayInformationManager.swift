@@ -26,7 +26,7 @@ final class GameEnginePlayInformationManager: GameEnginePlayInformation {
     
     var gameInstance: GameInstance
     
-    private var gameEngineChangeHandler: GameEngineBoardChangeHandler
+    private var gameEngineChangeHandler: GameEngineBoardChangeHandler!
     
     init(score: Int, countOfSteps: Int, updatedStarEstimation: Int) {
         self.score = score
