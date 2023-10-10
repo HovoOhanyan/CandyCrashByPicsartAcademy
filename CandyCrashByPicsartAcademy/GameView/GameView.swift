@@ -9,6 +9,9 @@ import UIKit
 
 final class GameView: UIView {
     
+    private let resumeView = ResumeGameView()
+    private let restartView = RestartGameView()
+    
     private let backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "GameBackground")
@@ -283,7 +286,11 @@ extension GameView {
 extension GameView {
     
     func updateScoreLabel(score: Int) {
-        self.candyLabel.text = "\(score)"
+        if score > 0 {
+            self.candyLabel.text = "\(score)"
+        } else {
+            self.addSubview(resumeView)
+        }
     }
     
     func updateCountOfStepsLabel(countOfSteps: Int) {
@@ -291,7 +298,7 @@ extension GameView {
     }
     
     func updateStarLayerFrame(updatedStarEstimation: Int) {
-        let changeStar = 85 - (updatedStarEstimation)
+        let changeStar = 85 - updatedStarEstimation
         configureStarLayer(shapeLayer: starLayer, changeStar: changeStar)
     }
 }

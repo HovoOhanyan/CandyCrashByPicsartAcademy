@@ -37,10 +37,10 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
-                        gamePlayInfo.score -= 5
                         gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
+                        gamePlayInfo.score -= 5
                     }
-                    
+
                     var currentIndex = index
                     
                     var firstInstance = EmptyInstance()
@@ -138,10 +138,10 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
-                        gamePlayInfo.score -= 5
                         gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
+                        gamePlayInfo.score -= 5
                     }
-                    
+
                     var currentIndex = index + numberOfItemsInRow * 4
                     
                     var firstInstance = GameInstanceCell.random()
@@ -201,12 +201,12 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 3].id {
-                    
+
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
-                        gamePlayInfo.score -= 4
                         gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
+                        gamePlayInfo.score -= 4
                     }
-                    
+ 
                     var currentIndex = index
                     
                     var firstInstance = GameInstanceCell.random()
@@ -288,12 +288,12 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].id
                 {
-                    
+
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
-                        gamePlayInfo.score -= 4
                         gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
+                        gamePlayInfo.score -= 4
                     }
-                    
+
                     var currentIndex = index + numberOfItemsInRow * 3
                     
                     var firstInstance = GameInstanceCell.random()
@@ -348,12 +348,12 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id
                 {
-                    
+
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
-                        gamePlayInfo.score -= 3
                         gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
+                        gamePlayInfo.score -= 3
                     }
-                    
+
                     var currentIndex = index
                     
                     var firstInstance = GameInstanceCell.random()
@@ -423,12 +423,12 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].id
                 {
-                    
+
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
-                        gamePlayInfo.score -= 3
                         gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
+                        gamePlayInfo.score -= 3
                     }
-                    
+
                     var currentIndex = index + numberOfItemsInRow * 2
                     
                     var firstInstance = GameInstanceCell.random()
