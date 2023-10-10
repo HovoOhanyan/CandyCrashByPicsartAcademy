@@ -11,7 +11,7 @@ extension GameViewController {
     @objc func handleSwipeGesture(_ gestureRecognizer: CustomSwipeGestureRecognizer) {
         
         if gestureRecognizer.state == .recognized {
-            if let cell = gestureRecognizer.view as? GameInstanceCell {
+            if gestureRecognizer.view is GameInstanceCell {
                 
                 switch gestureRecognizer.swipeDirection {
                 case .left:

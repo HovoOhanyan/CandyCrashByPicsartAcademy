@@ -144,19 +144,19 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
 
                     var currentIndex = index + numberOfItemsInRow * 4
                     
-                    var firstInstance = GameInstanceCell.random()
+                    var firstInstance = GameInstanceView.random()
                     firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
                     
-                    var secondInstance = GameInstanceCell.random()
+                    var secondInstance = GameInstanceView.random()
                     secondInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath
                     
-                    var thiredInstance = GameInstanceCell.random()
+                    var thiredInstance = GameInstanceView.random()
                     thiredInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath
                     
-                    var fourthInstance = GameInstanceCell.random()
+                    var fourthInstance = GameInstanceView.random()
                     fourthInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].indexPath
                     
-                    var fifthInstance = GameInstanceCell.random()
+                    var fifthInstance = GameInstanceView.random()
                     fifthInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 4].indexPath
                     
                     gameBoardManager.gameBoard[index] = firstInstance
@@ -209,16 +209,16 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
  
                     var currentIndex = index
                     
-                    var firstInstance = GameInstanceCell.random()
+                    var firstInstance = GameInstanceView.random()
                     firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
                     
-                    var secondInstance = GameInstanceCell.random()
+                    var secondInstance = GameInstanceView.random()
                     secondInstance.indexPath = gameBoardManager.gameBoard[index + 1].indexPath
                     
-                    var thiredInstance = GameInstanceCell.random()
+                    var thiredInstance = GameInstanceView.random()
                     thiredInstance.indexPath = gameBoardManager.gameBoard[index + 2].indexPath
                     
-                    var fourthInstance = GameInstanceCell.random()
+                    var fourthInstance = GameInstanceView.random()
                     fourthInstance.indexPath = gameBoardManager.gameBoard[index + 3].indexPath
                     
                     gameBoardManager.gameBoard[index] = firstInstance
@@ -296,16 +296,16 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
 
                     var currentIndex = index + numberOfItemsInRow * 3
                     
-                    var firstInstance = GameInstanceCell.random()
+                    var firstInstance = GameInstanceView.random()
                     firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
                     
-                    var secondInstance = GameInstanceCell.random()
+                    var secondInstance = GameInstanceView.random()
                     secondInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath
                     
-                    var thiredInstance = GameInstanceCell.random()
+                    var thiredInstance = GameInstanceView.random()
                     thiredInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath
                     
-                    var fourthInstance = GameInstanceCell.random()
+                    var fourthInstance = GameInstanceView.random()
                     fourthInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].indexPath
                     
                     gameBoardManager.gameBoard[index] = firstInstance
@@ -356,13 +356,13 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
 
                     var currentIndex = index
                     
-                    var firstInstance = GameInstanceCell.random()
+                    var firstInstance = GameInstanceView.random()
                     firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
                     
-                    var secondInstance = GameInstanceCell.random()
+                    var secondInstance = GameInstanceView.random()
                     secondInstance.indexPath = gameBoardManager.gameBoard[index + 1].indexPath
                     
-                    var thiredInstance = GameInstanceCell.random()
+                    var thiredInstance = GameInstanceView.random()
                     thiredInstance.indexPath = gameBoardManager.gameBoard[index + 2].indexPath
                     
                     gameBoardManager.gameBoard[index] = firstInstance
@@ -431,13 +431,13 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
 
                     var currentIndex = index + numberOfItemsInRow * 2
                     
-                    var firstInstance = GameInstanceCell.random()
+                    var firstInstance = GameInstanceView.random()
                     firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
                     
-                    var secondInstance = GameInstanceCell.random()
+                    var secondInstance = GameInstanceView.random()
                     secondInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath
                     
-                    var thiredInstance = GameInstanceCell.random()
+                    var thiredInstance = GameInstanceView.random()
                     thiredInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath
                     
                     gameBoardManager.gameBoard[index] = firstInstance

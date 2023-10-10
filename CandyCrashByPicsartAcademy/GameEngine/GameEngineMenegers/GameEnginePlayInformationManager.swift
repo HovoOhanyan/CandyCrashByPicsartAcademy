@@ -32,7 +32,7 @@ final class GameEnginePlayInformationManager: GameEnginePlayInformation {
         self.score = score
         self.countOfSteps = countOfSteps
         self.updatedStarEstimation = updatedStarEstimation
-        self.gameInstance = GameInstanceCell.random()
+        self.gameInstance = GameInstanceView.random()
     }
     
     func addGameEnigneChangeHandler(gameEngineChangeHandler: GameEngineBoardChangeHandler) {
