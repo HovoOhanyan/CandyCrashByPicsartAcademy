@@ -12,7 +12,7 @@ final class GameViewModel {
     private let gameEngineBoardManager = GameEngineBoardManager(numberOfItemsInRow: 5,
                                                                 boardSize: 40)
     
-    private let gameEnginePlayInfoManager = GameEnginePlayInformationManager(score: 20, countOfSteps: 15, updatedStarEstimation: 85)
+    private let gameEnginePlayInfoManager = GameEnginePlayInformationManager(score: 10, countOfSteps: 10, updatedStarEstimation: 85)
     var reloadItem: (([IndexPath]) -> Void)?
     var updateScoreLabel: ((Int) -> Void)?
     var updateCountOfStepsLabel: ((Int) -> Void)?

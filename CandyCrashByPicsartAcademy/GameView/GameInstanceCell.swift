@@ -24,7 +24,6 @@ final class GameInstanceCell: UICollectionViewCell {
         super.init(frame: frame)
         setupUI()
         createAndSettingsSwipeGesture()
-
     }
     
     required init?(coder: NSCoder) {

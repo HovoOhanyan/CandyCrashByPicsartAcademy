@@ -28,6 +28,7 @@ final class GameEnginePlayInformationManager: GameEnginePlayInformation {
         }
     }
     
+    
     var gameInstance: GameInstance
     
     private var gameEngineChangeHandler: GameEngineBoardChangeHandler!
