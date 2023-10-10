@@ -9,16 +9,11 @@ import Foundation
 
 final class GameEnginePlayInformationManager: GameEnginePlayInformation {
     
-    var score: Int {
-        didSet {
-            gameEngineChangeHandler.updateScoreLabelHandler?(score)
-        }
-    }
+    var score: Int
     
     var countOfSteps: Int {
         didSet {
-            gameEngineChangeHandler.updateCountOfStepsLabelHandler?(countOfSteps)
-       
+            gameEngineChangeHandler.updateLabelHandler?(score, countOfSteps)
         }
     }
     
@@ -35,7 +30,7 @@ final class GameEnginePlayInformationManager: GameEnginePlayInformation {
     
     init(score: Int, countOfSteps: Int, updatedStarEstimation: Int) {
         self.score = score
-        self.countOfSteps = score
+        self.countOfSteps = countOfSteps
         self.updatedStarEstimation = updatedStarEstimation
         self.gameInstance = GameInstanceCell.random()
     }

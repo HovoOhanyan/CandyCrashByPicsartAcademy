@@ -36,22 +36,11 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id ==  gameBoardManager.gameBoard[index + 4].id
                 {
                     
-                    if gamePlayInfo.score <= 0 {
-                        gamePlayInfo.score = 20
-                        gamePlayInfo.countOfSteps = 10
-                        gamePlayInfo.updatedStarEstimation = 85
-                    }
-                    
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 5
                     }
-                    
-                    if gamePlayInfo.score > 0 && gamePlayInfo.countOfSteps <= 0 {
-//                        let gameResume = ResumeGameViewController()
-//                        gameResume.presentResumeView()
-                    }
-                    
+
                     var currentIndex = index
                     
                     var firstInstance = EmptyInstance()
@@ -148,22 +137,11 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 4].id
                 {
                     
-                    if gamePlayInfo.score <= 0 {
-                        gamePlayInfo.score = 20
-                        gamePlayInfo.countOfSteps = 10
-                        gamePlayInfo.updatedStarEstimation = 85
-                    }
-                    
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 5
                     }
-                    
-                    if gamePlayInfo.score > 0 && gamePlayInfo.countOfSteps <= 0 {
-//                        let gameResume = ResumeGameViewController()
-//                        gameResume.presentResumeView()
-                    }
-                    
+
                     var currentIndex = index + numberOfItemsInRow * 4
                     
                     var firstInstance = GameInstanceCell.random()
@@ -223,23 +201,12 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 3].id {
-                    
-                    if gamePlayInfo.score <= 0 {
-                        gamePlayInfo.score = 20
-                        gamePlayInfo.countOfSteps = 10
-                        gamePlayInfo.updatedStarEstimation = 85
-                    }
-                    
+
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 4
                     }
-                    
-                    if gamePlayInfo.score > 0 && gamePlayInfo.countOfSteps <= 0 {
-//                        let gameResume = ResumeGameViewController()
-//                        gameResume.presentResumeView()
-                    }
-                    
+ 
                     var currentIndex = index
                     
                     var firstInstance = GameInstanceCell.random()
@@ -321,23 +288,12 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].id
                 {
-                    
-                    if gamePlayInfo.score <= 0 {
-                        gamePlayInfo.score = 20
-                        gamePlayInfo.countOfSteps = 10
-                        gamePlayInfo.updatedStarEstimation = 85
-                    }
-                    
+
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 4
                     }
-                    
-                    if gamePlayInfo.score > 0 && gamePlayInfo.countOfSteps <= 0 {
-//                        let gameResume = ResumeGameViewController()
-//                        gameResume.presentResumeView()
-                    }
-                    
+
                     var currentIndex = index + numberOfItemsInRow * 3
                     
                     var firstInstance = GameInstanceCell.random()
@@ -392,23 +348,12 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id
                 {
-                    
-                    if gamePlayInfo.score <= 0 {
-                        gamePlayInfo.score = 20
-                        gamePlayInfo.countOfSteps = 10
-                        gamePlayInfo.updatedStarEstimation = 85
-                    }
-                    
+
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 3
                     }
-                    
-                    if gamePlayInfo.score > 0 && gamePlayInfo.countOfSteps <= 0 {
-//                        let gameResume = ResumeGameViewController()
-//                        gameResume.presentResumeView()
-                    }
-                    
+
                     var currentIndex = index
                     
                     var firstInstance = GameInstanceCell.random()
@@ -478,23 +423,12 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].id
                 {
-                    
-                    if gamePlayInfo.score <= 0 {
-                        gamePlayInfo.score = 20
-                        gamePlayInfo.countOfSteps = 10
-                        gamePlayInfo.updatedStarEstimation = 85
-                    }
-                    
+
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 3
                     }
-                    
-                    if gamePlayInfo.score > 0 && gamePlayInfo.countOfSteps <= 0 {
-//                        let gameResume = ResumeGameViewController()
-//                        gameResume.presentResumeView()
-                    }
-                    
+
                     var currentIndex = index + numberOfItemsInRow * 2
                     
                     var firstInstance = GameInstanceCell.random()

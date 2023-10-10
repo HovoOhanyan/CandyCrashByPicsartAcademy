@@ -2,7 +2,7 @@
 //  ResumeGameViewController.swift
 //  CandyCrashByPicsartAcademy
 //
-//  Created by Er Baghdasaryan on 03.10.23.
+//  Created by Er Baghdasaryan on 10.10.23.
 //
 
 import UIKit
@@ -23,6 +23,7 @@ extension ResumeGameViewController {
     private func setupUI() {
         resumeGameView.frame = view.frame
         
+        
         view.addSubview(resumeGameView)
         
         resumeGameView.setupUI()
@@ -40,6 +41,8 @@ extension ResumeGameViewController {
     @objc func resumeButtonTapped() {
         let gameView = GameViewController()
         gameView.modalPresentationStyle = .fullScreen
+        gameView.viewModal = GameViewModel()
         present(gameView, animated: true)
     }
 }
+

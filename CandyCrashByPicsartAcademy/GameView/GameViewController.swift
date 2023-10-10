@@ -75,8 +75,23 @@ final class GameViewController: UIViewController {
             self.gameView.updateCountOfStepsLabel(countOfSteps: countsOfSteps)
         }
         
-        viewModal?.updateScoreLabel = { score in
-            self.gameView.updateScoreLabel(score: score)
+        viewModal?.updateLabel = { score, countOfSteps in
+            print(score)
+            if score > 0 && countOfSteps > 0 {
+                self.gameView.updateScoreLabel(score: score)
+                self.gameView.updateCountOfStepsLabel(countOfSteps: countOfSteps)
+            } else if score < 0 && countOfSteps > 0{
+                let  resumeVC = ResumeGameViewController()
+                resumeVC.modalPresentationStyle = .fullScreen
+                self.present(resumeVC, animated: true)
+            
+            } else if score > 0 && countOfSteps < 0 {
+                let  restartVC = RestartGameViewController()
+                restartVC.modalPresentationStyle = .fullScreen
+                self.present(restartVC, animated: true)
+                let newModel = GameViewModel()
+                
+            }
         }
         
         viewModal.updateStarLayer = { starChanges in

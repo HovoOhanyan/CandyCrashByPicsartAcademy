@@ -2,17 +2,17 @@
 //  ResumeGameView.swift
 //  CandyCrashByPicsartAcademy
 //
-//  Created by Er Baghdasaryan on 10.10.23.
+//  Created by Er Baghdasaryan on 03.10.23.
 //
 
 import UIKit
 
-final class ResumeGameView: UIView {
+final class RestartGameView: UIView {
     
     private let backgroundImage: UIImageView = {
         let backgroundImage = UIImageView()
         backgroundImage.frame = CGRect(x: 0, y: 0, width: 428, height: 926)
-        backgroundImage.image = UIImage(named: "ResumeBackground")
+        backgroundImage.image = UIImage(named: "RestartBackground")
         let layer0 = CALayer()
         layer0.contents = backgroundImage.image
         layer0.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 1.3, b: 0, c: 0, d: 1, tx: -0.15, ty: 0))
@@ -27,13 +27,13 @@ final class ResumeGameView: UIView {
         return backgroundImage
     }()
     
-    let resumeButton: UIButton = {
+    let restartButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Next level", for: .normal)
+        button.setTitle("Start", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 186, height: 56)
         button.layer.cornerRadius = 22
-        button.titleLabel?.font = UIFont(name: "CherryBombOne-Regular", size: 20)
+        button.titleLabel?.font = UIFont(name: "CherryBombOne-Regular", size: 24)
         button.titleLabel?.frame = CGRect(x: 0, y: 0, width: 74, height: 24)
         button.titleLabel?.textAlignment = .center
         button.layer.masksToBounds = true
@@ -44,10 +44,9 @@ final class ResumeGameView: UIView {
         didSet {
             gradientLayer.startPoint = CGPoint(x: 0.25, y: 0.5)
             gradientLayer.endPoint = CGPoint(x: 0.75, y: 0.5)
-            gradientLayer.colors = [ UIColor.gradientSecond1().cgColor,
-                                          UIColor.gradientSecond2().cgColor,
-                                          UIColor.gradientSecond3().cgColor
-            ]
+            gradientLayer.colors = [ UIColor.gradientFirst1().cgColor,
+                                     UIColor.gradientFirst2().cgColor,
+                                     UIColor.gradientFirst3().cgColor ]
             gradientLayer.locations = [0, 0.22, 1]
             gradientLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 0.99, c: -0.99, d: 0, tx: 0.99, ty: 0.08))
             gradientLayer.bounds = self.bounds.insetBy(dx: -0.5*self.bounds.size.width, dy: -0.5*self.bounds.size.height)
@@ -61,17 +60,17 @@ final class ResumeGameView: UIView {
         label.numberOfLines = 3
         label.textAlignment = .center
         label.textColor = .white
-        label.text = "Congratulations! You win this level"
+        label.text = "You were unable to continue the game according to the set steps!"
         return label
     }()
     
     func setupUI() {
-        resumeButton.translatesAutoresizingMaskIntoConstraints = false
+        restartButton.translatesAutoresizingMaskIntoConstraints = false
         failedGameLabel.translatesAutoresizingMaskIntoConstraints = false
         backgroundImage.frame = self.frame
         
         self.addSubview(backgroundImage)
-        self.addSubview(resumeButton)
+        self.addSubview(restartButton)
         self.addSubview(failedGameLabel)
         
         NSLayoutConstraint.activate([
@@ -81,16 +80,15 @@ final class ResumeGameView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            resumeButton.widthAnchor.constraint(equalToConstant: 186),
-            resumeButton.heightAnchor.constraint(equalToConstant: 56),
-            resumeButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0),
-            resumeButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 439)
+            restartButton.widthAnchor.constraint(equalToConstant: 186),
+            restartButton.heightAnchor.constraint(equalToConstant: 56),
+            restartButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0),
+            restartButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 439)
         ])
     }
     
     func setupGradient() {
         self.gradientLayer = CAGradientLayer()
-        self.resumeButton.layer.insertSublayer(gradientLayer, at: 0)
+        self.restartButton.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
-
