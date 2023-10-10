@@ -9,28 +9,17 @@ import UIKit
 
 final class GameInstanceCell: UICollectionViewCell {
     static let identifier = "GameInstanceCell"
-    
     var gameInstance: GameInstance!
-    
-    private var swipeGestureLeft = UISwipeGestureRecognizer()
-    private var swipeGestureRight = UISwipeGestureRecognizer()
-    private var swipeGestureDown = UISwipeGestureRecognizer()
-    private var swipeGestureUp = UISwipeGestureRecognizer()
-        
-    weak var swipeGestureDelegate: SwipeGestureDelegate?
     private var imageView = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-        createAndSettingsSwipeGesture()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
-        createAndSettingsSwipeGesture()
-
     }
     
     
@@ -64,52 +53,6 @@ final class GameInstanceCell: UICollectionViewCell {
             imageView.image = UIImage(named: "Square")
         case .empty:
             imageView.image = UIImage()
-        }
-    }
-    
-    private func createAndSettingsSwipeGesture() {
-        swipeGestureLeft = UISwipeGestureRecognizer(target: self,
-                                                    action: #selector(handleSwipe(_:)))
-        swipeGestureLeft.direction = .left
-        
-        swipeGestureRight = UISwipeGestureRecognizer(target: self,
-                                                     action: #selector(handleSwipe(_:)))
-        swipeGestureRight.direction = .right
-        
-        
-        swipeGestureUp = UISwipeGestureRecognizer(target: self,
-                                                  action: #selector(handleSwipe(_:)))
-        swipeGestureUp.direction = .up
-        
-        
-        swipeGestureDown = UISwipeGestureRecognizer(target: self,
-                                                    action: #selector(handleSwipe(_:)))
-        swipeGestureDown.direction = .down
-        
-        
-        self.addGestureRecognizer(swipeGestureLeft)
-        self.addGestureRecognizer(swipeGestureRight)
-        self.addGestureRecognizer(swipeGestureUp)
-        self.addGestureRecognizer(swipeGestureDown)
-
-    }
-    
-    @objc private func handleSwipe(_ sender: UISwipeGestureRecognizer) {
-        switch sender.direction {
-        case .right:
-            let secondIndexPath = IndexPath(item: gameInstance!.indexPath.row + 1, section: 0)
-            swipeGestureDelegate?.swipeRightGesture(indexPaths: [gameInstance!.indexPath, secondIndexPath])
-        case .left:
-            let secondIndexPath = IndexPath(item: gameInstance!.indexPath.row - 1, section: 0)
-            swipeGestureDelegate?.swipeLeftGesture(indexPaths: [gameInstance!.indexPath, secondIndexPath])
-        case .up:
-            let secondIndexPath = IndexPath(item: gameInstance!.indexPath.row - 5, section: 0)
-            swipeGestureDelegate?.swipeUpGesture(indexPaths: [gameInstance!.indexPath, secondIndexPath])
-        case .down:
-            let secondIndexPath = IndexPath(item: gameInstance!.indexPath.row + 5, section: 0)
-            swipeGestureDelegate?.swipeDownGesture(indexPaths: [gameInstance!.indexPath, secondIndexPath])
-        default:
-            break
         }
     }
     
