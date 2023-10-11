@@ -8,7 +8,9 @@
 import Foundation
 
 protocol GameEngineBoardChangeHandler: AnyObject {
-    var fallDownHandler: (([IndexPath]) -> Void)? { get set }
+    var reloadItems: (([Int]) -> Void)? { get set }
+    var fallDownAtRow: (([Int]) -> Void)? { get set }
+    var fallDownAtColumn: ((Int, Int) -> Void)? { get set }
     var updateLabelHandler: ((Int, Int) -> Void)? { get set }
     var updateCountOfStepsLabelHandler: ((Int) -> Void)? { get set }
     var updateStarChangesHandler: ((Int) -> Void)? { get set }

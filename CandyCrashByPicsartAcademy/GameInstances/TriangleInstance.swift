@@ -9,8 +9,8 @@ import Foundation
 
 struct TriangleInstance: GameInstance {
     var id: Int = 3
-    
     var indexPath: IndexPath = IndexPath()
-    
+    var index: Int = 0
+
     var image: GameInstanceImage = .triangle
 }

@@ -9,8 +9,8 @@ import Foundation
 
 struct StarInstance: GameInstance {
     var id: Int = 2
-    
     var indexPath: IndexPath = IndexPath()
+    var index: Int = 0
     
     var image: GameInstanceImage = .star
 }

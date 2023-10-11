@@ -61,7 +61,7 @@ final class ResumeGameView: UIView {
         label.numberOfLines = 3
         label.textAlignment = .center
         label.textColor = .white
-        label.text = "Congratulations! You win this level"
+        label.text = "Congratulations! You won this level"
         return label
     }()
     

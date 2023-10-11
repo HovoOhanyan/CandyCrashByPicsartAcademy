@@ -8,7 +8,9 @@
 import Foundation
 
 final class GameEngineBoardHandler: GameEngineBoardChangeHandler {
-    var fallDownHandler: (([IndexPath]) -> Void)?
+    var reloadItems: (([Int]) -> Void)?
+    var fallDownAtRow: (([Int]) -> Void)?
+    var fallDownAtColumn: ((Int, Int) -> Void)?
     var updateLabelHandler: ((Int, Int) -> Void)?
     var updateCountOfStepsLabelHandler: ((Int) -> Void)?
     var updateStarChangesHandler: ((Int) -> Void)?

@@ -22,27 +22,27 @@ final class GameEngineBoardManager: GameEngineBoard {
     
     func createBoard() {
         while boardCount != gameBoard.count {
-            var newInstace = GameInstanceCell.random()
+            var newInstace = GameInstanceView.random()
             
             switch boardCount {
             case 0:
-                newInstace = GameInstanceCell.random()
+                newInstace = GameInstanceView.random()
             case 1...numberOfItemsInRow:
                 
                 while gameBoard[boardCount - 1].id == newInstace.id {
-                    newInstace = GameInstanceCell.random()
+                    newInstace = GameInstanceView.random()
                 }
                 
             case numberOfItemsInRow...gameBoard.count - numberOfItemsInRow - 1:
                 
                 while gameBoard[boardCount - 1].id == newInstace.id || gameBoard[self.boardCount - numberOfItemsInRow].id == newInstace.id || gameBoard[self.boardCount + numberOfItemsInRow].id == newInstace.id {
-                    newInstace = GameInstanceCell.random()
+                    newInstace = GameInstanceView.random()
                 }
                 
             case gameBoard.count - numberOfItemsInRow...boardCount:
                 
                 while gameBoard[boardCount - 1].id == newInstace.id || gameBoard[self.boardCount - numberOfItemsInRow].id == newInstace.id {
-                    newInstace = GameInstanceCell.random()
+                    newInstace = GameInstanceView.random()
                 }
                 
             default:

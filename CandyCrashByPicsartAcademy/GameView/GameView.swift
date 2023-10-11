@@ -8,10 +8,6 @@
 import UIKit
 
 final class GameView: UIView {
-    
-    private let resumeView = ResumeGameView()
-    private let restartView = RestartGameView()
-    
     private let backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "GameBackground")
@@ -29,6 +25,13 @@ final class GameView: UIView {
         let view = UIView()
         view.layer.cornerRadius = 25
         view.layer.masksToBounds = true
+        return view
+    }()
+    
+    public let gameAreaView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gradientFirst2()
+        view.layer.cornerRadius = 10
         return view
     }()
     
@@ -53,6 +56,7 @@ final class GameView: UIView {
     private let settingsButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "SettingsImage"), for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 25
         button.layer.masksToBounds = true
         return button
@@ -123,6 +127,8 @@ final class GameView: UIView {
         image.image = UIImage(named: "Candy")
         return image
     }()
+    
+    public var gameInstanceArray: [GameInstanceView] = []
 }
 
 //MARK: Setup UI
@@ -130,6 +136,7 @@ extension GameView {
     
     func setupUI(gamePlayInformation: GameEnginePlayInformation) {
         updateLabelsWithGamePlayInfo(gamePlayInformation: gamePlayInformation)
+        
         self.backgroundColor = .white
         topView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
@@ -139,6 +146,7 @@ extension GameView {
         candyLabel.translatesAutoresizingMaskIntoConstraints = false
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
         iconImage.translatesAutoresizingMaskIntoConstraints = false
+        gameAreaView.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(backgroundImage)
         backgroundImage.addSubview(topView)
@@ -148,6 +156,7 @@ extension GameView {
         candysView.addSubview(candyLabel)
         topView.addSubview(timerLabel)
         topView.addSubview(iconImage)
+        self.addSubview(gameAreaView)
         
         NSLayoutConstraint.activate([
             backgroundImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
@@ -202,6 +211,13 @@ extension GameView {
             iconImage.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -10),
             iconImage.heightAnchor.constraint(equalToConstant: 70),
             iconImage.widthAnchor.constraint(equalToConstant: 80)
+        ])
+        
+        NSLayoutConstraint.activate([
+            gameAreaView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 50),
+            gameAreaView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
+            gameAreaView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
+            gameAreaView.bottomAnchor.constraint(equalTo: settingsButton.topAnchor, constant: -50),
         ])
     }
     
@@ -288,8 +304,6 @@ extension GameView {
     func updateScoreLabel(score: Int) {
         if score > 0 {
             self.candyLabel.text = "\(score)"
-        } else {
-            self.addSubview(resumeView)
         }
     }
     
