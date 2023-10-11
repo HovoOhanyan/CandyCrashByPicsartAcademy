@@ -77,20 +77,20 @@ final class GameView: UIView {
         }
     }
     
-//    private var gradientLayerSB: CAGradientLayer! {
-//        didSet {
-//            gradientLayerSB.startPoint = CGPoint(x: 0.25, y: 0.5)
-//            gradientLayerSB.endPoint = CGPoint(x: 0.75, y: 0.5)
-//            gradientLayerSB.colors = [ UIColor.gradientFirst1().cgColor,
-//                                     UIColor.gradientFirst2().cgColor,
-//                                     UIColor.gradientFirst3().cgColor
-//            ]
-//            gradientLayerSB.locations = [0, 0.62, 1]
-//            gradientLayerSB.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 0.99, c: -0.99, d: 0, tx: 0.99, ty: 0.08))
-//            gradientLayerSB.bounds = topView.bounds.insetBy(dx: -0.5*topView.bounds.size.width, dy: -0.5*topView.bounds.size.height)
-//            gradientLayerSB.position = topView.center
-//        }
-//    }
+    private var gradientLayerSB: CAGradientLayer! {
+        didSet {
+            gradientLayerSB.startPoint = CGPoint(x: 0.25, y: 0.5)
+            gradientLayerSB.endPoint = CGPoint(x: 0.75, y: 0.5)
+            gradientLayerSB.colors = [ UIColor.gradientFirst1().cgColor,
+                                     UIColor.gradientFirst2().cgColor,
+                                     UIColor.gradientFirst3().cgColor
+            ]
+            gradientLayerSB.locations = [0, 0.62, 1]
+            gradientLayerSB.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 0.99, c: -0.99, d: 0, tx: 0.99, ty: 0.08))
+            gradientLayerSB.bounds = topView.bounds.insetBy(dx: -0.5*topView.bounds.size.width, dy: -0.5*topView.bounds.size.height)
+            gradientLayerSB.position = topView.center
+        }
+    }
     
     private var gradientLayerCV: CAGradientLayer! {
         didSet {
@@ -247,8 +247,8 @@ extension GameView {
         self.gradientLayerTV = CAGradientLayer()
         self.topView.layer.insertSublayer(gradientLayerTV, at: 0)
         
-//        self.gradientLayerSB = CAGradientLayer()
-//        self.settingsButton.layer.insertSublayer(gradientLayerSB, at: 0)
+        self.gradientLayerSB = CAGradientLayer()
+        self.settingsButton.layer.insertSublayer(gradientLayerSB, at: 0)
         
         self.gradientLayerCV = CAGradientLayer()
         self.candysView.layer.insertSublayer(gradientLayerCV, at: 0)
@@ -266,9 +266,9 @@ extension GameView {
         gradientLayerTV.frame = CGRect(x: 0, y: 0,
                                           width: self.topView.bounds.size.width,
                                           height: self.topView.bounds.size.height)
-//        gradientLayerSB.frame = CGRect(x: 0, y: 0,
-//                                     width: self.settingsButton.bounds.size.width,
-//                                     height: self.settingsButton.bounds.size.width)
+        gradientLayerSB.frame = CGRect(x: 0, y: 0,
+                                     width: self.settingsButton.bounds.size.width,
+                                     height: self.settingsButton.bounds.size.width)
         
         gradientLayerCV.frame = CGRect(x: 0, y: 0,
                                      width: self.candysView.bounds.size.width,
