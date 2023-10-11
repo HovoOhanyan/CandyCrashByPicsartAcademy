@@ -109,10 +109,7 @@ final class GameViewController: UIViewController {
     }
     
     private func setupSwipeGesture() {
-        gameView.gameInstanceArray.forEach { view in
-            view.isUserInteractionEnabled = true
-            let customSwipeGestureRecognizer = CustomSwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
-            view.addGestureRecognizer(customSwipeGestureRecognizer)
-        }
+        let customSwipeGestureRecognizer = CustomSwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
+        gameView.gameAreaView.addGestureRecognizer(customSwipeGestureRecognizer)
     }
 }

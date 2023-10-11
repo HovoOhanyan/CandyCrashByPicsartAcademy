@@ -22,7 +22,9 @@ extension GameView {
         let minY = gameAreaView.frame.minY
         
         gameInstanceArray = (1...gameBoard.gameBoard.count).map { _ in
-                GameInstanceView()
+            let view = GameInstanceView()
+            view.isUserInteractionEnabled = false
+            return view
         }
         
         for row in 0..<boardRows {
