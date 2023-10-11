@@ -13,12 +13,14 @@ extension GameViewController {
             if let view = gestureRecognizer.view as? GameInstanceView {
                 switch gestureRecognizer.swipeDirection {
                 case .left:
-                    
                     let index = view.gameInstance.index
-                    let first = self.gameView.gameInstanceArray[index]
-                    let second = self.gameView.gameInstanceArray[index - 1]
-                   
-                    if view.gameInstance.index - 1 >= 0 {
+
+                    let numberOfItemsInRow = viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
+                    
+                    if view.gameInstance.index % numberOfItemsInRow != 0 {
+                        let first = self.gameView.gameInstanceArray[index]
+                        let second = self.gameView.gameInstanceArray[index - 1]
+                        
                         UIView.animate(withDuration: 0.6) {
                             self.gameView.gameInstanceArray.swapAt(index, index - 1)
                             
@@ -26,36 +28,39 @@ extension GameViewController {
                             first.frame = second.frame
                             second.frame = tempFrame
                         }
-                    }
-                    
-                    var tempIndex = first.gameInstance.index
-                    first.gameInstance.index = second.gameInstance.index
-                    second.gameInstance.index = tempIndex
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        if self.viewModal.gameEngine.gameSwipeManager.swipeLeftGesture(index: index) {
-                            self.viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
-                        } else {
-                            self.gameView.gameInstanceArray.swapAt(index, index - 1)
-
-                            tempIndex = first.gameInstance.index
-                            first.gameInstance.index = second.gameInstance.index
-                            second.gameInstance.index = tempIndex
-                            
-                            UIView.animate(withDuration: 0.5) {
-                                let tempFrame = first.frame
-                                first.frame = second.frame
-                                second.frame = tempFrame
+                        
+                        
+                        var tempIndex = first.gameInstance.index
+                        first.gameInstance.index = second.gameInstance.index
+                        second.gameInstance.index = tempIndex
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            if self.viewModal.gameEngine.gameSwipeManager.swipeLeftGesture(index: index) {
+                                self.viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
+                            } else {
+                                self.gameView.gameInstanceArray.swapAt(index, index - 1)
+                                
+                                tempIndex = first.gameInstance.index
+                                first.gameInstance.index = second.gameInstance.index
+                                second.gameInstance.index = tempIndex
+                                
+                                UIView.animate(withDuration: 0.5) {
+                                    let tempFrame = first.frame
+                                    first.frame = second.frame
+                                    second.frame = tempFrame
+                                }
                             }
                         }
                     }
                 case .right:
                     
                     let index = view.gameInstance.index
-                    let first = self.gameView.gameInstanceArray[index]
-                    let second = self.gameView.gameInstanceArray[index + 1]
-                    
-                    if index > 0 {
+                    let numberOfItemsInRow = viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
+
+                    if index % numberOfItemsInRow != 4 {
+                        let first = self.gameView.gameInstanceArray[index]
+                        let second = self.gameView.gameInstanceArray[index + 1]
+                        
                         self.gameView.gameInstanceArray.swapAt(index, index + 1)
                         
                         UIView.animate(withDuration: 0.9) {
@@ -77,7 +82,7 @@ extension GameViewController {
                                     second.frame = tempFrame
                                 }
                                 
-                                self.gameView.viewArray.swapAt(index, index + 1)
+                                self.gameView.gameInstanceArray.swapAt(index, index + 1)
                                 
                                 tempIndex = first.gameInstance.index
                                 first.gameInstance.index = second.gameInstance.index
@@ -113,7 +118,7 @@ extension GameViewController {
                                     first.frame = second.frame
                                     second.frame = tempFrame
                                 }
-                                self.gameView.viewArray.swapAt(index, index - numberOfItemsInRow)
+                                self.gameView.gameInstanceArray.swapAt(index, index - numberOfItemsInRow)
 
                                 let tempIndex = first.gameInstance.index
                                 first.gameInstance.index = second.gameInstance.index
@@ -152,7 +157,7 @@ extension GameViewController {
                                     second.frame = tempFrame
                                 }
                                 
-                                self.gameView.viewArray.swapAt(index, index + numberOfItemsInRow)
+                                self.gameView.gameInstanceArray.swapAt(index, index + numberOfItemsInRow)
 
                                 let tempIndex = first.gameInstance.index
                                 first.gameInstance.index = second.gameInstance.index

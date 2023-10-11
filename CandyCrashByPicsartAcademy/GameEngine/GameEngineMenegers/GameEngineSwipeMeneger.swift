@@ -11,29 +11,23 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
     private var gameBoardManager: GameEngineBoard
     private var gamePlayInfo: GameEnginePlayInformation
     private var gameCheckManager: GameEngineCheckMatches
-    
+
     init(gameBoardManager: GameEngineBoard, gamePlayInfo: GameEnginePlayInformation, gameCheckManager: GameEngineCheckMatches) {
         self.gameBoardManager = gameBoardManager
         self.gamePlayInfo = gamePlayInfo
         self.gameCheckManager = gameCheckManager
     }
     
-    func swipeUpGesture(indexPaths: [IndexPath]) -> Bool {
-        if indexPaths[0].row - self.gameBoardManager.numberOfItemsInRow >= 0 {
-            gameBoardManager.gameBoard.swapAt(indexPaths[0].row, indexPaths[1].row)
+    func swipeUpGesture(index: Int) -> Bool {
+        if index - self.gameBoardManager.numberOfItemsInRow >= 0 {
+            let secondIndex = index - gameBoardManager.numberOfItemsInRow
+            gameBoardManager.gameBoard.swapAt(index, secondIndex)
             
             if self.gameCheckManager.checkMatchForSwipeGesture() {
-                
-                let tempIndexPath = gameBoardManager.gameBoard[indexPaths[1].row].indexPath
-                gameBoardManager.gameBoard[indexPaths[1].row].indexPath =
-                gameBoardManager.gameBoard[indexPaths[0].row].indexPath
-                gameBoardManager.gameBoard[indexPaths[0].row].indexPath = tempIndexPath
-                
                 gamePlayInfo.countOfSteps -= 1
-                
                 return true
             } else {
-                gameBoardManager.gameBoard.swapAt(indexPaths[1].row, indexPaths[0].row)
+                gameBoardManager.gameBoard.swapAt(secondIndex, index)
                 return false
             }
         } else {
@@ -41,21 +35,16 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
         }
     }
     
-    func swipeDownGesture(indexPaths: [IndexPath])  -> Bool{
-        if indexPaths[0].row + self.gameBoardManager.numberOfItemsInRow <= self.gameBoardManager.gameBoard.count {
-            self.gameBoardManager.gameBoard.swapAt(indexPaths[0].row, indexPaths[1].row)
-            
+    func swipeDownGesture(index: Int)  -> Bool {
+        if index + self.gameBoardManager.numberOfItemsInRow <= self.gameBoardManager.gameBoard.count {
+            let secondIndex = index + gameBoardManager.numberOfItemsInRow
+            self.gameBoardManager.gameBoard.swapAt(index, secondIndex)
+        
             if self.gameCheckManager.checkMatchForSwipeGesture() {
-                
-                let tempIndexPath = gameBoardManager.gameBoard[indexPaths[1].row].indexPath
-                gameBoardManager.gameBoard[indexPaths[1].row].indexPath =
-                gameBoardManager.gameBoard[indexPaths[0].row].indexPath
-                gameBoardManager.gameBoard[indexPaths[0].row].indexPath = tempIndexPath
-                
                 gamePlayInfo.countOfSteps -= 1
                 return true
             } else {
-                gameBoardManager.gameBoard.swapAt(indexPaths[1].row, indexPaths[0].row)
+                gameBoardManager.gameBoard.swapAt(secondIndex, index)
                 return false
             }
         } else {
@@ -63,39 +52,29 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
         }
     }
     
-    func swipeLeftGesture(indexPaths: [IndexPath])  -> Bool {
-        self.gameBoardManager.gameBoard.swapAt(indexPaths[0].row, indexPaths[1].row)
+    func swipeLeftGesture(index: Int)  -> Bool {
+        let secondIndex = index - 1
+        
+        self.gameBoardManager.gameBoard.swapAt(index, secondIndex)
         if self.gameCheckManager.checkMatchForSwipeGesture() {
-            
-            let tempIndexPath = gameBoardManager.gameBoard[indexPaths[1].row].indexPath
-            gameBoardManager.gameBoard[indexPaths[1].row].indexPath =
-            gameBoardManager.gameBoard[indexPaths[0].row].indexPath
-            gameBoardManager.gameBoard[indexPaths[0].row].indexPath = tempIndexPath
-            
             gamePlayInfo.countOfSteps -= 1
             return true
         } else {
-            gameBoardManager.gameBoard.swapAt(indexPaths[1].row, indexPaths[0].row)
+            gameBoardManager.gameBoard.swapAt(secondIndex, index)
             return false
         }
     }
     
-    func swipeRightGesture(indexPaths: [IndexPath])  -> Bool {
-        self.gameBoardManager.gameBoard.swapAt(indexPaths[0].row, indexPaths[1].row)
+    func swipeRightGesture(index: Int)  -> Bool {
+        let secondIndex = index + 1
+
+        self.gameBoardManager.gameBoard.swapAt(index, secondIndex)
         if self.gameCheckManager.checkMatchForSwipeGesture() {
-            
-            let tempIndexPath = gameBoardManager.gameBoard[indexPaths[1].row].indexPath
-            gameBoardManager.gameBoard[indexPaths[1].row].indexPath =
-            gameBoardManager.gameBoard[indexPaths[0].row].indexPath
-            gameBoardManager.gameBoard[indexPaths[0].row].indexPath = tempIndexPath
-            
             gamePlayInfo.countOfSteps -= 1
             return true
         } else {
-            gameBoardManager.gameBoard.swapAt(indexPaths[1].row, indexPaths[0].row)
+            gameBoardManager.gameBoard.swapAt(secondIndex, index)
             return false
         }
     }
-    
-    
 }

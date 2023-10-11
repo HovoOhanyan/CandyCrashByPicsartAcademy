@@ -36,85 +36,39 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id ==  gameBoardManager.gameBoard[index + 4].id
                 {
                     
-                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
-                        gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
                         gamePlayInfo.score -= 5
+                        gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
                     }
-
+                    
                     var currentIndex = index
+                
+                    gameBoardManager.gameBoard[index] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + 1] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + 2] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + 3] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + 4] = EmptyInstance()
                     
-                    var firstInstance = EmptyInstance()
-                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
+                    self.gameBoardHandler.fallDownAtRow?([index, index + 1, index + 2, index + 3, index + 4])
                     
-                    var secondInstance = EmptyInstance()
-                    secondInstance.indexPath = gameBoardManager.gameBoard[index + 1].indexPath
-                    
-                    var thiredInstance = EmptyInstance()
-                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + 2].indexPath
-                    
-                    var fourthInstance = EmptyInstance()
-                    fourthInstance.indexPath = gameBoardManager.gameBoard[index + 3].indexPath
-                    
-                    var fifthIstance = EmptyInstance()
-                    fifthIstance.indexPath = gameBoardManager.gameBoard[index + 4].indexPath
-                    
-                    gameBoardManager.gameBoard[index] = firstInstance
-                    gameBoardManager.gameBoard[index + 1] = secondInstance
-                    gameBoardManager.gameBoard[index + 2] = thiredInstance
-                    gameBoardManager.gameBoard[index + 3] = fourthInstance
-                    gameBoardManager.gameBoard[index + 4] = fifthIstance
-                    
-                    while currentIndex >= numberOfItemsInRow {
+                    while currentIndex > numberOfItemsInRow {
                         gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 3, (currentIndex + 3) - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 4, (currentIndex + 4) - numberOfItemsInRow)
                         
-                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
-                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath = firstTempIndexPath
-                        
-                        let secondTempIndexPath = gameBoardManager.gameBoard[currentIndex + 1].indexPath
-                        gameBoardManager.gameBoard[currentIndex + 1].indexPath = gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath = secondTempIndexPath
-                        
-                        let thirdTempIndexPath = gameBoardManager.gameBoard[currentIndex + 2].indexPath
-                        gameBoardManager.gameBoard[currentIndex + 2].indexPath = gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath = thirdTempIndexPath
-                        
-                        let fourthTempIndexPath = gameBoardManager.gameBoard[currentIndex + 3].indexPath
-                        gameBoardManager.gameBoard[currentIndex + 3].indexPath = gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath = fourthTempIndexPath
-                        
-                        let fifthTempIndexPath = gameBoardManager.gameBoard[currentIndex + 4].indexPath
-                        gameBoardManager.gameBoard[currentIndex + 4].indexPath = gameBoardManager.gameBoard[(currentIndex + 4) - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[(currentIndex + 4) - numberOfItemsInRow].indexPath = fifthTempIndexPath
-                        
-                        let indexPaths = [gameBoardManager.gameBoard[currentIndex].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex + 1].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex + 2].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex + 3].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex + 4].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath,
-                                          gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath,
-                                          gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath,
-                                          gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath,
-                                          gameBoardManager.gameBoard[(currentIndex + 4) - numberOfItemsInRow].indexPath
-                        ]
-                        
-                        gameBoardHandler.fallDownHandler?(indexPaths)
+                        gameBoardHandler.fallDownAtRow?([currentIndex, currentIndex + 1, currentIndex + 2, currentIndex + 3, currentIndex + 4])
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHandler.fallDownHandler?(
-                        [gameBoardManager.gameBoard[currentIndex].indexPath,
-                         gameBoardManager.gameBoard[currentIndex + 1].indexPath,
-                         gameBoardManager.gameBoard[currentIndex + 2].indexPath,
-                         gameBoardManager.gameBoard[currentIndex + 3].indexPath,
-                         gameBoardManager.gameBoard[currentIndex + 4].indexPath
-                        ])
+                    gameBoardManager.gameBoard[currentIndex] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex + 1] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex + 2] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex + 3] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex + 4] = GameInstanceView.random()
                     
+                    gameBoardHandler.reloadItems?([currentIndex, currentIndex + 1, currentIndex + 2, currentIndex + 3, currentIndex + 4])
                     return true
                 }
             }
@@ -137,51 +91,38 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 4].id
                 {
                     
-                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
                         gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 5
                     }
 
                     var currentIndex = index + numberOfItemsInRow * 4
                     
-                    var firstInstance = GameInstanceView.random()
-                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
+                    gameBoardManager.gameBoard[index] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 3] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 4] = EmptyInstance()
                     
-                    var secondInstance = GameInstanceView.random()
-                    secondInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath
-                    
-                    var thiredInstance = GameInstanceView.random()
-                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath
-                    
-                    var fourthInstance = GameInstanceView.random()
-                    fourthInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].indexPath
-                    
-                    var fifthInstance = GameInstanceView.random()
-                    fifthInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 4].indexPath
-                    
-                    gameBoardManager.gameBoard[index] = firstInstance
-                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = secondInstance
-                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = thiredInstance
-                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 3] = fourthInstance
-                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 4] = fifthInstance
+                    gameBoardHandler.reloadItems?([index, index + numberOfItemsInRow, index + numberOfItemsInRow * 2,
+                                                 index + numberOfItemsInRow * 3, index + numberOfItemsInRow * 4])
                     
                     while currentIndex >= numberOfItemsInRow * 5 {
                         gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow * 4)
                         
-                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
-                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath
-                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath = firstTempIndexPath
-                        
-                        gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[currentIndex].indexPath, gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath])
+                        gameBoardHandler.fallDownAtColumn?(currentIndex, 5)
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[index].indexPath,
-                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath,
-                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath,
-                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].indexPath,
-                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 4].indexPath
-                                                      ])
+                    gameBoardManager.gameBoard[currentIndex] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 2] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 3] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4] = GameInstanceView.random()
+                    
+                    gameBoardHandler.reloadItems?([currentIndex, currentIndex - numberOfItemsInRow, currentIndex - numberOfItemsInRow * 2,
+                                                   currentIndex - numberOfItemsInRow * 3, currentIndex - numberOfItemsInRow * 4])
+                    
                     return true
                 }
             }
@@ -201,72 +142,37 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 3].id {
-
-                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
-                        gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
+                    
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
                         gamePlayInfo.score -= 4
+                        gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
                     }
- 
+                    
                     var currentIndex = index
+             
+                    gameBoardManager.gameBoard[index] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + 1] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + 2] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + 3] = EmptyInstance()
                     
-                    var firstInstance = GameInstanceView.random()
-                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
-                    
-                    var secondInstance = GameInstanceView.random()
-                    secondInstance.indexPath = gameBoardManager.gameBoard[index + 1].indexPath
-                    
-                    var thiredInstance = GameInstanceView.random()
-                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + 2].indexPath
-                    
-                    var fourthInstance = GameInstanceView.random()
-                    fourthInstance.indexPath = gameBoardManager.gameBoard[index + 3].indexPath
-                    
-                    gameBoardManager.gameBoard[index] = firstInstance
-                    gameBoardManager.gameBoard[index + 1] = secondInstance
-                    gameBoardManager.gameBoard[index + 2] = thiredInstance
-                    gameBoardManager.gameBoard[index + 3] = fourthInstance
-                    
-                    while currentIndex >= numberOfItemsInRow {
+                    gameBoardHandler.reloadItems?([index, index + 1, index + 2, index + 3])
+
+                    while currentIndex > numberOfItemsInRow {
                         gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 3, (currentIndex + 3) - numberOfItemsInRow)
-                        
-                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
-                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath = firstTempIndexPath
-                        
-                        let secondTempIndexPath = gameBoardManager.gameBoard[currentIndex + 1].indexPath
-                        gameBoardManager.gameBoard[currentIndex + 1].indexPath = gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath = secondTempIndexPath
-                        
-                        let thirdTempIndexPath = gameBoardManager.gameBoard[currentIndex + 2].indexPath
-                        gameBoardManager.gameBoard[currentIndex + 2].indexPath = gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath = thirdTempIndexPath
-                        
-                        let fourthTempIndexPath = gameBoardManager.gameBoard[currentIndex + 3].indexPath
-                        gameBoardManager.gameBoard[currentIndex + 3].indexPath = gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath = fourthTempIndexPath
-                        
-                        let indexPaths = [gameBoardManager.gameBoard[currentIndex].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex + 1].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex + 2].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex + 3].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath,
-                                          gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath,
-                                          gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath,
-                                          gameBoardManager.gameBoard[(currentIndex + 3) - numberOfItemsInRow].indexPath
-                        ]
-                        
-                        gameBoardHandler.fallDownHandler?(indexPaths)
+                    
+                        gameBoardHandler.fallDownAtRow?([currentIndex, currentIndex + 1, currentIndex + 2, currentIndex + 3])
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[currentIndex].indexPath,
-                                                       gameBoardManager.gameBoard[currentIndex + 1].indexPath,
-                                                       gameBoardManager.gameBoard[currentIndex + 2].indexPath,
-                                                       gameBoardManager.gameBoard[currentIndex + 3].indexPath
-                                                      ])
+                    gameBoardManager.gameBoard[currentIndex] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex + 1] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex + 2] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex + 3] = GameInstanceView.random()
+                    
+                    gameBoardHandler.fallDownAtRow?([currentIndex, currentIndex + 1, currentIndex + 2, currentIndex + 3])
                     
                     return true
                 }
@@ -289,30 +195,25 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].id
                 {
 
-                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
                         gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 4
                     }
 
                     var currentIndex = index + numberOfItemsInRow * 3
                     
-                    var firstInstance = GameInstanceView.random()
-                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
+                    gameBoardManager.gameBoard[index] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 3] = EmptyInstance()
                     
-                    var secondInstance = GameInstanceView.random()
-                    secondInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath
+                    gameBoardHandler.reloadItems?([index, index + numberOfItemsInRow, index + numberOfItemsInRow * 2, index + numberOfItemsInRow * 3])
                     
-                    var thiredInstance = GameInstanceView.random()
-                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath
-                    
-                    var fourthInstance = GameInstanceView.random()
-                    fourthInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].indexPath
-                    
-                    gameBoardManager.gameBoard[index] = firstInstance
-                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = secondInstance
-                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = thiredInstance
-                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 3] = fourthInstance
-                    
+                    gameBoardManager.gameBoard[index] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 3] = GameInstanceView.random()
+
                     while currentIndex >= numberOfItemsInRow * 4 {
                         gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow * 4)
                         
@@ -320,15 +221,12 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                         gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath
                         gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath = firstTempIndexPath
                         
-                        gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[currentIndex].indexPath, gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath])
+                        gameBoardHandler.fallDownAtColumn?(currentIndex, 4)
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[index].indexPath,
-                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath,
-                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath,
-                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].indexPath
-                                                      ])
+                    gameBoardHandler.reloadItems?([currentIndex, currentIndex - numberOfItemsInRow,
+                                                   currentIndex - numberOfItemsInRow * 2, currentIndex - numberOfItemsInRow * 3])
                     return true
                 }
             }
@@ -348,62 +246,37 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id
                 {
-
-                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
-                        gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
+                    
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id && gamePlayInfo.score != 0 {
                         gamePlayInfo.score -= 3
+                        gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
                     }
-
+                    
                     var currentIndex = index
                     
-                    var firstInstance = GameInstanceView.random()
-                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
+                    gameBoardManager.gameBoard[index] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + 1] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + 2] = EmptyInstance()
                     
-                    var secondInstance = GameInstanceView.random()
-                    secondInstance.indexPath = gameBoardManager.gameBoard[index + 1].indexPath
+                    gameBoardHandler.reloadItems?([index, index + 1, index + 2])
                     
-                    var thiredInstance = GameInstanceView.random()
-                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + 2].indexPath
-                    
-                    gameBoardManager.gameBoard[index] = firstInstance
-                    gameBoardManager.gameBoard[index + 1] = secondInstance
-                    gameBoardManager.gameBoard[index + 2] = thiredInstance
-                    
-                    
-                    while currentIndex >= numberOfItemsInRow {
+                    while currentIndex > numberOfItemsInRow {
                         gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
                         
-                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
-                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath = firstTempIndexPath
+                        let indexes = [currentIndex, currentIndex + 1, currentIndex + 2]
                         
-                        let secondTempIndexPath = gameBoardManager.gameBoard[currentIndex + 1].indexPath
-                        gameBoardManager.gameBoard[currentIndex + 1].indexPath = gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath = secondTempIndexPath
-                        
-                        let thirdTempIndexPath = gameBoardManager.gameBoard[currentIndex + 2].indexPath
-                        gameBoardManager.gameBoard[currentIndex + 2].indexPath = gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath
-                        gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath = thirdTempIndexPath
-                        
-                        let indexPaths = [gameBoardManager.gameBoard[currentIndex].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex + 1].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex + 2].indexPath,
-                                          gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow].indexPath,
-                                          gameBoardManager.gameBoard[(currentIndex + 1) - numberOfItemsInRow].indexPath,
-                                          gameBoardManager.gameBoard[(currentIndex + 2) - numberOfItemsInRow].indexPath,
-                        ]
-                        
-                        gameBoardHandler.fallDownHandler?(indexPaths)
+                        gameBoardHandler.fallDownAtRow?(indexes)
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[currentIndex].indexPath,
-                                                       gameBoardManager.gameBoard[currentIndex + 1].indexPath,
-                                                       gameBoardManager.gameBoard[currentIndex + 2].indexPath
-                                     ])
+                    gameBoardManager.gameBoard[currentIndex] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex + 1] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[currentIndex + 2] = GameInstanceView.random()
                     
+                    gameBoardHandler.reloadItems?([currentIndex, currentIndex + 1, currentIndex + 2])
+
                     return true
                 }
             }
@@ -421,51 +294,42 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 let index = column + (row * numberOfItemsInRow)
                 
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow].id &&
-                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].id
+                    gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].id &&
+                    gameBoardManager.gameBoard[index].id != 0
                 {
 
-                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
                         gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 3
                     }
 
                     var currentIndex = index + numberOfItemsInRow * 2
                     
-                    var firstInstance = GameInstanceView.random()
-                    firstInstance.indexPath = gameBoardManager.gameBoard[index].indexPath
+                   
                     
-                    var secondInstance = GameInstanceView.random()
-                    secondInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath
+                    gameBoardManager.gameBoard[index] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = EmptyInstance()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = EmptyInstance()
                     
-                    var thiredInstance = GameInstanceView.random()
-                    thiredInstance.indexPath = gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath
+                    gameBoardHandler.reloadItems?([index, index + numberOfItemsInRow, index + numberOfItemsInRow * 2])
                     
-                    gameBoardManager.gameBoard[index] = firstInstance
-                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = secondInstance
-                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = thiredInstance
-                    
+                    gameBoardManager.gameBoard[index] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = GameInstanceView.random()
                     
                     while currentIndex >= numberOfItemsInRow * 3 {
                         gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow * 3)
                         
-                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
-                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 3].indexPath
-                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 3].indexPath = firstTempIndexPath
-                        
-                        gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[currentIndex].indexPath,
-                                                           gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 3].indexPath])
+                        gameBoardHandler.fallDownAtColumn?(currentIndex, 3)
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardHandler.fallDownHandler?([gameBoardManager.gameBoard[index].indexPath,
-                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow].indexPath,
-                                                       gameBoardManager.gameBoard[index + numberOfItemsInRow * 2].indexPath
-                                     ])
+                    gameBoardHandler.reloadItems?([currentIndex, currentIndex - numberOfItemsInRow, currentIndex - numberOfItemsInRow * 2])
                     return true
                 }
             }
         }
-        
+//        
         return false
     }
     
@@ -473,20 +337,20 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
         isMatch = true
         
         while isMatch {
-            isMatch = false
+            self.isMatch = false
             
-            if checkFiveMatchAtRow() {
-                isMatch = true
-            } else if checkFiveMatchAtColumn() {
-                isMatch = true
-            } else if checkFourMatchAtRow() {
-                isMatch = true
-            } else if checkFourMatchAtColumn() {
-                isMatch = true
-            } else if checkThreeMatchAtRow() {
-                isMatch = true
-            } else if checkThreeMatchAtColumn() {
-                isMatch = true
+            if self.checkFiveMatchAtRow() {
+                self.isMatch = true
+            } else if self.checkFiveMatchAtColumn() {
+                self.isMatch = true
+            } else if self.checkFourMatchAtRow() {
+                self.isMatch = true
+            } else if self.checkFourMatchAtColumn() {
+                self.isMatch = true
+            } else if self.checkThreeMatchAtRow() {
+                self.isMatch = true
+            } else if self.checkThreeMatchAtColumn() {
+                self.isMatch = true
             }
         }
     }

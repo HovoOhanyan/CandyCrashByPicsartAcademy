@@ -39,8 +39,54 @@ final class GameViewController: UIViewController {
     private func gameViewModalSetup() {
         viewModal = GameViewModel()
         
-        viewModal?.reloadItem = { indexPath in
-           
+        viewModal?.reloadItem = { indexes in
+            UIView.animate(withDuration: 0.9) {
+                for index in indexes {
+                    self.gameView.gameInstanceArray[index].configuration(gameInstance: self.viewModal.gameEngine.gameBoardManager.gameBoard[index],
+                                                                 index: self.gameView.gameInstanceArray[index].gameInstance.index)
+                    
+                }
+            }
+        }
+        
+        viewModal?.fallDownAtRow = { indexes in
+            UIView.animate(withDuration: 0.9) {
+                for index in indexes {
+                    let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
+                    let firstItem = self.gameView.gameInstanceArray[index]
+                    let secondItem = self.gameView.gameInstanceArray[index - numberOfItemsInRow]
+                
+                    self.gameView.gameInstanceArray.swapAt(index, index - numberOfItemsInRow)
+                    
+                    let firstItemFrame = firstItem.frame
+                    firstItem.frame = secondItem.frame
+                    secondItem.frame = firstItemFrame
+                                        
+                    let tempIndex = firstItem.gameInstance.index
+                    firstItem.gameInstance.index = secondItem.gameInstance.index
+                    secondItem.gameInstance.index = tempIndex
+                }
+            }
+        }
+        
+        viewModal?.fallDownAtColumn = { index, check in
+            UIView.animate(withDuration: 0.8) {
+                
+                print("Call")
+                let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
+                let firstItem = self.gameView.gameInstanceArray[index]
+                let secondItem = self.gameView.gameInstanceArray[index - numberOfItemsInRow * check]
+                
+                self.gameView.gameInstanceArray.swapAt(index, index - numberOfItemsInRow * check)
+                
+                let firstItemFrame = firstItem.frame
+                firstItem.frame = secondItem.frame
+                secondItem.frame = firstItemFrame
+                
+                let tempIndex = firstItem.gameInstance.index
+                firstItem.gameInstance.index = secondItem.gameInstance.index
+                secondItem.gameInstance.index = tempIndex
+            }
         }
         
         viewModal?.updateCountOfStepsLabel = { countsOfSteps in
@@ -48,7 +94,6 @@ final class GameViewController: UIViewController {
         }
         
         viewModal?.updateLabel = { score, countOfSteps in
-            print(score)
             if score > 0 && countOfSteps > 0 {
                 self.gameView.updateScoreLabel(score: score)
                 self.gameView.updateCountOfStepsLabel(countOfSteps: countOfSteps)
