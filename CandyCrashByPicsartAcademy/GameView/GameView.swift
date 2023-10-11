@@ -127,9 +127,7 @@ final class GameView: UIView {
         return image
     }()
     
-    public var gameInstanceArray = (1...40).map { _ in
-        GameInstanceView()
-    }
+    public var gameInstanceArray: [GameInstanceView] = []
 }
 
 //MARK: Setup UI

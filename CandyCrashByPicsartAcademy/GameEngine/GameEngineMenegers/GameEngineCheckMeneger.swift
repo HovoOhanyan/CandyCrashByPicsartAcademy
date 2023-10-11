@@ -37,8 +37,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
-                        gamePlayInfo.score -= 5
                         gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
+                        gamePlayInfo.score -= 5
                     }
                     
                     var currentIndex = index
@@ -49,9 +49,15 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index + 3] = EmptyInstance()
                     gameBoardManager.gameBoard[index + 4] = EmptyInstance()
                     
-                    self.gameBoardHandler.fallDownAtRow?([index, index + 1, index + 2, index + 3, index + 4])
-                    
-                    while currentIndex > numberOfItemsInRow {
+                    self.gameBoardHandler.reloadItems?([index, index + 1, index + 2, index + 3, index + 4])
+
+                    gameBoardManager.gameBoard[index] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + 1] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + 2] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + 3] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + 4] = GameInstanceView.random()
+                                        
+                    while currentIndex >= numberOfItemsInRow {
                         gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
@@ -61,13 +67,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                         gameBoardHandler.fallDownAtRow?([currentIndex, currentIndex + 1, currentIndex + 2, currentIndex + 3, currentIndex + 4])
                         currentIndex -= numberOfItemsInRow
                     }
-                    
-                    gameBoardManager.gameBoard[currentIndex] = GameInstanceView.random()
-                    gameBoardManager.gameBoard[currentIndex + 1] = GameInstanceView.random()
-                    gameBoardManager.gameBoard[currentIndex + 2] = GameInstanceView.random()
-                    gameBoardManager.gameBoard[currentIndex + 3] = GameInstanceView.random()
-                    gameBoardManager.gameBoard[currentIndex + 4] = GameInstanceView.random()
-                    
+                
                     gameBoardHandler.reloadItems?([currentIndex, currentIndex + 1, currentIndex + 2, currentIndex + 3, currentIndex + 4])
                     return true
                 }
@@ -107,18 +107,18 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardHandler.reloadItems?([index, index + numberOfItemsInRow, index + numberOfItemsInRow * 2,
                                                  index + numberOfItemsInRow * 3, index + numberOfItemsInRow * 4])
                     
+                    gameBoardManager.gameBoard[index] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 2] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 3] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + numberOfItemsInRow * 4] = GameInstanceView.random()
+                    
                     while currentIndex >= numberOfItemsInRow * 5 {
                         gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow * 4)
                         
                         gameBoardHandler.fallDownAtColumn?(currentIndex, 5)
                         currentIndex -= numberOfItemsInRow
                     }
-                    
-                    gameBoardManager.gameBoard[currentIndex] = GameInstanceView.random()
-                    gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow] = GameInstanceView.random()
-                    gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 2] = GameInstanceView.random()
-                    gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 3] = GameInstanceView.random()
-                    gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4] = GameInstanceView.random()
                     
                     gameBoardHandler.reloadItems?([currentIndex, currentIndex - numberOfItemsInRow, currentIndex - numberOfItemsInRow * 2,
                                                    currentIndex - numberOfItemsInRow * 3, currentIndex - numberOfItemsInRow * 4])
@@ -144,8 +144,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 3].id {
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
-                        gamePlayInfo.score -= 4
                         gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
+                        gamePlayInfo.score -= 4
                     }
                     
                     var currentIndex = index
@@ -157,7 +157,12 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     gameBoardHandler.reloadItems?([index, index + 1, index + 2, index + 3])
 
-                    while currentIndex > numberOfItemsInRow {
+                    gameBoardManager.gameBoard[index] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + 1] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + 2] = GameInstanceView.random()
+                    gameBoardManager.gameBoard[index + 3] = GameInstanceView.random()
+                    
+                    while currentIndex >= numberOfItemsInRow {
                         gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
@@ -167,12 +172,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                         currentIndex -= numberOfItemsInRow
                     }
                     
-                    gameBoardManager.gameBoard[currentIndex] = GameInstanceView.random()
-                    gameBoardManager.gameBoard[currentIndex + 1] = GameInstanceView.random()
-                    gameBoardManager.gameBoard[currentIndex + 2] = GameInstanceView.random()
-                    gameBoardManager.gameBoard[currentIndex + 3] = GameInstanceView.random()
-                    
-                    gameBoardHandler.fallDownAtRow?([currentIndex, currentIndex + 1, currentIndex + 2, currentIndex + 3])
+                    gameBoardHandler.reloadItems?([currentIndex, currentIndex + 1, currentIndex + 2, currentIndex + 3])
                     
                     return true
                 }
@@ -247,9 +247,9 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id
                 {
                     
-                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id && gamePlayInfo.score != 0 {
-                        gamePlayInfo.score -= 3
+                    if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
+                        gamePlayInfo.score -= 3
                     }
                     
                     var currentIndex = index
@@ -260,7 +260,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     
                     gameBoardHandler.reloadItems?([index, index + 1, index + 2])
                     
-                    while currentIndex > numberOfItemsInRow {
+                    while currentIndex >= numberOfItemsInRow {
                         gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 1, (currentIndex + 1) - numberOfItemsInRow)
                         gameBoardManager.gameBoard.swapAt(currentIndex + 2, (currentIndex + 2) - numberOfItemsInRow)
@@ -335,22 +335,23 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
     
     func checkMatches() {
         isMatch = true
-        
-        while isMatch {
-            self.isMatch = false
-            
-            if self.checkFiveMatchAtRow() {
-                self.isMatch = true
-            } else if self.checkFiveMatchAtColumn() {
-                self.isMatch = true
-            } else if self.checkFourMatchAtRow() {
-                self.isMatch = true
-            } else if self.checkFourMatchAtColumn() {
-                self.isMatch = true
-            } else if self.checkThreeMatchAtRow() {
-                self.isMatch = true
-            } else if self.checkThreeMatchAtColumn() {
-                self.isMatch = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            while self.isMatch {
+                self.isMatch = false
+                
+                if self.checkFiveMatchAtRow() {
+                    self.isMatch = true
+                } else if self.checkFiveMatchAtColumn() {
+                    self.isMatch = true
+                } else if self.checkFourMatchAtRow() {
+                    self.isMatch = true
+                } else if self.checkFourMatchAtColumn() {
+                    self.isMatch = true
+                } else if self.checkThreeMatchAtRow() {
+                    self.isMatch = true
+                } else if self.checkThreeMatchAtColumn() {
+                    self.isMatch = true
+                }
             }
         }
     }

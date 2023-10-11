@@ -71,8 +71,6 @@ final class GameViewController: UIViewController {
         
         viewModal?.fallDownAtColumn = { index, check in
             UIView.animate(withDuration: 0.8) {
-                
-                print("Call")
                 let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
                 let firstItem = self.gameView.gameInstanceArray[index]
                 let secondItem = self.gameView.gameInstanceArray[index - numberOfItemsInRow * check]
@@ -89,20 +87,16 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.updateCountOfStepsLabel = { countsOfSteps in
-            self.gameView.updateCountOfStepsLabel(countOfSteps: countsOfSteps)
-        }
-        
         viewModal?.updateLabel = { score, countOfSteps in
             if score > 0 && countOfSteps > 0 {
                 self.gameView.updateScoreLabel(score: score)
                 self.gameView.updateCountOfStepsLabel(countOfSteps: countOfSteps)
-            } else if score < 0 && countOfSteps > 0{
+            } else if score <= 0 && countOfSteps >= 0 {
                 let  resumeVC = ResumeGameViewController()
                 resumeVC.modalPresentationStyle = .fullScreen
                 self.present(resumeVC, animated: true)
             
-            } else if score > 0 && countOfSteps < 0 {
+            } else if score > 0 && countOfSteps == 0 {
                 let  restartVC = RestartGameViewController()
                 restartVC.modalPresentationStyle = .fullScreen
                 self.present(restartVC, animated: true)

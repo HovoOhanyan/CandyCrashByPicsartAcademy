@@ -130,10 +130,12 @@ extension GameViewController {
                         let index = view.gameInstance.index
                         let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
                         
+                    if index < numberOfItemsInRow * ((gameView.gameInstanceArray.count / numberOfItemsInRow) - 1) {
+                        
                         let first = self.gameView.gameInstanceArray[index]
                         let second = self.gameView.gameInstanceArray[index + numberOfItemsInRow]
                         
-                    if index > 0 {
+                    
                         self.gameView.gameInstanceArray.swapAt(index, index + numberOfItemsInRow)
                         
                         UIView.animate(withDuration: 0.9) {
