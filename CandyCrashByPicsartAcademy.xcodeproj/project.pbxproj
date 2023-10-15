@@ -14,7 +14,6 @@
 		3F68988D2ACC5D3700DADAC6 /* CustomSwipeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68988C2ACC5D3700DADAC6 /* CustomSwipeGestureRecognizer.swift */; };
 		3F7CC9472ACAA6E9004889C6 /* JoinGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7CC9462ACAA6E9004889C6 /* JoinGameView.swift */; };
 		3F7CC94D2ACB2B79004889C6 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7CC94C2ACB2B79004889C6 /* GameView.swift */; };
-		3F825F602AC1DA1800392156 /* GameInstanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F825F5F2AC1DA1800392156 /* GameInstanceCell.swift */; };
 		3F825F632AC1DC8200392156 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F825F622AC1DC8200392156 /* GameEngine.swift */; };
 		3F825F652AC1E49B00392156 /* GameInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F825F642AC1E49B00392156 /* GameInstance.swift */; };
 		3F825F682AC1E57900392156 /* HeartInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F825F672AC1E57900392156 /* HeartInstance.swift */; };
@@ -57,7 +56,6 @@
 		3F68988C2ACC5D3700DADAC6 /* CustomSwipeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwipeGestureRecognizer.swift; sourceTree = "<group>"; };
 		3F7CC9462ACAA6E9004889C6 /* JoinGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameView.swift; sourceTree = "<group>"; };
 		3F7CC94C2ACB2B79004889C6 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		3F825F5F2AC1DA1800392156 /* GameInstanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInstanceCell.swift; sourceTree = "<group>"; };
 		3F825F622AC1DC8200392156 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		3F825F642AC1E49B00392156 /* GameInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInstance.swift; sourceTree = "<group>"; };
 		3F825F672AC1E57900392156 /* HeartInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartInstance.swift; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 				3F7CC94C2ACB2B79004889C6 /* GameView.swift */,
 				3F22390E2AD5D96A00383083 /* GameViewExtensionForCreateBoard.swift */,
 				3F22390C2AD5D84900383083 /* GameInstanceView.swift */,
-				3F825F5F2AC1DA1800392156 /* GameInstanceCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -422,7 +419,6 @@
 				3F825F682AC1E57900392156 /* HeartInstance.swift in Sources */,
 				3FBC4D712AB0E54800B0E711 /* JoinGameViewController.swift in Sources */,
 				3FA8C7CD2AC833D5007C2F4B /* GameEngineBoardProtocol.swift in Sources */,
-				3F825F602AC1DA1800392156 /* GameInstanceCell.swift in Sources */,
 				3F7CC9472ACAA6E9004889C6 /* JoinGameView.swift in Sources */,
 				3F825F6E2AC1E6AB00392156 /* SquareInstance.swift in Sources */,
 				3F825F652AC1E49B00392156 /* GameInstance.swift in Sources */,

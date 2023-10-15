@@ -35,6 +35,14 @@ final class GameView: UIView {
         return view
     }()
     
+    public let comboView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gradientFirst3()
+        view.layer.cornerRadius = 10
+        view.alpha = 0 
+        return view
+    }()
+    
     private let candyImage = UIImageView()
     
     private let candyLabel: UILabel = {
@@ -53,6 +61,14 @@ final class GameView: UIView {
         return label
     }()
     
+    private let comboLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "CherryBombOne-Regular", size: 30)
+        label.textColor = .charryRed()
+        label.text = ""
+        return label
+    }()
+    
     private let settingsButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "SettingsImage"), for: .normal)
@@ -61,14 +77,14 @@ final class GameView: UIView {
         button.layer.masksToBounds = true
         return button
     }()
-
+    
     private var gradientLayerTV: CAGradientLayer! {
         didSet {
             gradientLayerTV.startPoint = CGPoint(x: 0.25, y: 0.5)
             gradientLayerTV.endPoint = CGPoint(x: 0.75, y: 0.5)
             gradientLayerTV.colors = [ UIColor.gradientFirst1().cgColor,
-                                          UIColor.gradientFirst2().cgColor,
-                                          UIColor.gradientFirst3().cgColor
+                                       UIColor.gradientFirst2().cgColor,
+                                       UIColor.gradientFirst3().cgColor
             ]
             gradientLayerTV.locations = [1, 0.62, 0]
             gradientLayerTV.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 0.99, c: -0.99, d: 0, tx: 0.99, ty: 0.08))
@@ -82,8 +98,8 @@ final class GameView: UIView {
             gradientLayerSB.startPoint = CGPoint(x: 0.25, y: 0.5)
             gradientLayerSB.endPoint = CGPoint(x: 0.75, y: 0.5)
             gradientLayerSB.colors = [ UIColor.gradientFirst1().cgColor,
-                                     UIColor.gradientFirst2().cgColor,
-                                     UIColor.gradientFirst3().cgColor
+                                       UIColor.gradientFirst2().cgColor,
+                                       UIColor.gradientFirst3().cgColor
             ]
             gradientLayerSB.locations = [0, 0.62, 1]
             gradientLayerSB.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 0.99, c: -0.99, d: 0, tx: 0.99, ty: 0.08))
@@ -123,12 +139,14 @@ final class GameView: UIView {
     }
     
     private let iconImage: UIImageView = {
-       let image = UIImageView()
+        let image = UIImageView()
         image.image = UIImage(named: "Candy")
         return image
     }()
     
     public var gameInstanceArray: [GameInstanceView] = []
+    public var comboViewBottomAnchor: NSLayoutConstraint!
+
 }
 
 //MARK: Setup UI
@@ -137,6 +155,8 @@ extension GameView {
     func setupUI(gamePlayInformation: GameEnginePlayInformation) {
         updateLabelsWithGamePlayInfo(gamePlayInformation: gamePlayInformation)
         
+        comboViewBottomAnchor = comboView.heightAnchor.constraint(equalToConstant: 40)
+
         self.backgroundColor = .white
         topView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
@@ -147,6 +167,8 @@ extension GameView {
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
         iconImage.translatesAutoresizingMaskIntoConstraints = false
         gameAreaView.translatesAutoresizingMaskIntoConstraints = false
+        comboView.translatesAutoresizingMaskIntoConstraints = false
+        comboLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(backgroundImage)
         backgroundImage.addSubview(topView)
@@ -157,6 +179,8 @@ extension GameView {
         topView.addSubview(timerLabel)
         topView.addSubview(iconImage)
         self.addSubview(gameAreaView)
+        backgroundImage.addSubview(comboView)
+        comboView.addSubview(comboLabel)
         
         NSLayoutConstraint.activate([
             backgroundImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
@@ -167,14 +191,14 @@ extension GameView {
         
         NSLayoutConstraint.activate([
             topView.heightAnchor.constraint(equalToConstant: 80),
-            topView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
+            topView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             topView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             topView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 0)
         ])
         
         NSLayoutConstraint.activate([
             settingsButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            settingsButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 700),
+            settingsButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             settingsButton.heightAnchor.constraint(equalToConstant: 50),
             settingsButton.widthAnchor.constraint(equalToConstant: 50)
         ])
@@ -214,10 +238,22 @@ extension GameView {
         ])
         
         NSLayoutConstraint.activate([
-            gameAreaView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 50),
+            gameAreaView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 20),
             gameAreaView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             gameAreaView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
             gameAreaView.bottomAnchor.constraint(equalTo: settingsButton.topAnchor, constant: -50),
+        ])
+        
+        NSLayoutConstraint.activate([
+            comboView.topAnchor.constraint(equalTo: gameAreaView.bottomAnchor, constant: 5),
+            comboView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
+            comboView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
+            comboViewBottomAnchor
+        ])
+        
+        NSLayoutConstraint.activate([
+            comboLabel.centerXAnchor.constraint(equalTo: comboView.centerXAnchor),
+            comboLabel.centerYAnchor.constraint(equalTo: comboView.centerYAnchor),
         ])
     }
     
@@ -314,5 +350,9 @@ extension GameView {
     func updateStarLayerFrame(updatedStarEstimation: Int) {
         let changeStar = 85 - updatedStarEstimation
         configureStarLayer(shapeLayer: starLayer, changeStar: changeStar)
+    }
+    
+    func updateComboLabel(combo: Int) {
+        comboLabel.text = "Combo \(combo)!"
     }
 }

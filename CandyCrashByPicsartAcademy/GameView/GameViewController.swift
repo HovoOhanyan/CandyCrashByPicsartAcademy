@@ -39,7 +39,7 @@ final class GameViewController: UIViewController {
     private func gameViewModalSetup() {
         viewModal = GameViewModel()
         
-        viewModal?.reloadItem = { indexes in
+        viewModal?.gameEngine.gameEngineBoardHandler.reloadItems = { indexes in
             UIView.animate(withDuration: 0.9) {
                 for index in indexes {
                     self.gameView.gameInstanceArray[index].configuration(gameInstance: self.viewModal.gameEngine.gameBoardManager.gameBoard[index],
@@ -49,7 +49,7 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.fallDownAtRow = { indexes in
+        viewModal?.gameEngine.gameEngineBoardHandler.fallDownAtRow = { indexes in
             UIView.animate(withDuration: 0.9) {
                 for index in indexes {
                     let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
@@ -69,7 +69,7 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.fallDownAtColumn = { index, check in
+        viewModal?.gameEngine.gameEngineBoardHandler.fallDownAtColumn = { index, check in
             UIView.animate(withDuration: 0.8) {
                 let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
                 let firstItem = self.gameView.gameInstanceArray[index]
@@ -87,7 +87,7 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.updateLabel = { score, countOfSteps in
+        viewModal?.gameEngine.gameEngineBoardHandler.updateLabelHandler = { score, countOfSteps in
             if score > 0 && countOfSteps > 0 {
                 self.gameView.updateScoreLabel(score: score)
                 self.gameView.updateCountOfStepsLabel(countOfSteps: countOfSteps)
@@ -103,8 +103,21 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal.updateStarLayer = { starChanges in
+        viewModal?.gameEngine.gameEngineBoardHandler.updateStarChangesHandler = { starChanges in
             self.gameView.updateStarLayerFrame(updatedStarEstimation: starChanges)
+        }
+        
+        viewModal?.gameEngine.gameEngineBoardHandler.comboHandler = { combo in
+            if combo == 0 {
+                UIView.animate(withDuration: 0.9) {
+                    self.gameView.comboView.alpha = 0
+                }
+            } else {
+                UIView.animate(withDuration: 0.9) {
+                    self.gameView.updateComboLabel(combo: combo)
+                    self.gameView.comboView.alpha = 1
+                }
+            }
         }
     }
     

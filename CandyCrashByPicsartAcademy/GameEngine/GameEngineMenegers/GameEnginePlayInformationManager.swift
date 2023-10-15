@@ -17,6 +17,11 @@ final class GameEnginePlayInformationManager: GameEnginePlayInformation {
         }
     }
     
+    var combo: Int = 0 {
+        didSet {
+            gameEngineChangeHandler.comboHandler?(combo)
+        }
+    }
     var updatedStarEstimation: Int {
         didSet {
             gameEngineChangeHandler.updateStarChangesHandler?(updatedStarEstimation)
