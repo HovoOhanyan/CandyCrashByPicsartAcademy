@@ -32,6 +32,7 @@ final class GameViewController: UIViewController {
         gameView.setupUI(gamePlayInformation: viewModal.gameEngine.gamePlayManager)
         gameView.setupGradient()
         gameView.setupShapeLayer()
+        gameView.pausedButton.addTarget(self, action: #selector(pausedButtonTapped), for: .touchUpInside)
 
         view.addSubview(gameView)
     }
@@ -93,12 +94,12 @@ final class GameViewController: UIViewController {
                 self.gameView.updateCountOfStepsLabel(countOfSteps: countOfSteps)
             } else if score <= 0 && countOfSteps >= 0 {
                 let  resumeVC = ResumeGameViewController()
-                resumeVC.modalPresentationStyle = .fullScreen
+                resumeVC.modalPresentationStyle = .overCurrentContext
                 self.present(resumeVC, animated: true)
             
             } else if score > 0 && countOfSteps == 0 {
                 let  restartVC = RestartGameViewController()
-                restartVC.modalPresentationStyle = .fullScreen
+                restartVC.modalPresentationStyle = .overCurrentContext
                 self.present(restartVC, animated: true)
             }
         }
@@ -111,5 +112,14 @@ final class GameViewController: UIViewController {
     private func setupSwipeGesture() {
         let customSwipeGestureRecognizer = CustomSwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
         gameView.gameAreaView.addGestureRecognizer(customSwipeGestureRecognizer)
+    }
+    
+    @objc private func pausedButtonTapped() {
+
+        let pauseView = PauseGameViewController()
+        pauseView.modalPresentationStyle = .custom
+        pauseView.preferredContentSize = CGSize(width: 400, height: 400)
+
+        present(pauseView, animated: true)
     }
 }

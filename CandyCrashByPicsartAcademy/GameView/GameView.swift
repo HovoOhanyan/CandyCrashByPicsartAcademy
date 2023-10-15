@@ -53,8 +53,8 @@ final class GameView: UIView {
         return label
     }()
     
-    private let settingsButton: UIButton = {
-        let button = UIButton(type: .system)
+    let pausedButton: PausedButton = {
+        let button = PausedButton(type: .system)
         button.setImage(UIImage(named: "SettingsImage"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 25
@@ -74,21 +74,6 @@ final class GameView: UIView {
             gradientLayerTV.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 0.99, c: -0.99, d: 0, tx: 0.99, ty: 0.08))
             gradientLayerTV.bounds = topView.bounds.insetBy(dx: -0.5*topView.bounds.size.width, dy: -0.5*topView.bounds.size.height)
             gradientLayerTV.position = topView.center
-        }
-    }
-    
-    private var gradientLayerSB: CAGradientLayer! {
-        didSet {
-            gradientLayerSB.startPoint = CGPoint(x: 0.25, y: 0.5)
-            gradientLayerSB.endPoint = CGPoint(x: 0.75, y: 0.5)
-            gradientLayerSB.colors = [ UIColor.gradientFirst1().cgColor,
-                                     UIColor.gradientFirst2().cgColor,
-                                     UIColor.gradientFirst3().cgColor
-            ]
-            gradientLayerSB.locations = [0, 0.62, 1]
-            gradientLayerSB.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 0.99, c: -0.99, d: 0, tx: 0.99, ty: 0.08))
-            gradientLayerSB.bounds = topView.bounds.insetBy(dx: -0.5*topView.bounds.size.width, dy: -0.5*topView.bounds.size.height)
-            gradientLayerSB.position = topView.center
         }
     }
     
@@ -140,7 +125,7 @@ extension GameView {
         self.backgroundColor = .white
         topView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        settingsButton.translatesAutoresizingMaskIntoConstraints = false
+        pausedButton.translatesAutoresizingMaskIntoConstraints = false
         candysView.translatesAutoresizingMaskIntoConstraints = false
         candyImage.translatesAutoresizingMaskIntoConstraints = false
         candyLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -150,7 +135,7 @@ extension GameView {
         
         self.addSubview(backgroundImage)
         backgroundImage.addSubview(topView)
-        backgroundImage.addSubview(settingsButton)
+        self.addSubview(pausedButton)
         topView.addSubview(candysView)
         candysView.addSubview(candyImage)
         candysView.addSubview(candyLabel)
@@ -173,10 +158,10 @@ extension GameView {
         ])
         
         NSLayoutConstraint.activate([
-            settingsButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            settingsButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 700),
-            settingsButton.heightAnchor.constraint(equalToConstant: 50),
-            settingsButton.widthAnchor.constraint(equalToConstant: 50)
+            pausedButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            pausedButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 700),
+            pausedButton.heightAnchor.constraint(equalToConstant: 50),
+            pausedButton.widthAnchor.constraint(equalToConstant: 50)
         ])
         
         NSLayoutConstraint.activate([
@@ -217,7 +202,7 @@ extension GameView {
             gameAreaView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 50),
             gameAreaView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             gameAreaView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
-            gameAreaView.bottomAnchor.constraint(equalTo: settingsButton.topAnchor, constant: -50),
+            gameAreaView.bottomAnchor.constraint(equalTo: pausedButton.topAnchor, constant: -50),
         ])
     }
     
@@ -247,9 +232,6 @@ extension GameView {
         self.gradientLayerTV = CAGradientLayer()
         self.topView.layer.insertSublayer(gradientLayerTV, at: 0)
         
-        self.gradientLayerSB = CAGradientLayer()
-        self.settingsButton.layer.insertSublayer(gradientLayerSB, at: 0)
-        
         self.gradientLayerCV = CAGradientLayer()
         self.candysView.layer.insertSublayer(gradientLayerCV, at: 0)
     }
@@ -266,9 +248,6 @@ extension GameView {
         gradientLayerTV.frame = CGRect(x: 0, y: 0,
                                           width: self.topView.bounds.size.width,
                                           height: self.topView.bounds.size.height)
-        gradientLayerSB.frame = CGRect(x: 0, y: 0,
-                                     width: self.settingsButton.bounds.size.width,
-                                     height: self.settingsButton.bounds.size.width)
         
         gradientLayerCV.frame = CGRect(x: 0, y: 0,
                                      width: self.candysView.bounds.size.width,

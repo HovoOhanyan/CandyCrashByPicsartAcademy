@@ -45,6 +45,9 @@
 		CC49D30A2ACB1743007FDE7F /* GameEnginePlayInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC49D3092ACB1743007FDE7F /* GameEnginePlayInformationManager.swift */; };
 		CC547F902AD55E35008EF6E8 /* ResumeGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC547F8F2AD55E35008EF6E8 /* ResumeGameView.swift */; };
 		CC547F922AD592DF008EF6E8 /* ResumeGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC547F912AD592DF008EF6E8 /* ResumeGameViewController.swift */; };
+		CC547F962AD6FDD6008EF6E8 /* PausedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC547F952AD6FDD6008EF6E8 /* PausedButton.swift */; };
+		CC547F9A2AD8155F008EF6E8 /* PauseGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC547F992AD8155F008EF6E8 /* PauseGameView.swift */; };
+		CC547F9C2AD815FD008EF6E8 /* PauseGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC547F9B2AD815FD008EF6E8 /* PauseGameViewController.swift */; };
 		CC5EAB6E2ACC68E900CF92A8 /* RestartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5EAB6D2ACC68E900CF92A8 /* RestartGameView.swift */; };
 		CC5EAB702ACC68FF00CF92A8 /* RestartGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5EAB6F2ACC68FF00CF92A8 /* RestartGameViewController.swift */; };
 /* End PBXBuildFile section */
@@ -90,6 +93,9 @@
 		CC49D3092ACB1743007FDE7F /* GameEnginePlayInformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEnginePlayInformationManager.swift; sourceTree = "<group>"; };
 		CC547F8F2AD55E35008EF6E8 /* ResumeGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeGameView.swift; sourceTree = "<group>"; };
 		CC547F912AD592DF008EF6E8 /* ResumeGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeGameViewController.swift; sourceTree = "<group>"; };
+		CC547F952AD6FDD6008EF6E8 /* PausedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedButton.swift; sourceTree = "<group>"; };
+		CC547F992AD8155F008EF6E8 /* PauseGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseGameView.swift; sourceTree = "<group>"; };
+		CC547F9B2AD815FD008EF6E8 /* PauseGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseGameViewController.swift; sourceTree = "<group>"; };
 		CC5EAB6D2ACC68E900CF92A8 /* RestartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartGameView.swift; sourceTree = "<group>"; };
 		CC5EAB6F2ACC68FF00CF92A8 /* RestartGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartGameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -266,6 +272,7 @@
 				3F565A872AC1BB040003A7CC /* GameView */,
 				3F923C772AC0422200719921 /* JoinGameViewController */,
 				CC5EAB692ACC680A00CF92A8 /* ResumeGameView */,
+				CC547F972AD81529008EF6E8 /* Pause Game View */,
 				CC3F40362AC073960065075E /* Supported */,
 				3FBC4D7A2AB0E54A00B0E711 /* Info.plist */,
 			);
@@ -297,9 +304,35 @@
 		CC3F403A2AC075800065075E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CC3F403B2AC075A20065075E /* UIColor + Extension.swift */,
+				CC547F952AD6FDD6008EF6E8 /* PausedButton.swift */,
+				CC547F942AD6FDC7008EF6E8 /* UIKit */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		CC547F942AD6FDC7008EF6E8 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				CC3F403B2AC075A20065075E /* UIColor + Extension.swift */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		CC547F972AD81529008EF6E8 /* Pause Game View */ = {
+			isa = PBXGroup;
+			children = (
+				CC547F982AD81541008EF6E8 /* View */,
+			);
+			path = "Pause Game View";
+			sourceTree = "<group>";
+		};
+		CC547F982AD81541008EF6E8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC547F992AD8155F008EF6E8 /* PauseGameView.swift */,
+				CC547F9B2AD815FD008EF6E8 /* PauseGameViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CC5EAB692ACC680A00CF92A8 /* ResumeGameView */ = {
@@ -416,6 +449,7 @@
 				3FA8C7CF2AC83440007C2F4B /* GameEngineBoardMeneger.swift in Sources */,
 				3FC2DDE72AC8BED8007E2807 /* GameInstanceImageEnum.swift in Sources */,
 				CC49D3082ACB16FF007FDE7F /* GameEnginePlayInformation.swift in Sources */,
+				CC547F9A2AD8155F008EF6E8 /* PauseGameView.swift in Sources */,
 				3F68988B2ACC5D1000DADAC6 /* SwipeDirectionEnum.swift in Sources */,
 				3F22390D2AD5D84900383083 /* GameInstanceView.swift in Sources */,
 				3F22390F2AD5D96A00383083 /* GameViewExtensionForCreateBoard.swift in Sources */,
@@ -436,6 +470,8 @@
 				3FA8C7D32AC837EB007C2F4B /* GameEngineBoardChangeHendlerProtocol.swift in Sources */,
 				3FA8C7DC2AC83F62007C2F4B /* GameEngineBoardHendler.swift in Sources */,
 				CC547F902AD55E35008EF6E8 /* ResumeGameView.swift in Sources */,
+				CC547F9C2AD815FD008EF6E8 /* PauseGameViewController.swift in Sources */,
+				CC547F962AD6FDD6008EF6E8 /* PausedButton.swift in Sources */,
 				3FA8C7D12AC83723007C2F4B /* GameEngineSwipeHendlerProtocol.swift in Sources */,
 				3FBC4D6D2AB0E54800B0E711 /* AppDelegate.swift in Sources */,
 				3FA8C7D62AC838A0007C2F4B /* GameEngineSwipeMeneger.swift in Sources */,
