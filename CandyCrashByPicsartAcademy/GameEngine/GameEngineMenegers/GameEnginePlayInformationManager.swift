@@ -9,7 +9,11 @@ import Foundation
 
 final class GameEnginePlayInformationManager: GameEnginePlayInformation {
     
-    var score: Int
+    var score: Int {
+        didSet {
+            gameEngineChangeHandler.updateLabelHandler?(score, countOfSteps)
+        }
+    }
     
     var countOfSteps: Int {
         didSet {
