@@ -12,6 +12,7 @@ extension GameViewController {
         if gestureRecognizer.state == .recognized {
             let location = gestureRecognizer.initialTouchLocation
             
+            gameView.gameAreaView.isUserInteractionEnabled = false
             let indexAtArray = calculateIndexOfGameInstanceView(location: location)
             let index = gameView.gameInstanceArray[indexAtArray].gameInstance.index
             
@@ -113,7 +114,6 @@ extension GameViewController {
                             self.viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
                         } else {
                             UIView.animate(withDuration: 0.5) {
-                                
                                 let tempFrame = first.frame
                                 first.frame = second.frame
                                 second.frame = tempFrame
@@ -170,6 +170,8 @@ extension GameViewController {
                 print("none")
             }
         }
+        
+        gameView.gameAreaView.isUserInteractionEnabled = true
     }
     
     private func calculateIndexOfGameInstanceView(location: CGPoint) -> Int {        

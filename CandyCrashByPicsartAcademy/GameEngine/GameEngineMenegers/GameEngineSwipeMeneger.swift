@@ -18,15 +18,19 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
         self.gameCheckManager = gameCheckManager
     }
     
+    //MARK: - Handle a swipe-up gesture at a specific index on the game board.
+
     func swipeUpGesture(index: Int) -> Bool {
         if index - self.gameBoardManager.numberOfItemsInRow >= 0 {
             let secondIndex = index - gameBoardManager.numberOfItemsInRow
             gameBoardManager.gameBoard.swapAt(index, secondIndex)
             
             if self.gameCheckManager.checkMatchForSwipeGesture() {
+                // Check if the swipe results in a match and update the game state.
                 gamePlayInfo.countOfSteps -= 1
                 return true
             } else {
+                // If no match is found, revert the swap.
                 gameBoardManager.gameBoard.swapAt(secondIndex, index)
                 return false
             }
@@ -44,6 +48,7 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
                 gamePlayInfo.countOfSteps -= 1
                 return true
             } else {
+                // If no match is found, revert the swap.
                 gameBoardManager.gameBoard.swapAt(secondIndex, index)
                 return false
             }
@@ -60,6 +65,7 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
             gamePlayInfo.countOfSteps -= 1
             return true
         } else {
+            // If no match is found, revert the swap.
             gameBoardManager.gameBoard.swapAt(secondIndex, index)
             return false
         }
@@ -73,6 +79,7 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
             gamePlayInfo.countOfSteps -= 1
             return true
         } else {
+            // If no match is found, revert the swap.
             gameBoardManager.gameBoard.swapAt(secondIndex, index)
             return false
         }
