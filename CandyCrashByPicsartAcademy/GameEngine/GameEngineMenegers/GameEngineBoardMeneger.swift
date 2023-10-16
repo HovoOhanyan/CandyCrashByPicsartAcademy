@@ -12,7 +12,7 @@ final class GameEngineBoardManager: GameEngineBoard {
     
     var numberOfItemsInRow: Int
     
-    private var boardCount = 0
+    private var boardCount = 0 // Counter to keep track of board creation progress.
     
     init(numberOfItemsInRow: Int, boardSize: Int) {
         self.numberOfItemsInRow = numberOfItemsInRow
@@ -20,6 +20,8 @@ final class GameEngineBoardManager: GameEngineBoard {
         gameBoard = (1...boardSize).map({_ in EmptyInstance()})
     }
     
+//MARK: - Method to create the game board by populating it with game instances.
+
     func createBoard() {
         while boardCount != gameBoard.count {
             var newInstace = GameInstanceView.random()

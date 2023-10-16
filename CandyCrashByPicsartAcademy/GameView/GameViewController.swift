@@ -37,6 +37,7 @@ final class GameViewController: UIViewController {
         view.addSubview(gameView)
     }
     
+    //MARK: - Sets up the closures and handlers for the game view model, responsible for handling game logic.
     private func gameViewModalSetup() {
         viewModal = GameViewModel()
         

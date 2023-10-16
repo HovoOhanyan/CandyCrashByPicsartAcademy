@@ -22,6 +22,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
         self.gamePlayInfo = gamePlayInfo
     }
     
+    //MARK: - Define check matches funcitons
+    
     func checkFiveMatchAtRow() -> Bool {
         let numberOfItemsInRow = gameBoardManager.numberOfItemsInRow
         
@@ -329,6 +331,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
         return false
     }
     
+    //MARK: -  Check for matches on the game board and handle them.
     func checkMatches() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.isMatch = true
@@ -368,6 +371,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
         }
     }
     
+    //MARK: - Check for matches resulting from a swipe gesture.
     func checkMatchForSwipeGesture() -> Bool {
         if checkFiveMatchAtRow() {
             gamePlayInfo.combo = 1
