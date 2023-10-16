@@ -181,7 +181,7 @@ extension GameView {
         
         NSLayoutConstraint.activate([
             pausedButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            pausedButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            pausedButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
             pausedButton.heightAnchor.constraint(equalToConstant: 50),
             pausedButton.widthAnchor.constraint(equalToConstant: 50)
         ])
@@ -224,14 +224,14 @@ extension GameView {
             gameAreaView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 20),
             gameAreaView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             gameAreaView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
-            gameAreaView.bottomAnchor.constraint(equalTo: pausedButton.topAnchor, constant: -50),
+            gameAreaView.bottomAnchor.constraint(equalTo: pausedButton.topAnchor, constant: -80),
         ])
         
         NSLayoutConstraint.activate([
-            comboView.topAnchor.constraint(equalTo: gameAreaView.bottomAnchor, constant: 5),
+            comboView.topAnchor.constraint(equalTo: gameAreaView.bottomAnchor, constant: 15),
             comboView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             comboView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
-            comboView.heightAnchor.constraint(equalToConstant: 40)
+            comboView.heightAnchor.constraint(equalToConstant: 55)
         ])
         
         NSLayoutConstraint.activate([

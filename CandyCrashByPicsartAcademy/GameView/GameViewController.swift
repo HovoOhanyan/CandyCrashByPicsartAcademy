@@ -109,14 +109,14 @@ final class GameViewController: UIViewController {
         }
         
         viewModal?.gameEngine.gameEngineBoardHandler.comboHandler = { combo in
-            if combo == 0 {
-                UIView.animate(withDuration: 0.9) {
-                    self.gameView.comboView.alpha = 0
-                }
-            } else {
+            if combo > 1 {
                 UIView.animate(withDuration: 0.9) {
                     self.gameView.updateComboLabel(combo: combo)
                     self.gameView.comboView.alpha = 1
+                }
+            } else {
+                UIView.animate(withDuration: 0.9) {
+                    self.gameView.comboView.alpha = 0
                 }
             }
         }
