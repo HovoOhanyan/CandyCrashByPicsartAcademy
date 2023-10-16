@@ -23,7 +23,6 @@ extension RestartGameViewController {
     private func setupUI() {
         restartGameView.frame = view.frame
         
-        
         view.addSubview(restartGameView)
         
         restartGameView.setupUI()
