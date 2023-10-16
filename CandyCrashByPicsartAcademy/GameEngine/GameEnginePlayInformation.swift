@@ -12,6 +12,6 @@ protocol GameEnginePlayInformation {
     var countOfSteps: Int { get set }
     var updatedStarEstimation: Int { get set }
     var gameInstance: GameInstance { get set }
-    
+    var combo: Int { get set }
     func addGameEnigneChangeHandler(gameEngineChangeHandler: GameEngineBoardChangeHandler)
 }

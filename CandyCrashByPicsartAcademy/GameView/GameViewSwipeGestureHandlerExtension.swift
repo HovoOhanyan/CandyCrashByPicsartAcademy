@@ -12,19 +12,7 @@ extension GameViewController {
         if gestureRecognizer.state == .recognized {
             let location = gestureRecognizer.initialTouchLocation
             
-            let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
-            let numberOfItemsInColumn = self.viewModal.gameEngine.gameBoardManager.gameBoard.count / self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
-            
-            let columnSpacing = CGFloat(2 * (numberOfItemsInRow - 1))
-            let rowSpacing = CGFloat(2 * (numberOfItemsInColumn - 1))
-            
-            let instanceWidth = (self.gameView.gameAreaView.frame.width - columnSpacing) / CGFloat(numberOfItemsInRow)
-            let instanceHeight = (self.gameView.gameAreaView.frame.height - rowSpacing) / CGFloat(numberOfItemsInColumn)
-            
-            let row = Int(location.y / instanceHeight)
-            let column = Int(location.x / instanceWidth)
-            
-            let indexAtArray = column + (row * numberOfItemsInRow)
+            let indexAtArray = calculateIndexOfGameInstanceView(location: location)
             let index = gameView.gameInstanceArray[indexAtArray].gameInstance.index
             
             switch gestureRecognizer.swipeDirection {
@@ -104,10 +92,11 @@ extension GameViewController {
                 }
             case .up:
                     let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
+                    
+                if index > numberOfItemsInRow - 1 {
                     let first = self.gameView.gameInstanceArray[index]
                     let second = self.gameView.gameInstanceArray[index - numberOfItemsInRow]
                     
-                if index > numberOfItemsInRow - 1 {
                     self.gameView.gameInstanceArray.swapAt(index, index - numberOfItemsInRow)
                     
                     let tempIndex = first.gameInstance.index
@@ -181,6 +170,22 @@ extension GameViewController {
                 print("none")
             }
         }
+    }
+    
+    private func calculateIndexOfGameInstanceView(location: CGPoint) -> Int {        
+        let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
+        let numberOfItemsInColumn = self.viewModal.gameEngine.gameBoardManager.gameBoard.count / self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
+        
+        let columnSpacing = CGFloat(2 * (numberOfItemsInRow - 1))
+        let rowSpacing = CGFloat(2 * (numberOfItemsInColumn - 1))
+        
+        let instanceWidth = (self.gameView.gameAreaView.frame.width - columnSpacing) / CGFloat(numberOfItemsInRow)
+        let instanceHeight = (self.gameView.gameAreaView.frame.height - rowSpacing) / CGFloat(numberOfItemsInColumn)
+        
+        let row = Int(location.y / instanceHeight)
+        let column = Int(location.x / instanceWidth)
+        
+        return column + (row * numberOfItemsInRow)
     }
 }
 

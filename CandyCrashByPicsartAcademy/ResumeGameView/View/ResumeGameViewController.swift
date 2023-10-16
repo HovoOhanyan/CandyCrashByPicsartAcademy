@@ -23,7 +23,6 @@ extension ResumeGameViewController {
     private func setupUI() {
         resumeGameView.frame = view.frame
         
-        
         view.addSubview(resumeGameView)
         
         resumeGameView.setupUI()

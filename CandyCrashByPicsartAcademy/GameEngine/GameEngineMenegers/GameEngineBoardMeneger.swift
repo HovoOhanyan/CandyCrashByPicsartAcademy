@@ -49,7 +49,6 @@ final class GameEngineBoardManager: GameEngineBoard {
                 break
             }
             
-            newInstace.indexPath = gameBoard[self.boardCount].indexPath
             gameBoard[boardCount] = newInstace
             boardCount += 1
         }

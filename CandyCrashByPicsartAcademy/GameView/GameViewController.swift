@@ -32,6 +32,7 @@ final class GameViewController: UIViewController {
         gameView.setupUI(gamePlayInformation: viewModal.gameEngine.gamePlayManager)
         gameView.setupGradient()
         gameView.setupShapeLayer()
+        gameView.pausedButton.addTarget(self, action: #selector(pausedButtonTapped), for: .touchUpInside)
 
         view.addSubview(gameView)
     }
@@ -39,7 +40,7 @@ final class GameViewController: UIViewController {
     private func gameViewModalSetup() {
         viewModal = GameViewModel()
         
-        viewModal?.reloadItem = { indexes in
+        viewModal?.gameEngine.gameEngineBoardHandler.reloadItems = { indexes in
             UIView.animate(withDuration: 0.9) {
                 for index in indexes {
                     self.gameView.gameInstanceArray[index].configuration(gameInstance: self.viewModal.gameEngine.gameBoardManager.gameBoard[index],
@@ -49,7 +50,7 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.fallDownAtRow = { indexes in
+        viewModal?.gameEngine.gameEngineBoardHandler.fallDownAtRow = { indexes in
             UIView.animate(withDuration: 0.9) {
                 for index in indexes {
                     let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
@@ -69,7 +70,7 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.fallDownAtColumn = { index, check in
+        viewModal?.gameEngine.gameEngineBoardHandler.fallDownAtColumn = { index, check in
             UIView.animate(withDuration: 0.8) {
                 let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
                 let firstItem = self.gameView.gameInstanceArray[index]
@@ -87,29 +88,51 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.updateLabel = { score, countOfSteps in
+        viewModal?.gameEngine.gameEngineBoardHandler.updateLabelHandler = { score, countOfSteps in
             if score > 0 && countOfSteps > 0 {
                 self.gameView.updateScoreLabel(score: score)
                 self.gameView.updateCountOfStepsLabel(countOfSteps: countOfSteps)
             } else if score <= 0 && countOfSteps >= 0 {
                 let  resumeVC = ResumeGameViewController()
-                resumeVC.modalPresentationStyle = .fullScreen
+                resumeVC.modalPresentationStyle = .overCurrentContext
                 self.present(resumeVC, animated: true)
             
             } else if score > 0 && countOfSteps == 0 {
                 let  restartVC = RestartGameViewController()
-                restartVC.modalPresentationStyle = .fullScreen
+                restartVC.modalPresentationStyle = .overCurrentContext
                 self.present(restartVC, animated: true)
             }
         }
         
-        viewModal.updateStarLayer = { starChanges in
+        viewModal?.gameEngine.gameEngineBoardHandler.updateStarChangesHandler = { starChanges in
             self.gameView.updateStarLayerFrame(updatedStarEstimation: starChanges)
+        }
+        
+        viewModal?.gameEngine.gameEngineBoardHandler.comboHandler = { combo in
+            if combo > 1 {
+                UIView.animate(withDuration: 0.9) {
+                    self.gameView.updateComboLabel(combo: combo)
+                    self.gameView.comboView.alpha = 1
+                }
+            } else {
+                UIView.animate(withDuration: 0.9) {
+                    self.gameView.comboView.alpha = 0
+                }
+            }
         }
     }
     
     private func setupSwipeGesture() {
         let customSwipeGestureRecognizer = CustomSwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
         gameView.gameAreaView.addGestureRecognizer(customSwipeGestureRecognizer)
+    }
+    
+    @objc private func pausedButtonTapped() {
+
+        let pauseView = PauseGameViewController()
+        pauseView.modalPresentationStyle = .custom
+        pauseView.preferredContentSize = CGSize(width: 400, height: 400)
+
+        present(pauseView, animated: true)
     }
 }

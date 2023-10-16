@@ -9,8 +9,6 @@ import Foundation
 
 struct EmptyInstance: GameInstance {
     var id: Int = 0
-    var indexPath: IndexPath = IndexPath()
     var index: Int = 0
-
     var image: GameInstanceImage = .empty
 }
