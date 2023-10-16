@@ -9,7 +9,6 @@ import Foundation
 
 protocol GameInstance {
     var id: Int { get }
-    var indexPath: IndexPath { get set }
     var index: Int { get set }
     var image: GameInstanceImage { get }
 }

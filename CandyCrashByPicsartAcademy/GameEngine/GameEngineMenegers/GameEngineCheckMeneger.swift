@@ -217,10 +217,6 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     while currentIndex >= numberOfItemsInRow * 4 {
                         gameBoardManager.gameBoard.swapAt(currentIndex, currentIndex - numberOfItemsInRow * 4)
                         
-                        let firstTempIndexPath = gameBoardManager.gameBoard[currentIndex].indexPath
-                        gameBoardManager.gameBoard[currentIndex].indexPath = gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath
-                        gameBoardManager.gameBoard[currentIndex - numberOfItemsInRow * 4].indexPath = firstTempIndexPath
-                        
                         gameBoardHandler.fallDownAtColumn?(currentIndex, 4)
                         currentIndex -= numberOfItemsInRow
                     }
@@ -334,43 +330,66 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
     }
     
     func checkMatches() {
-        isMatch = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            while self.isMatch {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.isMatch = true
+            
+            if self.isMatch == false {
+                return
+            }
+            
+            if self.checkFiveMatchAtRow() {
+                self.gamePlayInfo.combo += 1
+                self.isMatch = true
+                self.checkMatches()
+            } else if self.checkFiveMatchAtColumn() {
+                self.gamePlayInfo.combo += 1
+                self.isMatch = true
+                self.checkMatches()
+            } else if self.checkFourMatchAtRow() {
+                self.gamePlayInfo.combo += 1
+                self.isMatch = true
+                self.checkMatches()
+            } else if self.checkFourMatchAtColumn() {
+                self.gamePlayInfo.combo += 1
+                self.isMatch = true
+                self.checkMatches()
+            } else if self.checkThreeMatchAtRow() {
+                self.gamePlayInfo.combo += 1
+                self.isMatch = true
+                self.checkMatches()
+            } else if self.checkThreeMatchAtColumn() {
+                self.gamePlayInfo.combo += 1
+                self.isMatch = true
+                self.checkMatches()
+            } else {
                 self.isMatch = false
-                
-                if self.checkFiveMatchAtRow() {
-                    self.isMatch = true
-                } else if self.checkFiveMatchAtColumn() {
-                    self.isMatch = true
-                } else if self.checkFourMatchAtRow() {
-                    self.isMatch = true
-                } else if self.checkFourMatchAtColumn() {
-                    self.isMatch = true
-                } else if self.checkThreeMatchAtRow() {
-                    self.isMatch = true
-                } else if self.checkThreeMatchAtColumn() {
-                    self.isMatch = true
-                }
+                self.gamePlayInfo.combo = 0
             }
         }
     }
     
     func checkMatchForSwipeGesture() -> Bool {
         if checkFiveMatchAtRow() {
+            gamePlayInfo.combo = 1
             return true
         } else if checkFiveMatchAtColumn() {
+            gamePlayInfo.combo = 1
             return true
         } else if checkFourMatchAtRow() {
+            gamePlayInfo.combo = 1
             return true
         } else if checkFourMatchAtColumn() {
+            gamePlayInfo.combo = 1
             return true
         } else if checkThreeMatchAtRow() {
+            gamePlayInfo.combo = 1
             return true
         } else if checkThreeMatchAtColumn() {
+            gamePlayInfo.combo = 1
             return true
         }
         
+        gamePlayInfo.combo = 0
         return false
     }
 }
