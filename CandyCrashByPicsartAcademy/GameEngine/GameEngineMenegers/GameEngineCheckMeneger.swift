@@ -365,6 +365,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 self.isMatch = true
                 self.checkMatches()
             } else {
+                self.gamePlayInfo.isUserInteractionEnabled = true
                 self.isMatch = false
                 self.gamePlayInfo.combo = 0
             }
@@ -373,6 +374,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
     
     //MARK: - Check for matches resulting from a swipe gesture.
     func checkMatchForSwipeGesture() -> Bool {
+        gamePlayInfo.isUserInteractionEnabled = false
+        
         if checkFiveMatchAtRow() {
             gamePlayInfo.combo = 1
             return true
@@ -393,6 +396,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
             return true
         }
         
+        gamePlayInfo.isUserInteractionEnabled = true
         gamePlayInfo.combo = 0
         return false
     }

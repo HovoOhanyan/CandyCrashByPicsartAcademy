@@ -13,5 +13,6 @@ protocol GameEnginePlayInformation {
     var updatedStarEstimation: Int { get set }
     var gameInstance: GameInstance { get set }
     var combo: Int { get set }
+    var isUserInteractionEnabled: Bool { get set }
     func addGameEnigneChangeHandler(gameEngineChangeHandler: GameEngineBoardChangeHandler)
 }

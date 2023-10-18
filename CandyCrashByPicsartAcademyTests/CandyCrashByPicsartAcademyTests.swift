@@ -1,20 +1,42 @@
 //
-//  CandyCrashByPicsartAcademyTests.swift
-//  CandyCrashByPicsartAcademyTests
+//  GameEngineTest.swift
+//  GameEngineTest
 //
 //  Created by Hovo Ohanyan on 17.10.23.
 //
 
 import XCTest
+@testable import CandyCrashByPicsartAcademy
 
-final class CandyCrashByPicsartAcademyTests: XCTestCase {
-
+final class GameEngineTest: XCTestCase {
+    var gameBoardManager: GameEngineBoard!
+    var gameSwipeManager: GameEngineSwipeGestureHandler!
+    var gameCheckMatchesManager: GameEngineCheckManager!
+    var gamePlayInformationManager: GameEnginePlayInformationManager!
+    var gamePlayHandler: GameEngineBoardHandler!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        gameBoardManager = GameEngineBoardManager(numberOfItemsInRow: 10, boardSize: 100)
+        
+        gamePlayHandler = GameEngineBoardHandler()
+        
+        gamePlayInformationManager = GameEnginePlayInformationManager(score: 50, countOfSteps: 30, updatedStarEstimation: 85)
+        
+        gameCheckMatchesManager = GameEngineCheckManager(gameEngineBoardManager: gameBoardManager,
+                                                         gameEngineBoardHandler: gamePlayHandler,
+                                                         gamePlayInfo: gamePlayInformationManager)
+        
+        gameSwipeManager = GameEngineSwipeManager(gameBoardManager: gameBoardManager,
+                                                  gamePlayInfo: gamePlayInformationManager, 
+                                                  gameCheckManager: gameCheckMatchesManager)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        gameSwipeManager = nil
+        gameBoardManager = nil
+        gameCheckMatchesManager = nil
+        gamePlayInformationManager = nil
+        gamePlayHandler = nil
     }
 
     func testExample() throws {

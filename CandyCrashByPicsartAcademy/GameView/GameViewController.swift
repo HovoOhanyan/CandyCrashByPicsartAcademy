@@ -121,6 +121,11 @@ final class GameViewController: UIViewController {
                 }
             }
         }
+        
+        viewModal?.gameEngine.gameEngineBoardHandler.isUserInteractionEnabledHandler = { isUserInteractionEnabled in
+            print(isUserInteractionEnabled)
+            self.gameView.gameAreaView.isUserInteractionEnabled = isUserInteractionEnabled
+        }
     }
     
     private func setupSwipeGesture() {
