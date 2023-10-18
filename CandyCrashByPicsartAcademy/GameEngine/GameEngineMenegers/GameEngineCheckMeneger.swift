@@ -333,7 +333,7 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
     
     //MARK: -  Check for matches on the game board and handle them.
     func checkMatches() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.isMatch = true
             
             if self.isMatch == false {

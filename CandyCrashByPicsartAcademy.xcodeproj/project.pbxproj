@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		3F22390D2AD5D84900383083 /* GameInstanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F22390C2AD5D84900383083 /* GameInstanceView.swift */; };
 		3F22390F2AD5D96A00383083 /* GameViewExtensionForCreateBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F22390E2AD5D96A00383083 /* GameViewExtensionForCreateBoard.swift */; };
-		3F49CC482ADEFF62008E5736 /* CandyCrashByPicsartAcademyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49CC472ADEFF62008E5736 /* CandyCrashByPicsartAcademyTests.swift */; };
+		3F49CC482ADEFF62008E5736 /* GameEngineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49CC472ADEFF62008E5736 /* GameEngineTest.swift */; };
+		3F49CC4F2ADFF6D8008E5736 /* GameEngineSwipeManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49CC4E2ADFF6D8008E5736 /* GameEngineSwipeManagerTest.swift */; };
+		3F49CC512ADFF6FF008E5736 /* GameEngineBoardManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49CC502ADFF6FF008E5736 /* GameEngineBoardManagerTest.swift */; };
+		3F49CC532ADFF71A008E5736 /* GameEngineCheckMatchManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49CC522ADFF71A008E5736 /* GameEngineCheckMatchManagerTest.swift */; };
 		3F565A8A2AC1BB110003A7CC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F565A892AC1BB110003A7CC /* GameViewController.swift */; };
 		3F68988B2ACC5D1000DADAC6 /* SwipeDirectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68988A2ACC5D1000DADAC6 /* SwipeDirectionEnum.swift */; };
 		3F68988D2ACC5D3700DADAC6 /* CustomSwipeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68988C2ACC5D3700DADAC6 /* CustomSwipeGestureRecognizer.swift */; };
@@ -66,7 +69,10 @@
 		3F22390C2AD5D84900383083 /* GameInstanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInstanceView.swift; sourceTree = "<group>"; };
 		3F22390E2AD5D96A00383083 /* GameViewExtensionForCreateBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewExtensionForCreateBoard.swift; sourceTree = "<group>"; };
 		3F49CC452ADEFF62008E5736 /* CandyCrashByPicsartAcademyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CandyCrashByPicsartAcademyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F49CC472ADEFF62008E5736 /* CandyCrashByPicsartAcademyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyCrashByPicsartAcademyTests.swift; sourceTree = "<group>"; };
+		3F49CC472ADEFF62008E5736 /* GameEngineTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineTest.swift; sourceTree = "<group>"; };
+		3F49CC4E2ADFF6D8008E5736 /* GameEngineSwipeManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineSwipeManagerTest.swift; sourceTree = "<group>"; };
+		3F49CC502ADFF6FF008E5736 /* GameEngineBoardManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineBoardManagerTest.swift; sourceTree = "<group>"; };
+		3F49CC522ADFF71A008E5736 /* GameEngineCheckMatchManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineCheckMatchManagerTest.swift; sourceTree = "<group>"; };
 		3F565A892AC1BB110003A7CC /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3F68988A2ACC5D1000DADAC6 /* SwipeDirectionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDirectionEnum.swift; sourceTree = "<group>"; };
 		3F68988C2ACC5D3700DADAC6 /* CustomSwipeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwipeGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -132,7 +138,10 @@
 		3F49CC462ADEFF62008E5736 /* CandyCrashByPicsartAcademyTests */ = {
 			isa = PBXGroup;
 			children = (
-				3F49CC472ADEFF62008E5736 /* CandyCrashByPicsartAcademyTests.swift */,
+				3F49CC472ADEFF62008E5736 /* GameEngineTest.swift */,
+				3F49CC502ADFF6FF008E5736 /* GameEngineBoardManagerTest.swift */,
+				3F49CC4E2ADFF6D8008E5736 /* GameEngineSwipeManagerTest.swift */,
+				3F49CC522ADFF71A008E5736 /* GameEngineCheckMatchManagerTest.swift */,
 			);
 			path = CandyCrashByPicsartAcademyTests;
 			sourceTree = "<group>";
@@ -499,7 +508,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F49CC482ADEFF62008E5736 /* CandyCrashByPicsartAcademyTests.swift in Sources */,
+				3F49CC4F2ADFF6D8008E5736 /* GameEngineSwipeManagerTest.swift in Sources */,
+				3F49CC482ADEFF62008E5736 /* GameEngineTest.swift in Sources */,
+				3F49CC532ADFF71A008E5736 /* GameEngineCheckMatchManagerTest.swift in Sources */,
+				3F49CC512ADFF6FF008E5736 /* GameEngineBoardManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

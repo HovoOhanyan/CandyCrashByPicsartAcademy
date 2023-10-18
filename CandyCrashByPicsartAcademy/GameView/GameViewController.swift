@@ -45,28 +45,41 @@ final class GameViewController: UIViewController {
             UIView.animate(withDuration: 0.9) {
                 for index in indexes {
                     self.gameView.gameInstanceArray[index].configuration(gameInstance: self.viewModal.gameEngine.gameBoardManager.gameBoard[index],
-                                                                 index: self.gameView.gameInstanceArray[index].gameInstance.index)
+                                                                         index: self.gameView.gameInstanceArray[index].gameInstance.index)
                     
                 }
             }
         }
         
         viewModal?.gameEngine.gameEngineBoardHandler.fallDownAtRow = { indexes in
-            UIView.animate(withDuration: 0.9) {
-                for index in indexes {
-                    let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
-                    let firstItem = self.gameView.gameInstanceArray[index]
-                    let secondItem = self.gameView.gameInstanceArray[index - numberOfItemsInRow]
+            for index in indexes {
+                let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
+                let firstItem = self.gameView.gameInstanceArray[index]
+                let secondItem = self.gameView.gameInstanceArray[index - numberOfItemsInRow]
+                firstItem.alpha = 0
                 
+                UIView.animate(withDuration: 0.9) {
                     self.gameView.gameInstanceArray.swapAt(index, index - numberOfItemsInRow)
                     
                     let firstItemFrame = firstItem.frame
                     firstItem.frame = secondItem.frame
                     secondItem.frame = firstItemFrame
-                                        
+                    
                     let tempIndex = firstItem.gameInstance.index
                     firstItem.gameInstance.index = secondItem.gameInstance.index
                     secondItem.gameInstance.index = tempIndex
+                }
+                
+                let itemFrame = firstItem.frame
+                
+                if index >= numberOfItemsInRow && index < numberOfItemsInRow * 2 {
+                    firstItem.frame = CGRect(x: itemFrame.minX, y: itemFrame.minY - itemFrame.height, width: itemFrame.width, height: itemFrame.height)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                        UIView.animate(withDuration: 1) {
+                            firstItem.frame = itemFrame
+                            firstItem.alpha = 1
+                        }
+                    }
                 }
             }
         }
@@ -123,7 +136,6 @@ final class GameViewController: UIViewController {
         }
         
         viewModal?.gameEngine.gameEngineBoardHandler.isUserInteractionEnabledHandler = { isUserInteractionEnabled in
-            print(isUserInteractionEnabled)
             self.gameView.gameAreaView.isUserInteractionEnabled = isUserInteractionEnabled
         }
     }
