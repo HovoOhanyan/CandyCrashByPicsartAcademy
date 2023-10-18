@@ -33,7 +33,7 @@ final class GameViewController: UIViewController {
         gameView.setupGradient()
         gameView.setupShapeLayer()
         gameView.pausedButton.addTarget(self, action: #selector(pausedButtonTapped), for: .touchUpInside)
-
+        
         view.addSubview(gameView)
     }
     
@@ -85,13 +85,19 @@ final class GameViewController: UIViewController {
         }
         
         viewModal?.gameEngine.gameEngineBoardHandler.fallDownAtColumn = { index, check in
+            let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
+            let firstItem = self.gameView.gameInstanceArray[index]
+            let secondItem = self.gameView.gameInstanceArray[index - numberOfItemsInRow * check]
+            var count = 0
+            
+            while count != check {
+                self.gameView.gameInstanceArray[index - numberOfItemsInRow * count].alpha = 0
+                count += 1
+            }
+          
+            self.gameView.gameInstanceArray.swapAt(index, index - numberOfItemsInRow * check)
+            
             UIView.animate(withDuration: 0.8) {
-                let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
-                let firstItem = self.gameView.gameInstanceArray[index]
-                let secondItem = self.gameView.gameInstanceArray[index - numberOfItemsInRow * check]
-                
-                self.gameView.gameInstanceArray.swapAt(index, index - numberOfItemsInRow * check)
-                
                 let firstItemFrame = firstItem.frame
                 firstItem.frame = secondItem.frame
                 secondItem.frame = firstItemFrame
@@ -99,6 +105,34 @@ final class GameViewController: UIViewController {
                 let tempIndex = firstItem.gameInstance.index
                 firstItem.gameInstance.index = secondItem.gameInstance.index
                 secondItem.gameInstance.index = tempIndex
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                if index < numberOfItemsInRow * (check + 1) {
+                    count = 1
+                    var arrayOfFrame: [CGRect] = []
+                    
+                    while count <= check {
+                        let frameOfInstance = self.gameView.gameInstanceArray[index - numberOfItemsInRow * count].frame
+                        
+                        self.gameView.gameInstanceArray[index - numberOfItemsInRow * count].frame = CGRect(x: frameOfInstance.minX,
+                                                                                                   y: frameOfInstance.minY - frameOfInstance.height,
+                                                                                                   width: frameOfInstance.width,
+                                                                                                   height: frameOfInstance.height)
+                        arrayOfFrame.append(frameOfInstance)
+                        count += 1
+                    }
+                    
+                    UIView.animate(withDuration: 0.5) {
+                        count = 1
+                        
+                        while count <= check {
+                            self.gameView.gameInstanceArray[index - numberOfItemsInRow * count].frame = arrayOfFrame[count - 1]
+                            self.gameView.gameInstanceArray[index - numberOfItemsInRow * count].alpha = 1
+                            count += 1
+                        }
+                    }
+                }
             }
         }
         
@@ -110,7 +144,7 @@ final class GameViewController: UIViewController {
                 let  resumeVC = ResumeGameViewController()
                 resumeVC.modalPresentationStyle = .overCurrentContext
                 self.present(resumeVC, animated: true)
-            
+                
             } else if score > 0 && countOfSteps == 0 {
                 let  restartVC = RestartGameViewController()
                 restartVC.modalPresentationStyle = .overCurrentContext
@@ -146,11 +180,11 @@ final class GameViewController: UIViewController {
     }
     
     @objc private func pausedButtonTapped() {
-
+        
         let pauseView = PauseGameViewController()
         pauseView.modalPresentationStyle = .custom
         pauseView.preferredContentSize = CGSize(width: 400, height: 400)
-
+        
         present(pauseView, animated: true)
     }
 }
