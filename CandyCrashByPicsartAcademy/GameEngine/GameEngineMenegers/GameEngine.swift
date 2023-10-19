@@ -13,7 +13,7 @@ final class GameEngine {
     private(set) var gameSwipeManager: GameEngineSwipeGestureHandler
     private(set) var gameCheckMatchsManager: GameEngineCheckMatches
     private(set) var gameEngineBoardHandler: GameEngineBoardChangeHandler
-    private(set) var gamePlayManager: GameEnginePlayInformation
+    var gamePlayManager: GameEnginePlayInformation
     
     //MARK: -
     

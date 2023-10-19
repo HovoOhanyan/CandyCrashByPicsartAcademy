@@ -8,8 +8,8 @@
 import UIKit
 
 final class GameViewController: UIViewController {
-    public var viewModal: GameViewModel!
     
+    public var viewModal: GameViewModel = GameViewModel()
     let gameView = GameView()
     
     override func viewDidLoad() {
@@ -21,7 +21,6 @@ final class GameViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         gameView.createGameBoard(gameBoard: viewModal.gameEngine.gameBoardManager)
-        setupSwipeGesture()
     }
     
     private func setupUI() {
@@ -40,7 +39,7 @@ final class GameViewController: UIViewController {
     private func gameViewModalSetup() {
         viewModal = GameViewModel()
         
-        viewModal?.gameEngine.gameEngineBoardHandler.reloadItems = { indexes in
+        viewModal.gameEngine.gameEngineBoardHandler.reloadItems = { indexes in
             UIView.animate(withDuration: 0.9) {
                 for index in indexes {
                     self.gameView.gameInstanceArray[index].configuration(gameInstance: self.viewModal.gameEngine.gameBoardManager.gameBoard[index],
@@ -50,7 +49,7 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.gameEngine.gameEngineBoardHandler.fallDownAtRow = { indexes in
+        viewModal.gameEngine.gameEngineBoardHandler.fallDownAtRow = { indexes in
             UIView.animate(withDuration: 0.9) {
                 for index in indexes {
                     let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
@@ -70,7 +69,7 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.gameEngine.gameEngineBoardHandler.fallDownAtColumn = { index, check in
+        viewModal.gameEngine.gameEngineBoardHandler.fallDownAtColumn = { index, check in
             UIView.animate(withDuration: 0.8) {
                 let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
                 let firstItem = self.gameView.gameInstanceArray[index]
@@ -88,7 +87,7 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.gameEngine.gameEngineBoardHandler.updateLabelHandler = { score, countOfSteps in
+        viewModal.gameEngine.gameEngineBoardHandler.updateLabelHandler = { score, countOfSteps in
             if score > 0 && countOfSteps > 0 {
                 self.gameView.updateScoreLabel(score: score)
                 self.gameView.updateCountOfStepsLabel(countOfSteps: countOfSteps)
@@ -104,11 +103,11 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.gameEngine.gameEngineBoardHandler.updateStarChangesHandler = { starChanges in
+        viewModal.gameEngine.gameEngineBoardHandler.updateStarChangesHandler = { starChanges in
             self.gameView.updateStarLayerFrame(updatedStarEstimation: starChanges)
         }
         
-        viewModal?.gameEngine.gameEngineBoardHandler.comboHandler = { combo in
+        viewModal.gameEngine.gameEngineBoardHandler.comboHandler = { combo in
             if combo > 1 {
                 UIView.animate(withDuration: 0.9) {
                     self.gameView.updateComboLabel(combo: combo)
@@ -128,8 +127,8 @@ final class GameViewController: UIViewController {
     }
     
     @objc private func pausedButtonTapped() {
-
         let pauseView = PauseGameViewController()
+        pauseView.gamePlayInformation = self.viewModal.gameEngine.gamePlayManager
         pauseView.modalPresentationStyle = .custom
         pauseView.preferredContentSize = CGSize(width: 400, height: 400)
 
