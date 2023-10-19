@@ -15,4 +15,5 @@ final class GameEngineBoardHandler: GameEngineBoardChangeHandler {
     var updateCountOfStepsLabelHandler: ((Int) -> Void)?
     var updateStarChangesHandler: ((Int) -> Void)?
     var comboHandler: ((Int) -> Void)?
+    var isUserInteractionEnabledHandler: ((Bool) -> Void)?
 }

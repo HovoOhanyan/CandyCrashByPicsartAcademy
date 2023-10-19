@@ -16,7 +16,6 @@ final class GameEngineBoardManager: GameEngineBoard {
     
     init(numberOfItemsInRow: Int, boardSize: Int) {
         self.numberOfItemsInRow = numberOfItemsInRow
-
         gameBoard = (1...boardSize).map({_ in EmptyInstance()})
     }
     
@@ -55,6 +54,4 @@ final class GameEngineBoardManager: GameEngineBoard {
             boardCount += 1
         }
     }
-    
-    
 }

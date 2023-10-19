@@ -12,7 +12,6 @@ extension GameViewController {
         if gestureRecognizer.state == .recognized {
             let location = gestureRecognizer.initialTouchLocation
             
-            gameView.gameAreaView.isUserInteractionEnabled = false
             let indexAtArray = calculateIndexOfGameInstanceView(location: location)
             let index = gameView.gameInstanceArray[indexAtArray].gameInstance.index
             
@@ -109,6 +108,7 @@ extension GameViewController {
                         first.frame = second.frame
                         second.frame = tempFrame
                     }
+                    
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                         if self.viewModal.gameEngine.gameSwipeManager.swipeUpGesture(index: index) {
                             self.viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
@@ -170,8 +170,6 @@ extension GameViewController {
                 print("none")
             }
         }
-        
-        gameView.gameAreaView.isUserInteractionEnabled = true
     }
     
     private func calculateIndexOfGameInstanceView(location: CGPoint) -> Int {        
