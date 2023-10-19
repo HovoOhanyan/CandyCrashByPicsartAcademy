@@ -9,7 +9,7 @@ import Foundation
 
 final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
     private var gameBoardManager: GameEngineBoard
-    private var gamePlayInfo: GameEnginePlayInformation
+    var gamePlayInfo: GameEnginePlayInformation
     private var gameCheckManager: GameEngineCheckMatches
 
     init(gameBoardManager: GameEngineBoard, gamePlayInfo: GameEnginePlayInformation, gameCheckManager: GameEngineCheckMatches) {

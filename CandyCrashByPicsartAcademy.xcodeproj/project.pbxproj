@@ -35,6 +35,7 @@
 		3FA8C7D82AC83CC5007C2F4B /* GameEnigneCheckMatchsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8C7D72AC83CC5007C2F4B /* GameEnigneCheckMatchsProtocol.swift */; };
 		3FA8C7DA2AC83D36007C2F4B /* GameEngineCheckMeneger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8C7D92AC83D36007C2F4B /* GameEngineCheckMeneger.swift */; };
 		3FA8C7DC2AC83F62007C2F4B /* GameEngineBoardHendler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8C7DB2AC83F62007C2F4B /* GameEngineBoardHendler.swift */; };
+		3FAABF3B2AE189AA00B62E9C /* GameViewGameEngineHandlerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAABF3A2AE189AA00B62E9C /* GameViewGameEngineHandlerExtension.swift */; };
 		3FBC4D6D2AB0E54800B0E711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBC4D6C2AB0E54800B0E711 /* AppDelegate.swift */; };
 		3FBC4D6F2AB0E54800B0E711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBC4D6E2AB0E54800B0E711 /* SceneDelegate.swift */; };
 		3FBC4D712AB0E54800B0E711 /* JoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBC4D702AB0E54800B0E711 /* JoinGameViewController.swift */; };
@@ -42,6 +43,7 @@
 		3FBC4D762AB0E54A00B0E711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC4D752AB0E54A00B0E711 /* Assets.xcassets */; };
 		3FBC4D792AB0E54A00B0E711 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC4D772AB0E54A00B0E711 /* LaunchScreen.storyboard */; };
 		3FC2DDE72AC8BED8007E2807 /* GameInstanceImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2DDE62AC8BED8007E2807 /* GameInstanceImageEnum.swift */; };
+		CC399B362AE13B4B00224AC7 /* GameDataToSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC399B352AE13B4B00224AC7 /* GameDataToSave.swift */; };
 		CC3F40392AC073CE0065075E /* CherryBombOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC3F40382AC073CE0065075E /* CherryBombOne-Regular.ttf */; };
 		CC3F403C2AC075A20065075E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3F403B2AC075A20065075E /* UIColor + Extension.swift */; };
 		CC49D3082ACB16FF007FDE7F /* GameEnginePlayInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC49D3072ACB16FF007FDE7F /* GameEnginePlayInformation.swift */; };
@@ -95,6 +97,7 @@
 		3FA8C7D72AC83CC5007C2F4B /* GameEnigneCheckMatchsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEnigneCheckMatchsProtocol.swift; sourceTree = "<group>"; };
 		3FA8C7D92AC83D36007C2F4B /* GameEngineCheckMeneger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineCheckMeneger.swift; sourceTree = "<group>"; };
 		3FA8C7DB2AC83F62007C2F4B /* GameEngineBoardHendler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineBoardHendler.swift; sourceTree = "<group>"; };
+		3FAABF3A2AE189AA00B62E9C /* GameViewGameEngineHandlerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewGameEngineHandlerExtension.swift; sourceTree = "<group>"; };
 		3FBC4D692AB0E54800B0E711 /* CandyCrashByPicsartAcademy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CandyCrashByPicsartAcademy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FBC4D6C2AB0E54800B0E711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FBC4D6E2AB0E54800B0E711 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 		3FBC4D782AB0E54A00B0E711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FBC4D7A2AB0E54A00B0E711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FC2DDE62AC8BED8007E2807 /* GameInstanceImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInstanceImageEnum.swift; sourceTree = "<group>"; };
+		CC399B352AE13B4B00224AC7 /* GameDataToSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDataToSave.swift; sourceTree = "<group>"; };
 		CC3F40382AC073CE0065075E /* CherryBombOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CherryBombOne-Regular.ttf"; sourceTree = "<group>"; };
 		CC3F403B2AC075A20065075E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		CC49D3072ACB16FF007FDE7F /* GameEnginePlayInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEnginePlayInformation.swift; sourceTree = "<group>"; };
@@ -150,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				3F825F762AC2D57C00392156 /* ViewModal */,
-				3F825F752AC2D57600392156 /* Modal */,
+				CC399B372AE13C5700224AC7 /* Model */,
 				3F565A882AC1BB0B0003A7CC /* View */,
 			);
 			path = GameView;
@@ -161,6 +165,7 @@
 			children = (
 				3F565A892AC1BB110003A7CC /* GameViewController.swift */,
 				3F825F772AC2D5D200392156 /* GameViewSwipeGestureHandlerExtension.swift */,
+				3FAABF3A2AE189AA00B62E9C /* GameViewGameEngineHandlerExtension.swift */,
 				3F7CC94C2ACB2B79004889C6 /* GameView.swift */,
 				3F22390E2AD5D96A00383083 /* GameViewExtensionForCreateBoard.swift */,
 				3F22390C2AD5D84900383083 /* GameInstanceView.swift */,
@@ -207,13 +212,6 @@
 			path = GameInstances;
 			sourceTree = "<group>";
 		};
-		3F825F752AC2D57600392156 /* Modal */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Modal;
-			sourceTree = "<group>";
-		};
 		3F825F762AC2D57C00392156 /* ViewModal */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				3F923C7A2AC0427200719921 /* ViewModel */,
-				3F923C792AC0426B00719921 /* Model */,
+				CC399B342AE13B3800224AC7 /* Model */,
 				3F923C782AC0426300719921 /* View */,
 			);
 			name = JoinGameViewController;
@@ -239,13 +237,6 @@
 				3F7CC9462ACAA6E9004889C6 /* JoinGameView.swift */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		3F923C792AC0426B00719921 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3F923C7A2AC0427200719921 /* ViewModel */ = {
@@ -278,6 +269,20 @@
 				CC49D3092ACB1743007FDE7F /* GameEnginePlayInformationManager.swift */,
 			);
 			path = GameEngineMenegers;
+			sourceTree = "<group>";
+		};
+		3FAABF382AE1892F00B62E9C /* ViewModal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModal;
+			sourceTree = "<group>";
+		};
+		3FAABF392AE1893700B62E9C /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Modal;
 			sourceTree = "<group>";
 		};
 		3FBC4D602AB0E54800B0E711 = {
@@ -313,6 +318,21 @@
 				3FBC4D7A2AB0E54A00B0E711 /* Info.plist */,
 			);
 			path = CandyCrashByPicsartAcademy;
+			sourceTree = "<group>";
+		};
+		CC399B342AE13B3800224AC7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC399B352AE13B4B00224AC7 /* GameDataToSave.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CC399B372AE13C5700224AC7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		CC3F40362AC073960065075E /* Supported */ = {
@@ -374,8 +394,8 @@
 		CC5EAB692ACC680A00CF92A8 /* ResumeGameView */ = {
 			isa = PBXGroup;
 			children = (
-				CC5EAB6C2ACC68BE00CF92A8 /* ViewModel */,
-				CC5EAB6B2ACC68B700CF92A8 /* Model */,
+				3FAABF382AE1892F00B62E9C /* ViewModal */,
+				3FAABF392AE1893700B62E9C /* Modal */,
 				CC5EAB6A2ACC687200CF92A8 /* View */,
 			);
 			path = ResumeGameView;
@@ -390,20 +410,6 @@
 				CC547F8F2AD55E35008EF6E8 /* ResumeGameView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		CC5EAB6B2ACC68B700CF92A8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CC5EAB6C2ACC68BE00CF92A8 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -522,6 +528,7 @@
 				3F825F782AC2D5D200392156 /* GameViewSwipeGestureHandlerExtension.swift in Sources */,
 				3F565A8A2AC1BB110003A7CC /* GameViewController.swift in Sources */,
 				3FA8C7DA2AC83D36007C2F4B /* GameEngineCheckMeneger.swift in Sources */,
+				3FAABF3B2AE189AA00B62E9C /* GameViewGameEngineHandlerExtension.swift in Sources */,
 				CC547F922AD592DF008EF6E8 /* ResumeGameViewController.swift in Sources */,
 				3FA8C7CF2AC83440007C2F4B /* GameEngineBoardMeneger.swift in Sources */,
 				3FC2DDE72AC8BED8007E2807 /* GameInstanceImageEnum.swift in Sources */,
@@ -531,6 +538,7 @@
 				3F22390D2AD5D84900383083 /* GameInstanceView.swift in Sources */,
 				3F22390F2AD5D96A00383083 /* GameViewExtensionForCreateBoard.swift in Sources */,
 				3F825F682AC1E57900392156 /* HeartInstance.swift in Sources */,
+				CC399B362AE13B4B00224AC7 /* GameDataToSave.swift in Sources */,
 				3FBC4D712AB0E54800B0E711 /* JoinGameViewController.swift in Sources */,
 				3FA8C7CD2AC833D5007C2F4B /* GameEngineBoardProtocol.swift in Sources */,
 				3F7CC9472ACAA6E9004889C6 /* JoinGameView.swift in Sources */,
@@ -758,7 +766,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4TR6QXU2L9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CandyCrashByPicsartAcademy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -786,7 +794,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4TR6QXU2L9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CandyCrashByPicsartAcademy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

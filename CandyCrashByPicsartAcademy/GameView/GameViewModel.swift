@@ -11,7 +11,7 @@ final class GameViewModel {
     private(set) var gameEngine: GameEngine
     
     private let gameEngineBoardManager: GameEngineBoard
-    private let gameEnginePlayInfoManager: GameEnginePlayInformation
+    var gameEnginePlayInfoManager: GameEnginePlayInformation
     
     // Initialize the view model with default parameters.
     init() {
@@ -30,4 +30,9 @@ final class GameViewModel {
         gameEngine = GameEngine(gameBoardManager: self.gameEngineBoardManager, gamePlayManager: self.gameEnginePlayInfoManager)
         gameEngine.gameBoardManager.createBoard()
     }
-}
+    
+    func changeGamePlayManager(gamePlayManager: GameEnginePlayInformationManager) {
+        self.gameEnginePlayInfoManager = gamePlayManager
+        self.gameEngine.changeGamePlayManager(gamePlayManager: gamePlayManager)
+    }
+ }

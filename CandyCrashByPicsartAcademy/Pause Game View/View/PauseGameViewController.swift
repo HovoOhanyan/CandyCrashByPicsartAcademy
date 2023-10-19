@@ -9,6 +9,8 @@ import UIKit
 final class PauseGameViewController: UIViewController {
     
     private let pauseGameView = PauseGameView()
+    var gamePlayInformation: GameEnginePlayInformation?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,11 +82,21 @@ extension PauseGameViewController {
         alertController.addAction(cancelAction)
         
         let exitAction = UIAlertAction(title: "Exit", style: .default) { (_) in
-            exit(0)
+            self.performExit()
+            self.dismiss(animated: true)
         }
         alertController.addAction(exitAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    private func performExit() {
+        let gameData = GameDataToSave(score: self.gamePlayInformation!.score,
+                                      countOfSteps: self.gamePlayInformation!.countOfSteps,
+                                      updateStarEstimate: self.gamePlayInformation!.updatedStarEstimation,
+                                      id: self.gamePlayInformation!.gameInstance.id)
+        self.gamePlayInformation?.saveToUserDefaults(gameData: gameData)
+        exit(0)
     }
 }
 

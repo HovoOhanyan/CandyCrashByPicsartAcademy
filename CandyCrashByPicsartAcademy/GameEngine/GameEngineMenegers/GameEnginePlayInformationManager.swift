@@ -9,6 +9,9 @@ import Foundation
 
 final class GameEnginePlayInformationManager: GameEnginePlayInformation {
     
+    private var defaults = UserDefaults.standard
+    private let identifier = "gameEnginePlayInformationManager"
+    
     var score: Int {
         didSet {
             gameEngineChangeHandler.updateLabelHandler?(score, countOfSteps)
@@ -52,5 +55,26 @@ final class GameEnginePlayInformationManager: GameEnginePlayInformation {
     
     func addGameEnigneChangeHandler(gameEngineChangeHandler: GameEngineBoardChangeHandler) {
         self.gameEngineChangeHandler = gameEngineChangeHandler
+    }
+}
+
+//MARK: Save to UserDefaults
+extension GameEnginePlayInformationManager {
+    
+    public func saveToUserDefaults(gameData: GameDataToSave) {
+        let encoder = JSONEncoder()
+        if let encodedData = try? encoder.encode(gameData) {
+            defaults.set(encodedData, forKey: self.identifier)
+        }
+    }
+
+    public func loadFromUserDefaults() -> GameDataToSave? {
+        if let savedData = defaults.data(forKey: self.identifier) {
+            let decoder = JSONDecoder()
+            if let loadedData = try? decoder.decode(GameDataToSave.self, from: savedData) {
+                return loadedData
+            }
+        }
+        return nil
     }
 }

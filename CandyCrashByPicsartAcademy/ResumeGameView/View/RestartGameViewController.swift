@@ -40,7 +40,6 @@ extension RestartGameViewController {
     @objc func restartButtonTapped() {
         let gameView = GameViewController()
         gameView.modalPresentationStyle = .fullScreen
-        gameView.viewModal = GameViewModel()
         present(gameView, animated: true)
     }
 }

@@ -13,7 +13,7 @@ final class GameEngine {
     private(set) var gameSwipeManager: GameEngineSwipeGestureHandler
     private(set) var gameCheckMatchsManager: GameEngineCheckMatches
     private(set) var gameEngineBoardHandler: GameEngineBoardChangeHandler
-    private(set) var gamePlayManager: GameEnginePlayInformation
+    var gamePlayManager: GameEnginePlayInformation
     
     //MARK: - Initialize the view model with default parameters.
 
@@ -42,5 +42,15 @@ final class GameEngine {
         self.gameCheckMatchsManager = gameCheckMatchsManager
         self.gameEngineBoardHandler = gameEngineBoardHandler
         self.gamePlayManager = gamePlayManager
+    }
+    
+    func changeGamePlayManager(gamePlayManager: GameEnginePlayInformation) {
+        if let gameSwipe = gameSwipeManager as? GameEngineSwipeManager, let gameCheck = gameCheckMatchsManager as? GameEngineCheckManager {
+            gamePlayManager.addGameEnigneChangeHandler(gameEngineChangeHandler: self.gameEngineBoardHandler)
+            
+            self.gamePlayManager = gamePlayManager
+            gameSwipe.gamePlayInfo = gamePlayManager
+            gameCheck.gamePlayInfo = gamePlayManager
+        }
     }
 }
