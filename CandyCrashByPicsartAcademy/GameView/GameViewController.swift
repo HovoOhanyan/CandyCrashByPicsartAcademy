@@ -50,7 +50,7 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.gameEngine.gameEngineBoardHandler.fallDownAtRow = { indexes in
+        viewModal.gameEngine.gameEngineBoardHandler.fallDownAtRow = { indexes in
             for index in indexes {
                 let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
                 let firstItem = self.gameView.gameInstanceArray[index]
@@ -83,7 +83,7 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.gameEngine.gameEngineBoardHandler.fallDownAtColumn = { index, check in
+        viewModal.gameEngine.gameEngineBoardHandler.fallDownAtColumn = { index, check in
             let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
             let firstItem = self.gameView.gameInstanceArray[index]
             let secondItem = self.gameView.gameInstanceArray[index - numberOfItemsInRow * check]
@@ -168,7 +168,7 @@ final class GameViewController: UIViewController {
             }
         }
         
-        viewModal?.gameEngine.gameEngineBoardHandler.isUserInteractionEnabledHandler = { isUserInteractionEnabled in
+        viewModal.gameEngine.gameEngineBoardHandler.isUserInteractionEnabledHandler = { isUserInteractionEnabled in
             self.gameView.gameAreaView.isUserInteractionEnabled = isUserInteractionEnabled
         }
     }
