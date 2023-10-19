@@ -30,4 +30,9 @@ final class GameViewModel {
         gameEngine = GameEngine(gameBoardManager: self.gameEngineBoardManager, gamePlayManager: self.gameEnginePlayInfoManager)
         gameEngine.gameBoardManager.createBoard()
     }
-}
+    
+    func changeGamePlayManager(gamePlayManager: GameEnginePlayInformationManager) {
+        self.gameEnginePlayInfoManager = gamePlayManager
+        self.gameEngine.changeGamePlayManager(gamePlayManager: gamePlayManager)
+    }
+ }

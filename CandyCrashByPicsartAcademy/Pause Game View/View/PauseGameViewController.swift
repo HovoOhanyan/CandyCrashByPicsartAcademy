@@ -83,6 +83,7 @@ extension PauseGameViewController {
         
         let exitAction = UIAlertAction(title: "Exit", style: .default) { (_) in
             self.performExit()
+            self.dismiss(animated: true)
         }
         alertController.addAction(exitAction)
         
@@ -92,7 +93,8 @@ extension PauseGameViewController {
     private func performExit() {
         let gameData = GameDataToSave(score: self.gamePlayInformation!.score,
                                       countOfSteps: self.gamePlayInformation!.countOfSteps,
-                                      updateStarEstimate: self.gamePlayInformation!.updatedStarEstimation)
+                                      updateStarEstimate: self.gamePlayInformation!.updatedStarEstimation,
+                                      id: self.gamePlayInformation!.gameInstance.id)
         self.gamePlayInformation?.saveToUserDefaults(gameData: gameData)
         exit(0)
     }

@@ -9,4 +9,5 @@ struct GameDataToSave: Codable {
     let score: Int
     let countOfSteps: Int
     let updateStarEstimate: Int
+    let id: Int
 }

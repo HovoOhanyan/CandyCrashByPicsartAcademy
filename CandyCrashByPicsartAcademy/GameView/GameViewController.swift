@@ -38,8 +38,6 @@ final class GameViewController: UIViewController {
     
     //MARK: - Sets up the closures and handlers for the game view model, responsible for handling game logic.
     private func gameViewModalSetup() {
-        viewModal = GameViewModel()
-        
         viewModal.gameEngine.gameEngineBoardHandler.reloadItems = { indexes in
             UIView.animate(withDuration: 0.9) {
                 for index in indexes {
@@ -192,6 +190,7 @@ final class GameViewController: UIViewController {
         }
         
         viewModal.gameEngine.gameEngineBoardHandler.isUserInteractionEnabledHandler = { isUserInteractionEnabled in
+            self.gameView.pausedButton.isUserInteractionEnabled = isUserInteractionEnabled
             self.gameView.gameAreaView.isUserInteractionEnabled = isUserInteractionEnabled
         }
     }
@@ -202,7 +201,6 @@ final class GameViewController: UIViewController {
     }
     
     @objc private func pausedButtonTapped() {
-        
         let pauseView = PauseGameViewController()
         pauseView.gamePlayInformation = self.viewModal.gameEngine.gamePlayManager
         pauseView.modalPresentationStyle = .custom

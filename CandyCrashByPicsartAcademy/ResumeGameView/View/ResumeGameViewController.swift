@@ -40,7 +40,6 @@ extension ResumeGameViewController {
     @objc func resumeButtonTapped() {
         let gameView = GameViewController()
         gameView.modalPresentationStyle = .fullScreen
-        gameView.viewModal = GameViewModel()
         present(gameView, animated: true)
     }
 }

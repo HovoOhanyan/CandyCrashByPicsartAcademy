@@ -43,4 +43,14 @@ final class GameEngine {
         self.gameEngineBoardHandler = gameEngineBoardHandler
         self.gamePlayManager = gamePlayManager
     }
+    
+    func changeGamePlayManager(gamePlayManager: GameEnginePlayInformation) {
+        if let gameSwipe = gameSwipeManager as? GameEngineSwipeManager, let gameCheck = gameCheckMatchsManager as? GameEngineCheckManager {
+            gamePlayManager.addGameEnigneChangeHandler(gameEngineChangeHandler: self.gameEngineBoardHandler)
+            
+            self.gamePlayManager = gamePlayManager
+            gameSwipe.gamePlayInfo = gamePlayManager
+            gameCheck.gamePlayInfo = gamePlayManager
+        }
+    }
 }
