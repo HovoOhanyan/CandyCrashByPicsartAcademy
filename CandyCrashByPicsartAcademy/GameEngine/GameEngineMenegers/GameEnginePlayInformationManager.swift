@@ -29,6 +29,12 @@ final class GameEnginePlayInformationManager: GameEnginePlayInformation {
             gameEngineChangeHandler.comboHandler?(combo)
         }
     }
+    
+    var isUserInteractionEnabled: Bool = true {
+        didSet {
+            gameEngineChangeHandler.isUserInteractionEnabledHandler?(isUserInteractionEnabled)
+        }
+    }
     var updatedStarEstimation: Int {
         didSet {
             gameEngineChangeHandler.updateStarChangesHandler?(updatedStarEstimation)

@@ -15,4 +15,5 @@ protocol GameEngineBoardChangeHandler: AnyObject {
     var updateCountOfStepsLabelHandler: ((Int) -> Void)? { get set }
     var updateStarChangesHandler: ((Int) -> Void)? { get set }
     var comboHandler: ((Int) -> Void)? { get set }
+    var isUserInteractionEnabledHandler: ((Bool) -> Void)? { get set }
 }

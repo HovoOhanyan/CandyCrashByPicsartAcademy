@@ -15,7 +15,8 @@ final class GameEngine {
     private(set) var gameEngineBoardHandler: GameEngineBoardChangeHandler
     var gamePlayManager: GameEnginePlayInformation
     
-    //MARK: -
+    //MARK: - Initialize the view model with default parameters.
+
     
     init(gameBoardManager: GameEngineBoard, gamePlayManager: GameEnginePlayInformation) {
         self.gameBoardManager = gameBoardManager
@@ -30,6 +31,8 @@ final class GameEngine {
         
         gamePlayManager.addGameEnigneChangeHandler(gameEngineChangeHandler: self.gameEngineBoardHandler)
     }
+    
+    //MARK: - Initialize the view model with custom game board and play information managers.
     
     init(gameBoardManager: GameEngineBoard, gameSwipeManager: GameEngineSwipeManager,
          gameCheckMatchsManager: GameEngineCheckMatches, gameEngineBoardHandler: GameEngineBoardChangeHandler, 

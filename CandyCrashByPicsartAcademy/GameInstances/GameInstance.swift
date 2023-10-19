@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GameInstance {
-    var id: Int { get }
+    var id: Int { get }  // A unique identifier for the game instance.
     var index: Int { get set }
     var image: GameInstanceImage { get }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - Create a custom gesture recognizer for detecting swipe gestures
 final class CustomSwipeGestureRecognizer: UIGestureRecognizer {
     private(set) var initialTouchLocation: CGPoint = .zero
     var swipeDirection: SwipeDirection = .none
@@ -19,6 +20,7 @@ final class CustomSwipeGestureRecognizer: UIGestureRecognizer {
         }
     }
     
+    // Handle the movement of a touch event
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesMoved(touches, with: event)
         
@@ -28,6 +30,7 @@ final class CustomSwipeGestureRecognizer: UIGestureRecognizer {
                 let deltaX = currentLocation.x - initialTouchLocation.x
                 let deltaY = currentLocation.y - initialTouchLocation.y
                 
+                // Detect horizontal swipe gestures (left or right)
                 if abs(deltaX) >= 10 {
                     if deltaX > 0 {
                         swipeDirection = .right
@@ -36,6 +39,7 @@ final class CustomSwipeGestureRecognizer: UIGestureRecognizer {
                         swipeDirection = .left
                         state = .recognized
                     }
+                // Detect vertical swipe gestures (up or down)
                 } else if abs(deltaY) >= 10 {
                     if deltaY > 0 {
                         swipeDirection = .down

@@ -108,12 +108,12 @@ extension GameViewController {
                         first.frame = second.frame
                         second.frame = tempFrame
                     }
+                    
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                         if self.viewModal.gameEngine.gameSwipeManager.swipeUpGesture(index: index) {
                             self.viewModal.gameEngine.gameCheckMatchsManager.checkMatches()
                         } else {
                             UIView.animate(withDuration: 0.5) {
-                                
                                 let tempFrame = first.frame
                                 first.frame = second.frame
                                 second.frame = tempFrame
