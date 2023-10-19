@@ -50,13 +50,20 @@ final class GameViewController: UIViewController {
             }
         }
         
+
+        /// This function handles the animation for items falling down in a row of a game board.
+        /// - Parameter indexes: An array of indexes representing the items to be animated.
+        ///
         viewModal.gameEngine.gameEngineBoardHandler.fallDownAtRow = { indexes in
             for index in indexes {
                 let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
                 let firstItem = self.gameView.gameInstanceArray[index]
                 let secondItem = self.gameView.gameInstanceArray[index - numberOfItemsInRow]
+                
+                // Hide the first item in the row.
                 firstItem.alpha = 0
                 
+                // Animate the visual transition of items falling down.
                 UIView.animate(withDuration: 0.9) {
                     self.gameView.gameInstanceArray.swapAt(index, index - numberOfItemsInRow)
                     
@@ -71,10 +78,13 @@ final class GameViewController: UIViewController {
                 
                 let itemFrame = firstItem.frame
                 
+                // If the item is not in the top row, move it up and then back down with animation.
                 if index >= numberOfItemsInRow && index < numberOfItemsInRow * 2 {
                     firstItem.frame = CGRect(x: itemFrame.minX, y: itemFrame.minY - itemFrame.height, width: itemFrame.width, height: itemFrame.height)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                        UIView.animate(withDuration: 1) {
+                    
+                    // Delay the second animation to create a falling effect.
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                        UIView.animate(withDuration: 0.7) {
                             firstItem.frame = itemFrame
                             firstItem.alpha = 1
                         }
@@ -83,11 +93,19 @@ final class GameViewController: UIViewController {
             }
         }
         
+        /// This function handles the animation for items falling down in a column of a game board.
+    
+        ///   - index: The index of the item at the top of the column.
+        ///   - check: The number of items to be moved down in the column.
+        ///
+        ///
         viewModal.gameEngine.gameEngineBoardHandler.fallDownAtColumn = { index, check in
             let numberOfItemsInRow = self.viewModal.gameEngine.gameBoardManager.numberOfItemsInRow
             let firstItem = self.gameView.gameInstanceArray[index]
             let secondItem = self.gameView.gameInstanceArray[index - numberOfItemsInRow * check]
             var count = 0
+            
+            // Hide the items as they fall down in the column.
             
             while count != check {
                 self.gameView.gameInstanceArray[index - numberOfItemsInRow * count].alpha = 0
@@ -96,6 +114,8 @@ final class GameViewController: UIViewController {
           
             self.gameView.gameInstanceArray.swapAt(index, index - numberOfItemsInRow * check)
             
+            // Animate the visual transition of items falling down.
+
             UIView.animate(withDuration: 0.8) {
                 let firstItemFrame = firstItem.frame
                 firstItem.frame = secondItem.frame
@@ -106,11 +126,13 @@ final class GameViewController: UIViewController {
                 secondItem.gameInstance.index = tempIndex
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            // After a delay, restore the items and their positions.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                 if index < numberOfItemsInRow * (check + 1) {
                     count = 1
                     var arrayOfFrame: [CGRect] = []
                     
+                    // Calculate the frames for the items moving up in the column.
                     while count <= check {
                         let frameOfInstance = self.gameView.gameInstanceArray[index - numberOfItemsInRow * count].frame
                         
@@ -122,7 +144,8 @@ final class GameViewController: UIViewController {
                         count += 1
                     }
                     
-                    UIView.animate(withDuration: 0.5) {
+                    // Animate the items moving up in the column.
+                    UIView.animate(withDuration: 0.7) {
                         count = 1
                         
                         while count <= check {
