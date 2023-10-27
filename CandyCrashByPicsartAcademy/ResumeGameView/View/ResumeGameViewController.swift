@@ -10,10 +10,12 @@ import UIKit
 final class ResumeGameViewController: UIViewController {
     
     private let resumeGameView = ResumeGameView()
+    private var resumeGameMusic = AudioManager(for: "winOrLose", with: "mp3")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        resumeGameMusic.audioPlayer?.play()
     }
 }
 
@@ -40,7 +42,11 @@ extension ResumeGameViewController {
     @objc func resumeButtonTapped() {
         let gameView = GameViewController()
         gameView.modalPresentationStyle = .fullScreen
-        present(gameView, animated: true)
+        present(gameView, animated: true) {
+            gameView.backgroundMusic.audioPlayer?.play()
+            self.resumeGameMusic.audioPlayer?.stop()
+            self.resumeGameMusic.audioPlayer = nil
+        }
     }
 }
 

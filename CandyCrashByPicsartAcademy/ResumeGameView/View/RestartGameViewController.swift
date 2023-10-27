@@ -10,10 +10,12 @@ import UIKit
 final class RestartGameViewController: UIViewController {
     
     private let restartGameView = RestartGameView()
+    private var restartGameMusic = AudioManager(for: "winOrLose", with: "mp3")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        restartGameMusic.audioPlayer?.play()
     }
 }
 
@@ -40,6 +42,10 @@ extension RestartGameViewController {
     @objc func restartButtonTapped() {
         let gameView = GameViewController()
         gameView.modalPresentationStyle = .fullScreen
-        present(gameView, animated: true)
+        present(gameView, animated: true) {
+            self.restartGameMusic.audioPlayer?.stop()
+            self.restartGameMusic.audioPlayer = nil
+            gameView.backgroundMusic.audioPlayer?.play()
+        }
     }
 }

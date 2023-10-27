@@ -11,11 +11,13 @@ final class GameViewController: UIViewController {
     
     public var viewModal: GameViewModel = GameViewModel()
     let gameView = GameView()
+    public let backgroundMusic = AudioManager(for: "backgroundMusic", with: "mp3")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupSwipeGesture()
+        backgroundMusic.audioPlayer?.play()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,7 +48,8 @@ final class GameViewController: UIViewController {
         pauseView.gamePlayInformation = self.viewModal.gameEngine.gamePlayManager
         pauseView.modalPresentationStyle = .custom
         pauseView.preferredContentSize = CGSize(width: 400, height: 400)
-        
-        present(pauseView, animated: true)
+        present(pauseView, animated: true) {
+            self.backgroundMusic.audioPlayer?.pause()
+        }
     }
 }

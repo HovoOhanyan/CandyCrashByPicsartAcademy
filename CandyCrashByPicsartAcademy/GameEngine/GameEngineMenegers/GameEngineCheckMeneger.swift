@@ -12,6 +12,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
     private let gameBoardHandler: GameEngineBoardChangeHandler
     var gamePlayInfo: GameEnginePlayInformation
     
+    private var explosionSound = AudioManager(for: "explosionSound", with: "mp3")
+    
     private var isMatch = true
     
     init(gameEngineBoardManager: GameEngineBoard,
@@ -37,6 +39,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 3].id &&
                     gameBoardManager.gameBoard[index].id ==  gameBoardManager.gameBoard[index + 4].id
                 {
+                    
+                    self.explosionSound.audioPlayer?.play()
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
                         gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
@@ -93,6 +97,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 4].id
                 {
                     
+                    self.explosionSound.audioPlayer?.play()
+                    
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
                         gamePlayInfo.updatedStarEstimation = 5 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 5
@@ -144,6 +150,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 3].id {
+                    
+                    self.explosionSound.audioPlayer?.play()
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
                         gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
@@ -197,6 +205,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + numberOfItemsInRow * 3].id
                 {
 
+                    self.explosionSound.audioPlayer?.play()
+                    
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
                         gamePlayInfo.updatedStarEstimation = 4 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 4
@@ -244,6 +254,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                 if gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 1].id &&
                     gameBoardManager.gameBoard[index].id == gameBoardManager.gameBoard[index + 2].id
                 {
+                    
+                    self.explosionSound.audioPlayer?.play()
                     
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id {
                         gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
@@ -296,6 +308,8 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
                     gameBoardManager.gameBoard[index].id != 0
                 {
 
+                    self.explosionSound.audioPlayer?.play()
+                    
                     if gameBoardManager.gameBoard[index].id == gamePlayInfo.gameInstance.id  && gamePlayInfo.score != 0 {
                         gamePlayInfo.updatedStarEstimation = 3 * (150 / gamePlayInfo.score)
                         gamePlayInfo.score -= 3
@@ -342,26 +356,32 @@ final class GameEngineCheckManager: GameEngineCheckMatches {
             
             if self.checkFiveMatchAtRow() {
                 self.gamePlayInfo.combo += 1
+                self.explosionSound.audioPlayer?.play()
                 self.isMatch = true
                 self.checkMatches()
             } else if self.checkFiveMatchAtColumn() {
                 self.gamePlayInfo.combo += 1
+                self.explosionSound.audioPlayer?.play()
                 self.isMatch = true
                 self.checkMatches()
             } else if self.checkFourMatchAtRow() {
                 self.gamePlayInfo.combo += 1
+                self.explosionSound.audioPlayer?.play()
                 self.isMatch = true
                 self.checkMatches()
             } else if self.checkFourMatchAtColumn() {
                 self.gamePlayInfo.combo += 1
+                self.explosionSound.audioPlayer?.play()
                 self.isMatch = true
                 self.checkMatches()
             } else if self.checkThreeMatchAtRow() {
                 self.gamePlayInfo.combo += 1
+                self.explosionSound.audioPlayer?.play()
                 self.isMatch = true
                 self.checkMatches()
             } else if self.checkThreeMatchAtColumn() {
                 self.gamePlayInfo.combo += 1
+                self.explosionSound.audioPlayer?.play()
                 self.isMatch = true
                 self.checkMatches()
             } else {
