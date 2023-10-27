@@ -136,12 +136,18 @@ extension GameViewController {
             } else if score <= 0 && countOfSteps >= 0 {
                 let  resumeVC = ResumeGameViewController()
                 resumeVC.modalPresentationStyle = .overCurrentContext
-                self.present(resumeVC, animated: true)
+                self.present(resumeVC, animated: true) {
+                    self.backgroundMusic.audioPlayer?.stop()
+                    self.backgroundMusic.audioPlayer = nil
+                }
                 
             } else if score > 0 && countOfSteps == 0 {
                 let  restartVC = RestartGameViewController()
                 restartVC.modalPresentationStyle = .overCurrentContext
-                self.present(restartVC, animated: true)
+                self.present(restartVC, animated: true) {
+                    self.backgroundMusic.audioPlayer?.stop()
+                    self.backgroundMusic.audioPlayer = nil
+                }
             }
         }
         

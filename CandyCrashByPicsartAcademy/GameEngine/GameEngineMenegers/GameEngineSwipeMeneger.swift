@@ -11,6 +11,8 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
     private var gameBoardManager: GameEngineBoard
     var gamePlayInfo: GameEnginePlayInformation
     private var gameCheckManager: GameEngineCheckMatches
+    
+    private var swipeSound = AudioManager(for: "swipeSound", with: "mp3")
 
     init(gameBoardManager: GameEngineBoard, gamePlayInfo: GameEnginePlayInformation, gameCheckManager: GameEngineCheckMatches) {
         self.gameBoardManager = gameBoardManager
@@ -28,6 +30,7 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
             if self.gameCheckManager.checkMatchForSwipeGesture() {
                 // Check if the swipe results in a match and update the game state.
                 gamePlayInfo.countOfSteps -= 1
+                swipeSound.audioPlayer?.play()
                 return true
             } else {
                 // If no match is found, revert the swap.
@@ -46,6 +49,7 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
         
             if self.gameCheckManager.checkMatchForSwipeGesture() {
                 gamePlayInfo.countOfSteps -= 1
+                swipeSound.audioPlayer?.play()
                 return true
             } else {
                 // If no match is found, revert the swap.
@@ -63,6 +67,7 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
         self.gameBoardManager.gameBoard.swapAt(index, secondIndex)
         if self.gameCheckManager.checkMatchForSwipeGesture() {
             gamePlayInfo.countOfSteps -= 1
+            swipeSound.audioPlayer?.play()
             return true
         } else {
             // If no match is found, revert the swap.
@@ -77,6 +82,7 @@ final class GameEngineSwipeManager: GameEngineSwipeGestureHandler {
         self.gameBoardManager.gameBoard.swapAt(index, secondIndex)
         if self.gameCheckManager.checkMatchForSwipeGesture() {
             gamePlayInfo.countOfSteps -= 1
+            swipeSound.audioPlayer?.play()
             return true
         } else {
             // If no match is found, revert the swap.

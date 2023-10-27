@@ -11,11 +11,12 @@ final class JoinGameViewController: UIViewController {
     
     private let joinView = JoinGameView()
     var gamePlayInformation: GameEnginePlayInformation?
+    private var joinGameBackgroundMusic = AudioManager(for: "joinSound", with: ".mp3")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
+        joinGameBackgroundMusic.audioPlayer?.play()
     }
 }
 
@@ -48,7 +49,10 @@ extension JoinGameViewController {
         gameVC.modalPresentationStyle = .fullScreen
         self.gamePlayInformation = gameVC.viewModal.gameEnginePlayInfoManager
         self.dismiss(animated: false)
-        present(gameVC, animated: true)
+        present(gameVC, animated: true) {
+            self.joinGameBackgroundMusic.audioPlayer?.stop()
+            self.joinGameBackgroundMusic.audioPlayer = nil
+        }
     }
     
     public func playBeforeInfo() -> GameDataToSave {
@@ -88,6 +92,8 @@ extension JoinGameViewController {
             
             present(gameVC, animated: true) {
                 gameVC.gameView.updateLabelsWithGamePlayInfo(gamePlayInformation: gamePlayInfo)
+                self.joinGameBackgroundMusic.audioPlayer?.stop()
+                self.joinGameBackgroundMusic.audioPlayer = nil
             }
         }
     }

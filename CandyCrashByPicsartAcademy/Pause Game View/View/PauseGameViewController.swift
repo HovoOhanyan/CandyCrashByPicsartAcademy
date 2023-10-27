@@ -10,10 +10,11 @@ final class PauseGameViewController: UIViewController {
     
     private let pauseGameView = PauseGameView()
     var gamePlayInformation: GameEnginePlayInformation?
-
+    private var pauseGameMusic = AudioManager(for: "gameStop", with: "mp3")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        pauseGameMusic.audioPlayer?.play()
         setupUI()
     }
 }
@@ -63,6 +64,9 @@ extension PauseGameViewController {
     }
     
     @objc func resumeButtonTapped() {
+        if let gameViewController = presentingViewController as? GameViewController {
+            gameViewController.backgroundMusic.audioPlayer?.play()
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -70,7 +74,10 @@ extension PauseGameViewController {
         let gameView = GameViewController()
         gameView.modalPresentationStyle = .fullScreen
         gameView.viewModal = GameViewModel()
-        present(gameView, animated: true)
+        present(gameView, animated: true) {
+            self.pauseGameMusic.audioPlayer?.stop()
+            self.pauseGameMusic.audioPlayer = nil
+        }
     }
     
     @objc func exitButtonTapped() {
